@@ -11,8 +11,8 @@
   <title>{% block title %}{% endblock %}</title>
   {% include '_third-party/analytics/index.swig' %}
 </head>
-<!--卖萌-->
-<script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+<!--<script type="text/javascript" src="/js/src/dytitle.js"></script>-->
 <body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
 
   {% set container_class = "container " %}
