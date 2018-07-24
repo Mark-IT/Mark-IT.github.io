@@ -86,5 +86,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:Mark-IT/Mark-IT.github.io.git
-  branch: master
+  repository: 
+    github: git@github.com:Mark-IT/Mark-IT.github.io.git,master
+    coding: git@git.coding.net:huchong0209/huchong0209.git,master
+
