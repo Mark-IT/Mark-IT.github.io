@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.hpython.cn/tags/index.html</loc>
+    <loc>http://www.hpython.cn/categories/index.html</loc>
     
-    <lastmod>2018-07-25T06:24:57.304Z</lastmod>
+    <lastmod>2018-07-25T11:34:32.590Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.hpython.cn/categories/index.html</loc>
+    <loc>http://www.hpython.cn/2018/07/25/xx/</loc>
     
-    <lastmod>2018-07-25T05:23:52.099Z</lastmod>
+    <lastmod>2018-07-25T11:32:40.493Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.hpython.cn/tags/index.html</loc>
+    
+    <lastmod>2018-07-25T06:24:57.304Z</lastmod>
     
   </url>
   
