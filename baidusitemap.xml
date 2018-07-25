@@ -3,16 +3,23 @@
 
 
     
+    
+    
   <url>
-    <loc>http://www.hpython.cn/2018/07/24/hello-world/</loc>
-    <lastmod>2018-07-24T03:20:32.137Z</lastmod>
+    <loc>http://www.hpython.cn/2018/07/25/hello-world/</loc>
+    <lastmod>2018-07-25T05:18:02.417Z</lastmod>
     <data>
         <display>
         <title>Hello World</title>
-        <pubTime>2018-07-24T03:20:32.135Z</pubTime>
+        <pubTime>2018-07-25T05:14:53.000Z</pubTime>
         
+        <tag>时间</tag>
+         
          
            
+             
+              <breadCrumb title="Python" url="http://www.hpython.cn/categories/Python/"/>
+          
         </display>
     </data>
     </url>
