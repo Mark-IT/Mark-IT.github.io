@@ -20,6 +20,19 @@
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
   <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+	
+	
+	<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+	</script>
+  
 
 
 
@@ -86,18 +99,18 @@
 
 
 
-<meta name="description" content="首先来看一段代码 一、例子123456789101112131415161718192021222324# -*- coding: utf-8 -*-a1 = u&apos;你好&apos;b1 = &apos;中文&apos; print(a1+b1)  # 报错a2 = u&apos;你好&apos;b2 = &apos;中文&apos; + a.encode(&apos;utf-8&apos;)print(b2)   # 正常输出type(b2)    #  stra3 = u&apos;http&apos;">
+<meta name="description" content="首先来看一段代码 一、例子123456789101112131415161718192021222324# -*- coding: utf-8 -*-a1 = u&apos;你好&apos;b1 = &apos;中文&apos; &amp;lt;!--more--&amp;gt;print(a1+b1)  # 报错a2 = u&apos;你好&apos;b2 = &apos;中文&apos; + a.encode(&apos;utf-8&apos;)print(b2)   # 正常输出type(b2)    #">
 <meta name="keywords" content="编码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python unicode和str拼接报错原因">
 <meta property="og:url" content="http://www.hpython.cn/2018/07/25/Python unicode和str拼接报错原因/index.html">
 <meta property="og:site_name" content="Mark&#39;s Home">
-<meta property="og:description" content="首先来看一段代码 一、例子123456789101112131415161718192021222324# -*- coding: utf-8 -*-a1 = u&apos;你好&apos;b1 = &apos;中文&apos; print(a1+b1)  # 报错a2 = u&apos;你好&apos;b2 = &apos;中文&apos; + a.encode(&apos;utf-8&apos;)print(b2)   # 正常输出type(b2)    #  stra3 = u&apos;http&apos;">
+<meta property="og:description" content="首先来看一段代码 一、例子123456789101112131415161718192021222324# -*- coding: utf-8 -*-a1 = u&apos;你好&apos;b1 = &apos;中文&apos; &amp;lt;!--more--&amp;gt;print(a1+b1)  # 报错a2 = u&apos;你好&apos;b2 = &apos;中文&apos; + a.encode(&apos;utf-8&apos;)print(b2)   # 正常输出type(b2)    #">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T03:44:54.080Z">
+<meta property="og:updated_time" content="2018-07-27T03:14:47.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python unicode和str拼接报错原因">
-<meta name="twitter:description" content="首先来看一段代码 一、例子123456789101112131415161718192021222324# -*- coding: utf-8 -*-a1 = u&apos;你好&apos;b1 = &apos;中文&apos; print(a1+b1)  # 报错a2 = u&apos;你好&apos;b2 = &apos;中文&apos; + a.encode(&apos;utf-8&apos;)print(b2)   # 正常输出type(b2)    #  stra3 = u&apos;http&apos;">
+<meta name="twitter:description" content="首先来看一段代码 一、例子123456789101112131415161718192021222324# -*- coding: utf-8 -*-a1 = u&apos;你好&apos;b1 = &apos;中文&apos; &amp;lt;!--more--&amp;gt;print(a1+b1)  # 报错a2 = u&apos;你好&apos;b2 = &apos;中文&apos; + a.encode(&apos;utf-8&apos;)print(b2)   # 正常输出type(b2)    #">
 
 
 
@@ -353,8 +366,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-26T11:44:54+08:00">
-                2018-07-26
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T11:14:47+08:00">
+                2018-07-27
               </time>
             
           </span>
@@ -407,7 +420,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  703
+                  704
                 </span>
               
 
@@ -445,7 +458,7 @@ var _hmt = _hmt || [];
 
       
         <p>首先来看一段代码</p>
-<h1 id="一、例子"><a href="#一、例子" class="headerlink" title="一、例子"></a>一、例子</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">a1 = <span class="string">u'你好'</span></span><br><span class="line"></span><br><span class="line">b1 = <span class="string">'中文'</span> </span><br><span class="line"></span><br><span class="line">print(a1+b1)  <span class="comment"># 报错</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a2 = <span class="string">u'你好'</span></span><br><span class="line"></span><br><span class="line">b2 = <span class="string">'中文'</span> + a.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">print(b2)   <span class="comment"># 正常输出</span></span><br><span class="line"></span><br><span class="line">type(b2)    <span class="comment">#  str</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a3 = <span class="string">u'http'</span></span><br><span class="line"></span><br><span class="line">b3 = <span class="string">'abc'</span> + a</span><br><span class="line"></span><br><span class="line">print(b3) <span class="comment"># 正常输出</span></span><br><span class="line"></span><br><span class="line">type(b3)  <span class="comment"># unicode</span></span><br></pre></td></tr></table></figure>
+<h1 id="一、例子"><a href="#一、例子" class="headerlink" title="一、例子"></a>一、例子</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line">a1 = <span class="string">u'你好'</span></span><br><span class="line"></span><br><span class="line">b1 = <span class="string">'中文'</span> </span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">print(a1+b1)  <span class="comment"># 报错</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a2 = <span class="string">u'你好'</span></span><br><span class="line"></span><br><span class="line">b2 = <span class="string">'中文'</span> + a.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">print(b2)   <span class="comment"># 正常输出</span></span><br><span class="line"></span><br><span class="line">type(b2)    <span class="comment">#  str</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a3 = <span class="string">u'http'</span></span><br><span class="line"></span><br><span class="line">b3 = <span class="string">'abc'</span> + a</span><br><span class="line"></span><br><span class="line">print(b3) <span class="comment"># 正常输出</span></span><br><span class="line"></span><br><span class="line">type(b3)  <span class="comment"># unicode</span></span><br></pre></td></tr></table></figure>
 <p>a1,a2,a3都是unicode对象，unicode是一种编码标准，具体的实现可能是utf-8，utf-16，gbk等等，这就是中文字符串和unicode有密切关系的原因。<br>python内部使用两个字节存储一个unicode对象（unicode对象并不只能是字符串，这两个字节还可以存其他内容），为什么要用unicode而不用str呢，因为中文转码的缘故，因为unicode的优点是便于跨平台。</p>
 <p>b1 是str对象，中文字符串。存储方式是字节码。字节码是怎么存的：<br>如果这行代码在python解释器中输入&amp;运行，那么s的格式就是解释器的编码格式；<br>如果这行代码是在源码文件中写入、保存然后执行，那么解释器载入代码时就将s初始化为文件指定编码(比如py文件开头那行的utf-8)；</p>
 <p>下面这两种方式都是表示unicode对象</p>
@@ -462,6 +475,21 @@ var _hmt = _hmt || [];
     
     
 	
+	
+	
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+    
+ </div>
+ 
 	
 	
 
@@ -515,12 +543,13 @@ var _hmt = _hmt || [];
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-creative-commons"></i>CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 
       </div>
     
+	
 	
 	
     <footer class="post-footer">
@@ -558,6 +587,10 @@ var _hmt = _hmt || [];
       
     </footer>
   </div>
+  
+  
+  
+  
   
   
   
