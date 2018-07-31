@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://www.hpython.cn/2018/07/31/windows10%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%AE%89%E8%A3%85RabbitMQ(%E5%9B%BE%E6%96%87%E6%AD%A5%E9%AA%A4)/</loc>
+    <lastmod>2018-07-31T11:42:45.300Z</lastmod>
+    <data>
+        <display>
+        <title>windows10环境下安装RabbitMQ(图文步骤)</title>
+        <pubTime>2018-07-31T11:13:08.000Z</pubTime>
+        
+        <tag>RabbitMQ</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="http://www.hpython.cn/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.hpython.cn/2018/07/25/Python%20unicode%E5%92%8Cstr%E6%8B%BC%E6%8E%A5%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0/</loc>
-    <lastmod>2018-07-27T03:14:47.072Z</lastmod>
+    <lastmod>2018-07-27T03:16:13.403Z</lastmod>
     <data>
         <display>
         <title>Python unicode和str拼接报错原因</title>
