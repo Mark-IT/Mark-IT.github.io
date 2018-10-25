@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.hpython.cn/2018/10/24/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E9%80%80%E5%87%BA%E5%85%B3%E9%97%AD%E9%87%8D%E5%90%AFgunicorn%E8%BF%9B%E7%A8%8B/</loc>
+    <loc>http://www.hpython.cn/2018/10/25/linux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(5)%EF%BC%9Amkdir%E5%91%BD%E4%BB%A4/</loc>
     
-    <lastmod>2018-10-24T08:53:44.258Z</lastmod>
+    <lastmod>2018-10-25T01:26:22.217Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.hpython.cn/2018/10/23/linux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(4)%EF%BC%9Apwd%E5%91%BD%E4%BB%A4/</loc>
+    <loc>http://www.hpython.cn/2018/10/24/linux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(4)%EF%BC%9Apwd%E5%91%BD%E4%BB%A4/</loc>
     
-    <lastmod>2018-10-24T08:45:41.425Z</lastmod>
+    <lastmod>2018-10-25T01:24:30.860Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.hpython.cn/2018/10/24/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E9%80%80%E5%87%BA%E5%85%B3%E9%97%AD%E9%87%8D%E5%90%AFgunicorn%E8%BF%9B%E7%A8%8B/</loc>
+    
+    <lastmod>2018-10-24T08:53:44.258Z</lastmod>
     
   </url>
   
