@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+	
+	
+	<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+	</script>
+  
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux命令," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。">
+<meta name="keywords" content="linux命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux每日命令(6)：rm命令">
+<meta property="og:url" content="http://www.hpython.cn/2018/10/26/linux每日命令(6)：rm命令/index.html">
+<meta property="og:site_name" content="Mark&#39;s Home">
+<meta property="og:description" content="rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-26T03:48:05.340Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux每日命令(6)：rm命令">
+<meta name="twitter:description" content="rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。 rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hpython.cn/2018/10/26/linux每日命令(6)：rm命令/"/>
+
+
+
+
+
+  <title>linux每日命令(6)：rm命令 | Mark's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+</head>
+
+<!--<script type="text/javascript" src="/js/src/dytitle.js"></script>-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e20e6b1d0fc1866be6555005c1b22bdf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mark's Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">你要做多大的事情，就该承受多大的压力。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/10/26/linux每日命令(6)：rm命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark's Home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux每日命令(6)：rm命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-26T11:39:29+08:00">
+                2018-10-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-26T11:48:05+08:00">
+                2018-10-26
+              </time>
+            
+          </span>
+		  
+		
+			<span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux每日命令/" itemprop="url" rel="index">
+                    <span itemprop="name">linux每日命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,238
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>rm是常用的命令，该命令的功能为删除一个目录中的一个或多个文件或目录，它也可以将某个目录及其下的所有文件及子目录均删除。对于链接文件，只是删除了链接，原有文件均保持不变。</p>
+<p>rm是一个危险的命令，使用的时候要特别当心，尤其对于新手，否则整个系统就会毁在这个命令（比如在/（根目录）下执行rm * -rf）。所以，我们在执行rm之前最好先确认一下在哪个目录，到底要删除什么东西，操作时保持高度清醒的头脑。</p>
+<h1 id="一-命令格式："><a href="#一-命令格式：" class="headerlink" title="一. 命令格式："></a>一. 命令格式：</h1><pre><code>rm [选项] 文件 
+</code></pre><h1 id="二-命令功能："><a href="#二-命令功能：" class="headerlink" title="二. 命令功能："></a>二. 命令功能：</h1><p>删除一个目录中的一个或多个文件或目录，如果没有使用- r参数，则rm不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+<h1 id="三-命令参数选项"><a href="#三-命令参数选项" class="headerlink" title="三. 命令参数选项"></a>三. 命令参数选项</h1><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>–force,忽略不存在的文件，从不给出提示。</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>–interactive,进行交互式删除</td>
+</tr>
+<tr>
+<td>-r (-R)</td>
+<td>–recursive ,  指示rm将参数中列出的全部目录和子目录均递归地删除。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>–verbose,    详细显示进行的步骤</td>
+</tr>
+<tr>
+<td>–help</td>
+<td>显示此帮助信息并退出</td>
+</tr>
+<tr>
+<td>–version</td>
+<td>输出版本信息并退出</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四-命令实例"><a href="#四-命令实例" class="headerlink" title="四. 命令实例"></a>四. 命令实例</h1><h2 id="1-删除文件"><a href="#1-删除文件" class="headerlink" title="1. 删除文件"></a>1. 删除文件</h2><p>命令：</p>
+<pre><code>rm 文件名
+</code></pre><p>输出：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hc<span class="variable">@hc</span>-virtual-<span class="symbol">machine:</span>~<span class="regexp">/test2/test</span>5<span class="variable">$ </span>ls</span><br><span class="line">file1  scf  test5-<span class="number">1</span></span><br><span class="line">hc<span class="variable">@hc</span>-virtual-<span class="symbol">machine:</span>~<span class="regexp">/test2/test</span>5<span class="variable">$ </span>rm file1 </span><br><span class="line">rm：是否删除普通空文件 <span class="string">'file1'</span>？ y</span><br><span class="line">hc<span class="variable">@hc</span>-virtual-<span class="symbol">machine:</span>~<span class="regexp">/test2/test</span>5<span class="variable">$ </span>ls</span><br><span class="line">scf  test5-<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>输入rm file1命令后，系统会询问是否删除，输入y后就会删除文件，不想删除则数据n。<br>如果没有进行询问，建议加上，毕竟删除操作需谨慎！</p>
+<p>方法：</p>
+<pre><code>vi ~/.bashrc
+</code></pre><p>然后再里面加入</p>
+<pre><code>alias rm=&apos;rm -i&apos;
+</code></pre><p>意思是 rm命令 实际使用的是 rm -i 交互模式，需要进行确认<br>注意，此处 rm 和 = 之间不能有空格，否则会有找不到rm命令的提示，</p>
+<p>然后在终端执行这条命令，使得刚才的修改即刻生效：</p>
+<pre><code>source ~/.bashrc
+</code></pre><h2 id="2-强行删除file，系统不进行确认提示。"><a href="#2-强行删除file，系统不进行确认提示。" class="headerlink" title="2. 强行删除file，系统不进行确认提示。"></a>2. 强行删除file，系统不进行确认提示。</h2><p>命令：</p>
+<pre><code>rm -f 文件名
+</code></pre><p>输出：</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hc<span class="variable">@hc</span>-virtual-<span class="symbol">machine:</span>~<span class="regexp">/test2/test</span>5<span class="variable">$ </span>ls</span><br><span class="line">file2  scf  test5-<span class="number">1</span></span><br><span class="line">hc<span class="variable">@hc</span>-virtual-<span class="symbol">machine:</span>~<span class="regexp">/test2/test</span>5<span class="variable">$ </span>rm -f file2 </span><br><span class="line">hc<span class="variable">@hc</span>-virtual-<span class="symbol">machine:</span>~<span class="regexp">/test2/test</span>5<span class="variable">$ </span>ls</span><br><span class="line">scf  test5-<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-删除当前目录下的所有-log结尾的文件，删除前逐一询问确认"><a href="#3-删除当前目录下的所有-log结尾的文件，删除前逐一询问确认" class="headerlink" title="3. 删除当前目录下的所有.log结尾的文件，删除前逐一询问确认"></a>3. 删除当前目录下的所有.log结尾的文件，删除前逐一询问确认</h2><p>命令：</p>
+<pre><code>rm -i *.log
+</code></pre><p>输出：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test2/test5/test5-1$ <span class="keyword">ls</span></span><br><span class="line">log1.<span class="keyword">log</span>  log2.<span class="keyword">log</span>  log3.<span class="built_in">log</span></span><br><span class="line">hc@hc-virtual-machine:~/test2/test5/test5-1$ <span class="keyword">rm</span> -i *.<span class="built_in">log</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除普通空文件 'log1.<span class="keyword">log</span>'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除普通空文件 'log2.<span class="keyword">log</span>'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除普通空文件 'log3.<span class="keyword">log</span>'？ <span class="built_in">y</span></span><br><span class="line">hc@hc-virtual-machine:~/test2/test5/test5-1$ <span class="keyword">ls</span></span><br><span class="line">hc@hc-virtual-machine:~/test2/test5/test5-1$</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>touch 是创建文件的命令</p>
+<p>mkdir 是创建目录的命令</p>
+<pre><code>touch 1.log 2.log 3.log
+</code></pre><p>如果一次性创建多个连续的文件/目录可以使用{1..3}</p>
+<p>例如：<br>一次创建3个.log文件 </p>
+<pre><code>touch {1..3}.log
+</code></pre><h2 id="4-删除test5目录及其子目录里的所有的内容"><a href="#4-删除test5目录及其子目录里的所有的内容" class="headerlink" title="4. 删除test5目录及其子目录里的所有的内容"></a>4. 删除test5目录及其子目录里的所有的内容</h2><p>命令：</p>
+<pre><code>rm -r test5
+</code></pre><p>输出：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test2$ <span class="keyword">ls</span></span><br><span class="line">test22  test3  test4  test5</span><br><span class="line">hc@hc-virtual-machine:~/test2$ tree test5</span><br><span class="line">test5</span><br><span class="line">├── <span class="keyword">log</span>.<span class="built_in">log</span></span><br><span class="line">├── scf</span><br><span class="line">│   ├── bin</span><br><span class="line">│   ├── doc</span><br><span class="line">│   │   ├── info</span><br><span class="line">│   │   └── product</span><br><span class="line">│   ├── lib</span><br><span class="line">│   ├── logs</span><br><span class="line">│   │   ├── info</span><br><span class="line">│   │   └── product</span><br><span class="line">│   └── service</span><br><span class="line">│       └── deploy</span><br><span class="line">│           ├── info</span><br><span class="line">│           └── product</span><br><span class="line">└── test5-1</span><br><span class="line">    └── log4.<span class="built_in">log</span></span><br><span class="line"></span><br><span class="line">14 directories, 2 files</span><br><span class="line">hc@hc-virtual-machine:~/test2$ <span class="keyword">ls</span></span><br><span class="line">test22  test3  test4  test5</span><br><span class="line">hc@hc-virtual-machine:~/test2$ <span class="keyword">rm</span> -r test5</span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5/scf'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5/scf/logs'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/logs/info'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/logs/product'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/logs'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5/scf/service'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5/scf/service/deploy'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/service/deploy/info'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/service/deploy/product'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/service/deploy'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/service'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/bin'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5/scf/doc'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/doc/info'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/doc/product'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/doc'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf/lib'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/scf'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否进入目录'test5/test5-1'? <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除普通空文件 'test5/test5-1/log4.<span class="keyword">log</span>'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5/test5-1'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除普通空文件 'test5/<span class="keyword">log</span>.<span class="keyword">log</span>'？ <span class="built_in">y</span></span><br><span class="line"><span class="keyword">rm</span>：是否删除目录 'test5'？ <span class="built_in">y</span></span><br><span class="line">hc@hc-virtual-machine:~/test2$ <span class="keyword">ls</span></span><br><span class="line">test22  test3  test4</span><br><span class="line">hc@hc-virtual-machine:~/test2$</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-删除test5目录及其子目录里的所有的内容，且不用进行询问确认"><a href="#5-删除test5目录及其子目录里的所有的内容，且不用进行询问确认" class="headerlink" title="5. 删除test5目录及其子目录里的所有的内容，且不用进行询问确认"></a>5. 删除test5目录及其子目录里的所有的内容，且不用进行询问确认</h2><p>命令：</p>
+<pre><code>rm -rf test5
+</code></pre><h2 id="6-创建、删除以-开头的文件"><a href="#6-创建、删除以-开头的文件" class="headerlink" title="6. 创建、删除以-开头的文件"></a>6. 创建、删除以-开头的文件</h2><p>命令：</p>
+<p>在当前目录下创建文件名为-a和-b的文件</p>
+<pre><code>方法一： touch ./-a
+方法二： touch -- -b
+</code></pre><p>删除当前目录下文件名为-a和-b 的文件</p>
+<pre><code>方法一： rm -- -a
+方法二： rm ./-b
+</code></pre><p>输出：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ ls</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ touch -a</span><br><span class="line"><span class="string">touch:</span> 缺少了文件操作数</span><br><span class="line">Try <span class="string">'touch --help'</span> <span class="keyword">for</span> more information.</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ touch ./-a</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ ls</span><br><span class="line">-a</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ touch -- -b</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ ls</span><br><span class="line">-a  -b</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ rm -a</span><br><span class="line"><span class="string">rm:</span> 不适用的选项 -- a</span><br><span class="line">Try <span class="string">'rm ./-a'</span> to remove the file <span class="string">'-a'</span>.</span><br><span class="line">Try <span class="string">'rm --help'</span> <span class="keyword">for</span> more information.</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ rm -- -a</span><br><span class="line">rm：是否删除普通空文件 <span class="string">'-a'</span>？ y</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ ls</span><br><span class="line">-b</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ rm ./-b</span><br><span class="line">rm：是否删除普通空文件 <span class="string">'./-b'</span>？ y</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$ ls</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test2/</span>test4$</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>档名最好不要使用 “-“ 号开头， 因为 “-“ 后面接的是选项，因此，单纯的使用『 rm -a 』系统的命令就会误判。所以，只能用避过首位字节是 “-“ 的方法啦！ 就是加上本目录『 ./ 』即可！<br>如果 man rm 查看使用方法的话，其实还有一种方法，那就是『 rm – -f 』（另外一种方法而已）。</p>
+<h2 id="7-自定义回收站功能"><a href="#7-自定义回收站功能" class="headerlink" title="7. 自定义回收站功能"></a>7. 自定义回收站功能</h2><p>命令：</p>
+<pre><code>myrm(){ D=/tmp/$(date +%Y%m%d%H%M%S); mkdir -p $D; mv &quot;$@&quot; $D &amp;&amp; echo &quot;moved to $D ok&quot;; }
+</code></pre><p>说明：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myrm()</span><br><span class="line">&#123; </span><br><span class="line">D=/tmp/$(date +%Y%m%d%H%M%S); </span><br><span class="line"><span class="comment">#在/tmp文件夹中创建名为“当前日期”的文件；</span></span><br><span class="line"><span class="comment">#其中“date+%Y%m%d%H%M%S”是规定了日期的输出格式；</span></span><br><span class="line">mkdir -p $D; </span><br><span class="line"><span class="comment">#以变量D中的路径创建文件夹。</span></span><br><span class="line">mv <span class="string">"$@"</span> $D &amp;&amp; echo <span class="string">"moved to $D ok"</span>; </span><br><span class="line"><span class="comment">#将所要删除的文件移入变量D中的文件夹内，移入成功后，输出移动成功。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alias rm=<span class="string">'myrm'</span></span><br><span class="line"><span class="comment">#命令别名定义方式，此定义成功后，无论输入rm或myrm系统都会做出相同操作。</span></span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:/tmp$ myrm()&#123; D=/tmp/$(<span class="keyword">date</span> +%Y%m%d%H%M%S); mkdir -p $D;  mv <span class="string">"$@"</span> $D &amp;&amp; echo <span class="string">"moved to $D ok"</span>; &#125;</span><br><span class="line"></span><br><span class="line">hc@hc-virtual-machine:/tmp$ <span class="keyword">alias</span> rm=<span class="string">'myrm'</span></span><br><span class="line"></span><br><span class="line">hc@hc-virtual-machine:/tmp$ touch &#123;<span class="number">1.</span><span class="number">.4</span>&#125;.<span class="keyword">log</span></span><br><span class="line"></span><br><span class="line">hc@hc-virtual-machine:/tmp$ <span class="keyword">ls</span></span><br><span class="line"><span class="number">1.</span><span class="keyword">log</span>  <span class="number">2.</span><span class="keyword">log</span>  <span class="number">3.</span><span class="keyword">log</span> <span class="number">4.</span><span class="keyword">log</span></span><br><span class="line">hc@hc-virtual-machine:/tmp$ rm [<span class="number">1234</span>].<span class="keyword">log</span></span><br><span class="line">moved to /tmp/<span class="number">20181026111028</span> ok</span><br><span class="line">hc@hc-virtual-machine:/tmp$ <span class="keyword">ls</span></span><br><span class="line"><span class="number">20181026111028</span></span><br><span class="line">hc@hc-virtual-machine:/tmp$  cd <span class="number">20181026111028</span>/</span><br><span class="line">hc@hc-virtual-machine:/tmp/<span class="number">20181026111028</span>$ <span class="keyword">ls</span></span><br><span class="line"><span class="number">1.</span><span class="keyword">log</span>  <span class="number">2.</span><span class="keyword">log</span>  <span class="number">3.</span><span class="keyword">log</span>  <span class="number">4.</span><span class="keyword">log</span></span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>上面的操作过程模拟了回收站的效果，即删除文件的时候只是把文件放到一个临时目录中，这样在需要的时候还可以恢复过来。</p>
+<p>由于我们当前已将rm绑定为myrm，所以我们无法执行删除操作</p>
+<p>临时设置rm命令别名为myrm</p>
+<pre><code>alias rm=&apos;myrm&apos;
+</code></pre><p>此时若想删除回收站里的文件，<br>由于是临时的，所以换一个命令行窗口后，绑定就会失效<br>即换一个命令行窗口执行rm -r 命令删除即可</p>
+<p>如果不想换命令行窗口，可以用  </p>
+<pre><code>sudo rm -rf 目录名
+</code></pre><p>删除回收站的文件</p>
+<p>或者解除临时绑定</p>
+<pre><code>unalias rm
+</code></pre><p>输出：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:<span class="string">/tmp/20181026111444</span>$ <span class="keyword">alias</span> </span><br><span class="line"><span class="keyword">alias</span> alert='notify-send <span class="params">--urgency=low</span> -i <span class="string">"$([ $? = 0 ] &amp;&amp; echo terminal || echo error)"</span> <span class="string">"$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&amp;|]\s*alert$//'\'')"</span>'</span><br><span class="line"><span class="keyword">alias</span> egrep='egrep <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> fgrep='fgrep <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> grep='grep <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> l='<span class="keyword">ls</span> -CF'</span><br><span class="line"><span class="keyword">alias</span> la='<span class="keyword">ls</span> -A'</span><br><span class="line"><span class="keyword">alias</span> ll='<span class="keyword">ls</span> -alF'</span><br><span class="line"><span class="keyword">alias</span> <span class="keyword">ls</span>='<span class="keyword">ls</span> <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> rm='myrm'</span><br><span class="line">hc@hc-virtual-machine:<span class="string">/tmp/20181026111444</span>$ <span class="keyword">unalias</span> rm</span><br><span class="line">hc@hc-virtual-machine:<span class="string">/tmp/20181026111444</span>$ <span class="keyword">alias</span> </span><br><span class="line"><span class="keyword">alias</span> alert='notify-send <span class="params">--urgency=low</span> -i <span class="string">"$([ $? = 0 ] &amp;&amp; echo terminal || echo error)"</span> <span class="string">"$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&amp;|]\s*alert$//'\'')"</span>'</span><br><span class="line"><span class="keyword">alias</span> egrep='egrep <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> fgrep='fgrep <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> grep='grep <span class="params">--color=auto</span>'</span><br><span class="line"><span class="keyword">alias</span> l='<span class="keyword">ls</span> -CF'</span><br><span class="line"><span class="keyword">alias</span> la='<span class="keyword">ls</span> -A'</span><br><span class="line"><span class="keyword">alias</span> ll='<span class="keyword">ls</span> -alF'</span><br><span class="line"><span class="keyword">alias</span> <span class="keyword">ls</span>='<span class="keyword">ls</span> <span class="params">--color=auto</span>'</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+	
+	
+	
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+    
+ </div>
+ 
+	
+	
+
+	
+	
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>希望文章对您有所帮助，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mark 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mark 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+	
+	
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mark
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.hpython.cn/2018/10/26/linux每日命令(6)：rm命令/" title="linux每日命令(6)：rm命令">http://www.hpython.cn/2018/10/26/linux每日命令(6)：rm命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-creative-commons"></i>CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+	
+	
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag" style="background: #ff945c"><i class="fa fa-tag"></i> linux命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/25/linux每日命令(5)：mkdir命令/" rel="next" title="linux每日命令(5)：mkdir命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(5)：mkdir命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI5MC8xNDgxOA=="></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Mark" />
+            
+              <p class="site-author-name" itemprop="name">Mark</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Mark-IT" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-命令格式："><span class="nav-text">一. 命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-命令功能："><span class="nav-text">二. 命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-命令参数选项"><span class="nav-text">三. 命令参数选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-命令实例"><span class="nav-text">四. 命令实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-删除文件"><span class="nav-text">1. 删除文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-强行删除file，系统不进行确认提示。"><span class="nav-text">2. 强行删除file，系统不进行确认提示。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-删除当前目录下的所有-log结尾的文件，删除前逐一询问确认"><span class="nav-text">3. 删除当前目录下的所有.log结尾的文件，删除前逐一询问确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-删除test5目录及其子目录里的所有的内容"><span class="nav-text">4. 删除test5目录及其子目录里的所有的内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-删除test5目录及其子目录里的所有的内容，且不用进行询问确认"><span class="nav-text">5. 删除test5目录及其子目录里的所有的内容，且不用进行询问确认</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-创建、删除以-开头的文件"><span class="nav-text">6. 创建、删除以-开头的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-自定义回收站功能"><span class="nav-text">7. 自定义回收站功能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+	<!--<a href="https://github.com/Mark-IT"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>-->
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
+  <div style="display:none">
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">15.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+   |  本页点击 <span id="busuanzi_value_page_pv"></span> 次
+  |  本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+  |  您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  <!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
