@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="ls命令是linux下最常用的命令。ls命令就是list的缩写缺省下ls用来打印出当前目录的清单如果ls指定其他目录那么就会显示指定目录里的文件及文件夹清单。 通过ls 命令不仅可以查看linux文件夹包含的文件而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。ls 命令在日常的linux操作中用的很多! 1.命令格式：ls [选项] [目录名] 2.命令功能列出目标目录中所">
+<meta name="description" content="一．命令格式：cp [参数] source dest 或 cp [参数] source... directory 二．命令功能：将源文件复制至目标文件，或将多个源文件复制至目标目录。 三. 命令参数：   参数 描述     -a 此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。   -b –backup,删除、覆盖目的文件先备份，备份的文件或目">
 <meta name="keywords" content="linux命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux每日命令(1)：ls命令">
-<meta property="og:url" content="http://www.hpython.cn/2018/10/20/linux每日命令(1)：ls命令/index.html">
+<meta property="og:title" content="linux每日命令(9)：cp命令">
+<meta property="og:url" content="http://www.hpython.cn/2018/10/31/linux每日命令(9)：cp命令/index.html">
 <meta property="og:site_name" content="Mark&#39;s Home">
-<meta property="og:description" content="ls命令是linux下最常用的命令。ls命令就是list的缩写缺省下ls用来打印出当前目录的清单如果ls指定其他目录那么就会显示指定目录里的文件及文件夹清单。 通过ls 命令不仅可以查看linux文件夹包含的文件而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。ls 命令在日常的linux操作中用的很多! 1.命令格式：ls [选项] [目录名] 2.命令功能列出目标目录中所">
+<meta property="og:description" content="一．命令格式：cp [参数] source dest 或 cp [参数] source... directory 二．命令功能：将源文件复制至目标文件，或将多个源文件复制至目标目录。 三. 命令参数：   参数 描述     -a 此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。   -b –backup,删除、覆盖目的文件先备份，备份的文件或目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-20T02:47:19.901Z">
+<meta property="og:updated_time" content="2018-10-31T11:56:27.252Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux每日命令(1)：ls命令">
-<meta name="twitter:description" content="ls命令是linux下最常用的命令。ls命令就是list的缩写缺省下ls用来打印出当前目录的清单如果ls指定其他目录那么就会显示指定目录里的文件及文件夹清单。 通过ls 命令不仅可以查看linux文件夹包含的文件而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。ls 命令在日常的linux操作中用的很多! 1.命令格式：ls [选项] [目录名] 2.命令功能列出目标目录中所">
+<meta name="twitter:title" content="linux每日命令(9)：cp命令">
+<meta name="twitter:description" content="一．命令格式：cp [参数] source dest 或 cp [参数] source... directory 二．命令功能：将源文件复制至目标文件，或将多个源文件复制至目标目录。 三. 命令参数：   参数 描述     -a 此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。   -b –backup,删除、覆盖目的文件先备份，备份的文件或目">
 
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hpython.cn/2018/10/20/linux每日命令(1)：ls命令/"/>
+  <link rel="canonical" href="http://www.hpython.cn/2018/10/31/linux每日命令(9)：cp命令/"/>
 
 
 
 
 
-  <title>linux每日命令(1)：ls命令 | Mark's Home</title>
+  <title>linux每日命令(9)：cp命令 | Mark's Home</title>
   
 
 
@@ -321,7 +321,7 @@ var _hmt = _hmt || [];
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/10/20/linux每日命令(1)：ls命令/">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/10/31/linux每日命令(9)：cp命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">linux每日命令(1)：ls命令</h2>
+          <h2 class="post-title" itemprop="name headline">linux每日命令(9)：cp命令</h2>
         
 
         <div class="post-meta">
@@ -350,8 +350,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-20T09:13:08+08:00">
-                2018-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T19:55:58+08:00">
+                2018-10-31
               </time>
             
 
@@ -366,8 +366,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-20T10:47:19+08:00">
-                2018-10-20
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-31T19:56:27+08:00">
+                2018-10-31
               </time>
             
           </span>
@@ -420,7 +420,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,937
+                  1,549
                 </span>
               
 
@@ -457,179 +457,93 @@ var _hmt = _hmt || [];
       
 
       
-        <p>ls命令是linux下最常用的命令。ls命令就是list的缩写缺省下ls用来打印出当前目录的清单如果ls指定其他目录那么就会显示指定目录里的文件及文件夹清单。 通过ls 命令不仅可以查看linux文件夹包含的文件而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。ls 命令在日常的linux操作中用的很多!</p>
-<h1 id="1-命令格式："><a href="#1-命令格式：" class="headerlink" title="1.命令格式："></a>1.命令格式：</h1><p>ls [选项] [目录名]</p>
-<h1 id="2-命令功能"><a href="#2-命令功能" class="headerlink" title="2.命令功能"></a>2.命令功能</h1><p>列出目标目录中所有的子目录和文件。（不包含.开头的文件）</p>
-<h1 id="3-常用选项参数"><a href="#3-常用选项参数" class="headerlink" title="3.常用选项参数"></a>3.常用选项参数</h1><table>
+        <h1 id="一．命令格式："><a href="#一．命令格式：" class="headerlink" title="一．命令格式："></a>一．命令格式：</h1><pre><code>cp [参数] source dest
+</code></pre><p>或</p>
+<pre><code>cp [参数] source... directory
+</code></pre><h1 id="二．命令功能："><a href="#二．命令功能：" class="headerlink" title="二．命令功能："></a>二．命令功能：</h1><p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+<h1 id="三-命令参数："><a href="#三-命令参数：" class="headerlink" title="三. 命令参数："></a>三. 命令参数：</h1><table>
 <thead>
 <tr>
-<th>选项参数</th>
-<th>作用</th>
+<th>参数</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-l</td>
-<td>除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来。</td>
-</tr>
-<tr>
-<td>-g</td>
-<td>类似 -l,但不列出所有者</td>
-</tr>
-<tr>
-<td>-o</td>
-<td>类似 -l,显示文件的除组信息外的详细信息。</td>
-</tr>
-<tr>
 <td>-a</td>
-<td>列出目录下的所有文件，包括以 . 开头的文件</td>
+<td>此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</td>
 </tr>
 <tr>
-<td>-A</td>
-<td>同-a，但不列出“.”(表示当前目录)和“..”(表示当前目录的父目录)。</td>
+<td>-b</td>
+<td>–backup,删除、覆盖目的文件先备份，备份的文件或目录亦建立为符号链接，并指向源文件或目录链接的源文件或目录。假如没有加上这个参数，在复制过程中若遇到符号链接，则会直接复制源文件或目录</td>
 </tr>
 <tr>
-<td>-F</td>
-<td>使得ls命令可以在显示子目录的时候在它的文件名之后加上一个斜线(“/”)字符。而文件后面的星号(“*”)字符表示这是一个可执行程序</td>
+<td>-d</td>
+<td>复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>覆盖已经存在的目标文件而不给出提示。</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答”y”时目标文件将被覆盖。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>–no-clobber,不要覆盖已存在的文件(使前面的 -i 选项失效)</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>–preserve ,除复制文件的内容外，还保留源文件或目录的属性，包括所有者、所属组、权限与修改时间也复制到新文件中。</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>–parents ,保留源文件或目录的路径，此路径可以是绝对路径或相对路径，且目的目录必须已经存在</td>
 </tr>
 <tr>
 <td>-r</td>
-<td>–reverse 依相反次序排列</td>
+<td>若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</td>
 </tr>
 <tr>
 <td>-R</td>
-<td>–recursive 同时列出所有子目录层</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>以文件修改时间排序</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>根据文件大小排序</td>
-</tr>
-<tr>
-<td>-c</td>
-<td>根据 ctime(文件状态最后更改的时间) 排序；配合 -l：显示 ctime 但根据名称排序否则：根据 ctime 排序；配合-lt:根据 ctime 排序及显示 ctime</td>
-</tr>
-<tr>
-<td>-u</td>
-<td>配合 -lt:显示访问时间而且依访问时间排序；配合 -l:显示访问时间但根据名称排序；否则：根据访问时间排序</td>
-</tr>
-<tr>
-<td>-U</td>
-<td>不进行排序;依文件系统原有的次序列出项目</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>根据版本进行排序</td>
-</tr>
-<tr>
-<td>-h</td>
-<td>以容易理解的格式列出文件大小 (例如 1K 234M 2G)</td>
-</tr>
-<tr>
-<td>–si</td>
-<td>类似 -h,但文件大小取 1000 的次方而不是 1024</td>
-</tr>
-<tr>
-<td>-k</td>
-<td>以 k 字节的形式表示文件的大小。</td>
+<td>–recursive  , 递归处理，将指定目录下的文件及子目录一并处理</td>
 </tr>
 <tr>
 <td>-s</td>
-<td>以块大小为单位列出所有文件的大小</td>
+<td>–symbolic-link，  对源文件建立符号链接，而非复制文件</td>
 </tr>
 <tr>
-<td>-m</td>
-<td>所有项目以逗号分隔，并填满整行行宽</td>
-</tr>
-<tr>
-<td>-w</td>
-<td>自行指定屏幕宽度而不使用目前的数值</td>
-</tr>
-<tr>
-<td>-x</td>
-<td>逐行列出项目而不是逐栏列出</td>
-</tr>
-<tr>
-<td>-X</td>
-<td>根据扩展名排序</td>
-</tr>
-<tr>
-<td>-1</td>
-<td>每行只列出一个文件</td>
-</tr>
-<tr>
-<td>–help</td>
-<td>显示此帮助信息并离开</td>
-</tr>
-<tr>
-<td>–version</td>
-<td>显示版本信息并离开</td>
+<td>-l</td>
+<td>对源文件生成硬链接文件。</td>
 </tr>
 </tbody>
 </table>
-<h1 id="4-常见范例"><a href="#4-常见范例" class="headerlink" title="4.常见范例"></a>4.常见范例</h1><h2 id="1：列出-home-hc文件夹下的所有文件和目录的详细资料"><a href="#1：列出-home-hc文件夹下的所有文件和目录的详细资料" class="headerlink" title="1：列出/home/hc文件夹下的所有文件和目录的详细资料"></a>1：列出/home/hc文件夹下的所有文件和目录的详细资料</h2><p>命令1</p>
-<pre><code>ls -l -R /home/hc
-</code></pre><p>在使用 ls 命令时要注意命令的格式：在命令提示符后，首先是命令的关键字，接下来是命令参数，在命令参数之前要有一短横线“-”，所有的命令参数都有特定的作用，自己可以根据需要选用一个或者多个参数，在命令参数的后面是命令的操作对象。在以上这条命令“ ls -l -R /home/hc”中，“ls” 是命令关键字，“-l -R”是参数，“ /home/hc”是命令的操作对象。在这条命令中，使用到了两个参数，分别为“l”和“R”，当然，你也可以把他们放在一起使用，如下所示：</p>
-<p>命令2</p>
-<pre><code>ls -lR /home/hc
-</code></pre><p>这种形式和上面的命令形式执行的结果是完全一样的。另外，如果命令的操作对象位于当前目录中，可以直接对操作对象进行操作;如果不在当前目录则需要给出操作对象的完整路径，例如上面的例子中，我的当前文件夹是hc文件夹，我想对home文件夹下的hc文件进行操作，我可以直接输入 ls -lR hc，也可以用 ls -lR /home/hc。 </p>
-<h2 id="2：列出当前目录中所有以“t”开头的目录的详细内容，可以使用如下命令："><a href="#2：列出当前目录中所有以“t”开头的目录的详细内容，可以使用如下命令：" class="headerlink" title="2：列出当前目录中所有以“t”开头的目录的详细内容，可以使用如下命令："></a>2：列出当前目录中所有以“t”开头的目录的详细内容，可以使用如下命令：</h2><p>命令：</p>
-<pre><code>ls -l t*   
-</code></pre><p>可以查看当前目录下文件名以“t”开头的所有文件的信息。其实，在命令格式中，方括号内的内容都是可以省略的，对于命令ls而言，如果省略命令参数和操作对象，直接输入“ ls ”，则将会列出当前工作目录的内容清单。</p>
-<h2 id="3：只列出文件下的子目录"><a href="#3：只列出文件下的子目录" class="headerlink" title="3：只列出文件下的子目录"></a>3：只列出文件下的子目录</h2><h3 id="列出-home-hc-PycharmProjects-文件下面的子目录"><a href="#列出-home-hc-PycharmProjects-文件下面的子目录" class="headerlink" title="列出 /home/hc/PycharmProjects 文件下面的子目录"></a>列出 /home/hc/PycharmProjects 文件下面的子目录</h3><p>命令：</p>
-<pre><code>ls -F /home/hc/PycharmProjects  |grep /$
+<h1 id="四-命令实例："><a href="#四-命令实例：" class="headerlink" title="四. 命令实例："></a>四. 命令实例：</h1><h2 id="1-复制单个文件到目标目录，文件在目标目录中不存在"><a href="#1-复制单个文件到目标目录，文件在目标目录中不存在" class="headerlink" title="1. 复制单个文件到目标目录，文件在目标目录中不存在"></a>1. 复制单个文件到目标目录，文件在目标目录中不存在</h2><p>命令：</p>
+<pre><code>cp log1 dir2
 </code></pre><p>输出：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span>~$ ls -F <span class="regexp">/home/</span>hc<span class="regexp">/PycharmProjects  |grep /</span>$</span><br><span class="line">FreshOnline/</span><br><span class="line">FreshOnline_env/</span><br><span class="line">my_test/</span><br><span class="line">py3_test/</span><br></pre></td></tr></table></figure>
-<h3 id="列出-home-hc-PycharmProjects-文件下面的子目录详细情况"><a href="#列出-home-hc-PycharmProjects-文件下面的子目录详细情况" class="headerlink" title="列出 /home/hc/PycharmProjects 文件下面的子目录详细情况"></a>列出 /home/hc/PycharmProjects 文件下面的子目录详细情况</h3><p> 命令：</p>
-<pre><code>ls -l /home/hc/PycharmProjects | grep &quot;^d&quot;
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test$ tree ../</span>test/</span><br><span class="line">..<span class="regexp">/test/</span></span><br><span class="line">├── dir2</span><br><span class="line">├── dir3</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── log2</span><br><span class="line">│   └── log2~</span><br><span class="line">└── log1</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span>~/test$ ll log1 </span><br><span class="line">-rw-r--r-- <span class="number">1</span> hc hc <span class="number">0</span> <span class="number">10</span>月 <span class="number">31</span> <span class="number">19</span>:<span class="number">18</span> log1</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span>~/test$ cp log1 dir2</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test$ tree ../</span>test/</span><br><span class="line">..<span class="regexp">/test/</span></span><br><span class="line">├── dir2</span><br><span class="line">│   └── log1</span><br><span class="line">├── dir3</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── log2</span><br><span class="line">│   └── log2~</span><br><span class="line">└── log1</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span>~/test$ cd dir2</span><br><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span><span class="regexp">~/test/</span>dir2$ ll log1 </span><br><span class="line">-rw-r--r-- <span class="number">1</span> hc hc <span class="number">0</span> <span class="number">10</span>月 <span class="number">31</span> <span class="number">19</span>:<span class="number">19</span> log1</span><br></pre></td></tr></table></figure>
+<p>目标文件存在时，会覆盖<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 16</span><br><span class="line">drwxr-xr-x <span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:18 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:13 ../</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:19 dir2/</span><br><span class="line">drwxr-xr-x <span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 30 </span>10:08 dir3/</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>10月<span class="number"> 31 </span>19:18 log1</span><br><span class="line">hc@hc-virtual-machine:~/test$ cp -a log1 dir2</span><br><span class="line">hc@hc-virtual-machine:~/test$ cd dir2</span><br><span class="line">hc@hc-virtual-machine:~/test/dir2$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x<span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:19 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:18 ../</span><br><span class="line">-rw-r--r--<span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>10月<span class="number"> 31 </span>19:18 log1</span><br></pre></td></tr></table></figure></p>
+<p>加上参数 -i会询问是否覆盖，-f强制覆盖<br>说明：</p>
+<p>在没有带-a参数时，两个文件的时间是不一样的。在带了-a参数时，两个文件的时间是一致的。  </p>
+<h2 id="2-复制整个目录"><a href="#2-复制整个目录" class="headerlink" title="2. 复制整个目录"></a>2. 复制整个目录</h2><p>命令：</p>
+<p>复制dir3目录到dir2目录下</p>
+<pre><code>cp -a dir3 dir2
+</code></pre><p>复制dir2目录到dir3目录下</p>
+<pre><code>cp -t dir2 dir3
 </code></pre><p>输出：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~$ ls -l /home/hc/PycharmProjects  | grep "^d"</span><br><span class="line">drwxr-xr-x<span class="number"> 9 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 20 </span>08:56 FreshOnline</span><br><span class="line">drwxrwxr-x<span class="number"> 6 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 19 </span>19:07 FreshOnline_env</span><br><span class="line">drwxrwxr-x<span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 18 </span>15:24 my_test</span><br><span class="line">drwxrwxr-x<span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 18 </span>17:58 py3_test</span><br></pre></td></tr></table></figure>
-<h2 id="4：列出目前工作目录下所有名称是s-开头的档案，愈新的排愈后面，可以使用如下命令："><a href="#4：列出目前工作目录下所有名称是s-开头的档案，愈新的排愈后面，可以使用如下命令：" class="headerlink" title="4：列出目前工作目录下所有名称是s 开头的档案，愈新的排愈后面，可以使用如下命令："></a>4：列出目前工作目录下所有名称是s 开头的档案，愈新的排愈后面，可以使用如下命令：</h2><p>命令：</p>
-<pre><code>ls -ltr s*
-</code></pre><p>输出：<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~$ ls -ltr s*</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x<span class="number"> 5 </span>hc hc<span class="number"> 4096 </span>9月 <span class="number"> 28 </span>21:28 gnome-system-monitor</span><br><span class="line">drwxr-xr-x<span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>9月 <span class="number"> 29 </span>08:39 pycharm-professional</span><br></pre></td></tr></table></figure></p>
-<h2 id="5：列出目前工作目录下所有档案及目录-目录于名称后加”-“-可执行档于名称后加”-”"><a href="#5：列出目前工作目录下所有档案及目录-目录于名称后加”-“-可执行档于名称后加”-”" class="headerlink" title="5：列出目前工作目录下所有档案及目录;目录于名称后加”/“, 可执行档于名称后加”*”"></a>5：列出目前工作目录下所有档案及目录;目录于名称后加”/“, 可执行档于名称后加”*”</h2><p>命令：</p>
-<pre><code>ls -AF
+<p>目标目录存在时：</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test<span class="symbol">$</span> tree ../test/</span><br><span class="line">../test/</span><br><span class="line">├── dir2</span><br><span class="line">│   └── log1</span><br><span class="line">├── dir3</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── <span class="built-in">log2</span></span><br><span class="line">│   └── <span class="built-in">log2</span>~</span><br><span class="line">└── log1</span><br><span class="line"></span><br><span class="line"><span class="number">3</span> directories, <span class="number">5</span> <span class="keyword">files</span></span><br><span class="line">hc@hc-virtual-machine:~/test<span class="symbol">$</span> cp -a dir3 dir2</span><br><span class="line">hc@hc-virtual-machine:~/test<span class="symbol">$</span> tree ../test/</span><br><span class="line">../test/</span><br><span class="line">├── dir2</span><br><span class="line">│   ├── dir3</span><br><span class="line">│   │   ├── dir1</span><br><span class="line">│   │   ├── file2.txt</span><br><span class="line">│   │   ├── <span class="built-in">log2</span></span><br><span class="line">│   │   └── <span class="built-in">log2</span>~</span><br><span class="line">│   └── log1</span><br><span class="line">├── dir3</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── <span class="built-in">log2</span></span><br><span class="line">│   └── <span class="built-in">log2</span>~</span><br><span class="line">└── log1</span><br><span class="line"></span><br><span class="line"><span class="number">5</span> directories, <span class="number">8</span> <span class="keyword">files</span></span><br><span class="line">hc@hc-virtual-machine:~/test<span class="symbol">$</span> cp -r dir2 dir3</span><br><span class="line">hc@hc-virtual-machine:~/test<span class="symbol">$</span> tree ../test/</span><br><span class="line">../test/</span><br><span class="line">├── dir2</span><br><span class="line">│   ├── dir3</span><br><span class="line">│   │   ├── dir1</span><br><span class="line">│   │   ├── file2.txt</span><br><span class="line">│   │   ├── <span class="built-in">log2</span></span><br><span class="line">│   │   └── <span class="built-in">log2</span>~</span><br><span class="line">│   └── log1</span><br><span class="line">├── dir3</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── dir2</span><br><span class="line">│   │   ├── dir3</span><br><span class="line">│   │   │   ├── dir1</span><br><span class="line">│   │   │   ├── file2.txt</span><br><span class="line">│   │   │   ├── <span class="built-in">log2</span></span><br><span class="line">│   │   │   └── <span class="built-in">log2</span>~</span><br><span class="line">│   │   └── log1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── <span class="built-in">log2</span></span><br><span class="line">│   └── <span class="built-in">log2</span>~</span><br><span class="line">└── log1</span><br><span class="line"></span><br><span class="line"><span class="number">8</span> directories, <span class="number">12</span> <span class="keyword">files</span></span><br></pre></td></tr></table></figure>
+<p>目标目录不存在时：<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ls</span><br><span class="line">dir2  dir3  log1</span><br><span class="line">hc@hc-virtual-machine:~/test$ cp -r dir2 dir4</span><br><span class="line">hc@hc-virtual-machine:~/test$ cp -a dir3 dir5</span><br><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 24</span><br><span class="line">drwxr-xr-x <span class="number"> 6 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:36 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:13 ../</span><br><span class="line">drwxr-xr-x <span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:30 dir2/</span><br><span class="line">drwxr-xr-x <span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:32 dir3/</span><br><span class="line">drwxr-xr-x <span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:36 dir4/</span><br><span class="line">drwxr-xr-x <span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:32 dir5/</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>10月<span class="number"> 31 </span>19:18 log1</span><br><span class="line">hc@hc-virtual-machine:~/test$ tree ../test/</span><br><span class="line">../test/</span><br><span class="line">├── dir2</span><br><span class="line">│   ├── dir3</span><br><span class="line">│   │   ├── dir1</span><br><span class="line">│   │   ├── file2.txt</span><br><span class="line">│   │   ├── log2</span><br><span class="line">│   │   └── log2~</span><br><span class="line">│   └── log1</span><br><span class="line">├── dir3</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── dir2</span><br><span class="line">│   │   ├── dir3</span><br><span class="line">│   │   │   ├── dir1</span><br><span class="line">│   │   │   ├── file2.txt</span><br><span class="line">│   │   │   ├── log2</span><br><span class="line">│   │   │   └── log2~</span><br><span class="line">│   │   └── log1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── log2</span><br><span class="line">│   └── log2~</span><br><span class="line">├── dir4</span><br><span class="line">│   ├── dir3</span><br><span class="line">│   │   ├── dir1</span><br><span class="line">│   │   ├── file2.txt</span><br><span class="line">│   │   ├── log2</span><br><span class="line">│   │   └── log2~</span><br><span class="line">│   └── log1</span><br><span class="line">├── dir5</span><br><span class="line">│   ├── dir1</span><br><span class="line">│   ├── dir2</span><br><span class="line">│   │   ├── dir3</span><br><span class="line">│   │   │   ├── dir1</span><br><span class="line">│   │   │   ├── file2.txt</span><br><span class="line">│   │   │   ├── log2</span><br><span class="line">│   │   │   └── log2~</span><br><span class="line">│   │   └── log1</span><br><span class="line">│   ├── file2.txt</span><br><span class="line">│   ├── log2</span><br><span class="line">│   └── log2~</span><br><span class="line">└── log1</span><br><span class="line"></span><br><span class="line">16 directories,<span class="number"> 23 </span>files</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>注意目标目录存在与否结果是不一样的。目标目录存在时，整个源目录被复制到目标目录里面。</p>
+<h2 id="3-复制的-log-log-建立一个连结档-log-link-log"><a href="#3-复制的-log-log-建立一个连结档-log-link-log" class="headerlink" title="3.复制的 log.log 建立一个连结档 log_link.log"></a>3.复制的 log.log 建立一个连结档 log_link.log</h2><p>命令：</p>
+<pre><code>cp -s log1 log1_link
 </code></pre><p>输出：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hc<span class="meta">@hc</span>-virtual-<span class="string">machine:</span>~/PycharmProjects$ ls -AF</span><br><span class="line">FreshOnline<span class="regexp">/  FreshOnline_env/</span>  my_test<span class="regexp">/  py3_test/</span></span><br></pre></td></tr></table></figure>
-<h2 id="6：计算当前目录下的文件数和目录数"><a href="#6：计算当前目录下的文件数和目录数" class="headerlink" title="6：计算当前目录下的文件数和目录数"></a>6：计算当前目录下的文件数和目录数</h2><p>命令：</p>
-<pre><code>ls -l * |grep &quot;^-&quot;|wc -l ---文件个数  
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ls</span><br><span class="line">dir2  dir3  dir4  dir5  log1</span><br><span class="line">hc@hc-virtual-machine:~/test$ cp -s log1 log1_link</span><br><span class="line">hc@hc-virtual-machine:~/test$ ls</span><br><span class="line">dir2  dir3  dir4  dir5  log1  log1_link</span><br><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 24</span><br><span class="line">drwxr-xr-x <span class="number"> 6 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:47 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:13 ../</span><br><span class="line">drwxr-xr-x <span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:30 dir2/</span><br><span class="line">drwxr-xr-x <span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:32 dir3/</span><br><span class="line">drwxr-xr-x <span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:36 dir4/</span><br><span class="line">drwxr-xr-x <span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:32 dir5/</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>10月<span class="number"> 31 </span>19:18 log1</span><br><span class="line">lrwxrwxrwx <span class="number"> 1 </span>hc hc   <span class="number"> 4 </span>10月<span class="number"> 31 </span>19:47 log1_link -&gt; log1</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>那个 log1_link 是由 -s 的参数造成的，建立的是一个『快捷方式』，所以会看到在文件的最右边，会显示这个文件是『连结』到哪里去的！</p>
 
-ls -l * |grep &quot;^d&quot;|wc -l    ---目录个数
-</code></pre><h2 id="7-在ls中列出文件的绝对路径"><a href="#7-在ls中列出文件的绝对路径" class="headerlink" title="7: 在ls中列出文件的绝对路径"></a>7: 在ls中列出文件的绝对路径</h2><p>命令：</p>
-<pre><code>ls | sed &quot;s:^:`pwd`/:&quot;
-</code></pre><p>输出：</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~<span class="string">/PycharmProjects</span>$ <span class="keyword">ls</span> | sed <span class="string">"s:^:`pwd`/:"</span></span><br><span class="line"><span class="string">/home/hc/PycharmProjects/FreshOnline</span></span><br><span class="line"><span class="string">/home/hc/PycharmProjects/FreshOnline_env</span></span><br><span class="line"><span class="string">/home/hc/PycharmProjects/my_test</span></span><br><span class="line"><span class="string">/home/hc/PycharmProjects/py3_test</span></span><br></pre></td></tr></table></figure>
-<h2 id="8：列出当前目录下的所有文件（包括隐藏文件）的绝对路径，-对目录不做递归"><a href="#8：列出当前目录下的所有文件（包括隐藏文件）的绝对路径，-对目录不做递归" class="headerlink" title="8：列出当前目录下的所有文件（包括隐藏文件）的绝对路径， 对目录不做递归"></a>8：列出当前目录下的所有文件（包括隐藏文件）的绝对路径， 对目录不做递归</h2><p>命令：</p>
-<pre><code>find $PWD -maxdepth 1 | xargs ls -ld
-</code></pre><p>输出：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/PycharmProjects$ find $PWD -maxdepth<span class="number"> 1 </span>| xargs ls -ld</span><br><span class="line">drwxrwxr-x<span class="number"> 6 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 19 </span>18:22 /home/hc/PycharmProjects</span><br><span class="line">drwxr-xr-x<span class="number"> 9 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 20 </span>08:56 /home/hc/PycharmProjects/FreshOnline</span><br><span class="line">drwxrwxr-x<span class="number"> 6 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 19 </span>19:07 /home/hc/PycharmProjects/FreshOnline_env</span><br><span class="line">drwxrwxr-x<span class="number"> 3 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 18 </span>15:24 /home/hc/PycharmProjects/my_test</span><br><span class="line">drwxrwxr-x<span class="number"> 4 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 18 </span>17:58 /home/hc/PycharmProjects/py3_test</span><br></pre></td></tr></table></figure>
-<h2 id="9：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径"><a href="#9：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径" class="headerlink" title="9：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径"></a>9：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径</h2><p>命令： </p>
-<pre><code>find $PWD | xargs ls -ld 
-</code></pre><h2 id="10：指定文件时间输出格式"><a href="#10：指定文件时间输出格式" class="headerlink" title="10：指定文件时间输出格式"></a>10：指定文件时间输出格式</h2><p>命令：</p>
-<pre><code>ls -tl --time-style=full-iso
-</code></pre><p>输出：<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/PycharmProjects$ ls -tl --time-style=full-iso</span><br><span class="line">总用量 <span class="number">16</span></span><br><span class="line">drwxr-xr-x <span class="number">9</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-20 08:56</span>:<span class="number">55</span>.<span class="number">833765666</span> +<span class="number">0800</span> FreshOnline</span><br><span class="line">drwxrwxr-x <span class="number">6</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-19 19:07</span>:<span class="number">08</span>.<span class="number">330876787</span> +<span class="number">0800</span> FreshOnline_env</span><br><span class="line">drwxrwxr-x <span class="number">4</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-18 17:58</span>:<span class="number">39</span>.<span class="number">489690632</span> +<span class="number">0800</span> py3_test</span><br><span class="line">drwxrwxr-x <span class="number">3</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-18 15:24</span>:<span class="number">06</span>.<span class="number">613354334</span> +<span class="number">0800</span> my_test</span><br></pre></td></tr></table></figure></p>
-<pre><code>ls -ctl --time-style=long-iso
-</code></pre><p>输出：</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/PycharmProjects$ ls -ctl --time-style=long-iso</span><br><span class="line">总用量 <span class="number">16</span></span><br><span class="line">drwxr-xr-x <span class="number">9</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-20 08:56</span> FreshOnline</span><br><span class="line">drwxrwxr-x <span class="number">6</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-19 19:07</span> FreshOnline_env</span><br><span class="line">drwxrwxr-x <span class="number">4</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-18 17:58</span> py3_test</span><br><span class="line">drwxrwxr-x <span class="number">3</span> hc hc <span class="number">4096 2018</span>-<span class="number">10-18 15:24</span> my_test</span><br></pre></td></tr></table></figure>
-<h2 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a>扩展：</h2><h3 id="显示彩色目录列表"><a href="#显示彩色目录列表" class="headerlink" title="显示彩色目录列表"></a>显示彩色目录列表</h3><pre><code>打开/etc/bashrc, 加入如下一行:
-
-alias ls=&quot;ls --color&quot;
-
-下次启动bash时就可以像在Slackware里那样显示彩色的目录列表了, 其中颜色的含义如下:
-
-1. 蓝色--&gt;目录
-
-2. 绿色--&gt;可执行文件
-
-3. 红色--&gt;压缩文件
-
-4. 浅蓝色--&gt;链接文件
-
-5. 灰色--&gt;其他文件
-</code></pre>
       
     </div>
     
@@ -700,7 +614,7 @@ alias ls=&quot;ls --color&quot;
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.hpython.cn/2018/10/20/linux每日命令(1)：ls命令/" title="linux每日命令(1)：ls命令">http://www.hpython.cn/2018/10/20/linux每日命令(1)：ls命令/</a>
+    <a href="http://www.hpython.cn/2018/10/31/linux每日命令(9)：cp命令/" title="linux每日命令(9)：cp命令">http://www.hpython.cn/2018/10/31/linux每日命令(9)：cp命令/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -730,8 +644,8 @@ alias ls=&quot;ls --color&quot;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/31/git常用命令操作大全/" rel="next" title="git常用命令大全">
-                <i class="fa fa-chevron-left"></i> git常用命令大全
+              <a href="/2018/10/30/linux每日命令(8)：mv命令/" rel="next" title="linux每日命令(8)：mv命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(8)：mv命令
               </a>
             
           </div>
@@ -739,10 +653,6 @@ alias ls=&quot;ls --color&quot;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/22/linux每日命令(2)：cd命令/" rel="prev" title="linux每日命令(2)：cd命令">
-                linux每日命令(2)：cd命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -894,7 +804,7 @@ alias ls=&quot;ls --color&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-命令格式："><span class="nav-text">1.命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-命令功能"><span class="nav-text">2.命令功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-常用选项参数"><span class="nav-text">3.常用选项参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-常见范例"><span class="nav-text">4.常见范例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：列出-home-hc文件夹下的所有文件和目录的详细资料"><span class="nav-text">1：列出/home/hc文件夹下的所有文件和目录的详细资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：列出当前目录中所有以“t”开头的目录的详细内容，可以使用如下命令："><span class="nav-text">2：列出当前目录中所有以“t”开头的目录的详细内容，可以使用如下命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：只列出文件下的子目录"><span class="nav-text">3：只列出文件下的子目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列出-home-hc-PycharmProjects-文件下面的子目录"><span class="nav-text">列出 /home/hc/PycharmProjects 文件下面的子目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出-home-hc-PycharmProjects-文件下面的子目录详细情况"><span class="nav-text">列出 /home/hc/PycharmProjects 文件下面的子目录详细情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4：列出目前工作目录下所有名称是s-开头的档案，愈新的排愈后面，可以使用如下命令："><span class="nav-text">4：列出目前工作目录下所有名称是s 开头的档案，愈新的排愈后面，可以使用如下命令：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：列出目前工作目录下所有档案及目录-目录于名称后加”-“-可执行档于名称后加”-”"><span class="nav-text">5：列出目前工作目录下所有档案及目录;目录于名称后加”/“, 可执行档于名称后加”*”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6：计算当前目录下的文件数和目录数"><span class="nav-text">6：计算当前目录下的文件数和目录数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-在ls中列出文件的绝对路径"><span class="nav-text">7: 在ls中列出文件的绝对路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8：列出当前目录下的所有文件（包括隐藏文件）的绝对路径，-对目录不做递归"><span class="nav-text">8：列出当前目录下的所有文件（包括隐藏文件）的绝对路径， 对目录不做递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径"><span class="nav-text">9：递归列出当前目录下的所有文件（包括隐藏文件）的绝对路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10：指定文件时间输出格式"><span class="nav-text">10：指定文件时间输出格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展："><span class="nav-text">扩展：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示彩色目录列表"><span class="nav-text">显示彩色目录列表</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一．命令格式："><span class="nav-text">一．命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令功能："><span class="nav-text">二．命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-命令参数："><span class="nav-text">三. 命令参数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-命令实例："><span class="nav-text">四. 命令实例：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-复制单个文件到目标目录，文件在目标目录中不存在"><span class="nav-text">1. 复制单个文件到目标目录，文件在目标目录中不存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-复制整个目录"><span class="nav-text">2. 复制整个目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-复制的-log-log-建立一个连结档-log-link-log"><span class="nav-text">3.复制的 log.log 建立一个连结档 log_link.log</span></a></li></ol></li></ol></div>
             
 
           </div>
