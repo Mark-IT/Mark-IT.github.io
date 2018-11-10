@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux每日命令(17)：which命令]]></title>
+    <url>%2F2018%2F11%2F09%2Flinux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(17)%EF%BC%9Awhich%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索： which 查看可执行文件的位置。 whereis 查看文件的位置。 locate 配合数据库查看文件位置。 find 实际搜寻硬盘查询文件名称。 which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。 一．命令格式：which 可执行文件名称 二．命令功能：which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。 三．命令参数： 参数 描述 -n 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。 -p 与-n参数相同，但此处的包括了文件的路径。 -w 指定输出时栏位的宽度。 -V 显示版本信息 四. 命令实例1. 查找可执行文件的位置、显示命令所在路径命令： which pwd 输出：1234hc@hc-virtual-machine:~/test$ which pwd/bin/pwdhc@hc-virtual-machine:~/test$ which head/usr/bin/head 说明： which 是根据使用者所配置的 PATH 变量内的目录去搜寻可运行档的，所以，不同的 PATH 配置内容所找到的命令是不一样的 2. 用 which 去找出 which命令： which which 输出：Ubuntu18.04下：12hc@hc-virtual-machine:~/test$ which which/usr/bin/which Centos7中：1234[root@localhost ~]# which whichalias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde' /usr/bin/alias /usr/bin/which 说明： alias 这就是所谓的『命令别名』，意思是输入 which 会等於后面接的那串命令！]]></content>
+      <categories>
+        <category>linux每日命令</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[linux每日命令(16)：head命令]]></title>
-    <url>%2F2018%2F11%2F09%2Flinux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(15)%EF%BC%9Atail%E5%91%BD%E4%BB%A4%20-%20%E5%89%AF%E6%9C%AC%2F</url>
+    <url>%2F2018%2F11%2F09%2Flinux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(16)%EF%BC%9Ahead%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[head 与 tail 就像它的名字一样的浅显易懂，它是用来显示开头或结尾某个数量的文字区块，head 用来显示档案的开头至标准输出中，而 tail 想当然尔就是看档案的结尾。 一．命令格式：head [参数]... [文件]... 二．命令功能：head 用来显示档案的开头至标准输出中，默认head命令打印其相应文件的开头10行。 三．命令参数： 参数 描述 -q 隐藏文件名 -v 显示文件名 -c&lt;字节&gt; 显示字节数 -n&lt;行数&gt; 显示的行数 四．使用实例：1.输出log1文件的前4行内容命令： head -n 4 log1 输出： 12345678910111213hc@hc-virtual-machine:~/snap$ nl -b a log1 1 我是log1的第一行 2 3 我是log1的第三行 4 我是log1的第四行 5 我是log1的第五行 6 7 我是log1的第七行hc@hc-virtual-machine:~/snap$ head -n 4 log1我是log1的第一行我是log1的第三行我是log1的第四行 2.输出log1文件除最后4行以外的全部内容命令： head -n -4 log1 输出：12345hc@hc-virtual-machine:~/snap$ head -n -4 log1我是log1的第一行我是log1的第三行hc@hc-virtual-machine:~/snap$ 3.输出log1文件的前24个字节命令： head -c 24 log1 输出： 1234hc@hc-virtual-machine:~/snap$ head -c 24 log1我是log1的第一行hc@hc-virtual-machine:~/snap$ 4.输出log1文件的除最后24个字节以外的内容命令： head -c -24 log1 输出： 1234567hc@hc-virtual-machine:~/snap$ head -c -24 log1我是log1的第一行我是log1的第三行我是log1的第四行我是log1的第五行hc@hc-virtual-machine:~/snap$]]></content>
       <categories>
         <category>linux每日命令</category>
