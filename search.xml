@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[linux每日命令(18)：whereis命令]]></title>
+    <url>%2F2018%2F11%2F12%2Flinux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(18)%EF%BC%9Awhereis%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[whereis命令用于查找文件。 该指令会在特定目录中查找符合条件的文件。这些文件应属于原始代码、二进制文件，或是帮助文件。 该指令只能用于查找二进制文件、源代码文件和man手册页，一般文件的定位需使用locate命令。 一．命令格式：whereis [-bfmsu][-B &lt;目录&gt;...][-M &lt;目录&gt;...][-S &lt;目录&gt;...][文件...] 二．命令功能：whereis命令是定位可执行文件、源代码文件、帮助文件在文件系统中的位置。这些文件的属性应属于原始代码，二进制文件，或是帮助文件。whereis 程序还具有搜索源代码、指定备用搜索路径和搜索不寻常项的能力。如果省略参数，则返回所有信息。 三．命令参数： 参数 描述 -b 定位可执行文件。 -m 定位帮助文件。 -s 定位源代码文件。 -u 搜索默认路径下除可执行文件、源代码文件、帮助文件以外的其它文件。 -B 指定搜索可执行文件的路径。 -M 指定搜索帮助文件的路径。 -S 指定搜索源代码文件的路径。 四．使用实例：1：查看指令”bash”的位置命令： whereis bash 输出：12hc@hc-virtual-machine:~$ whereis bashbash: /bin/bash /etc/bash.bashrc /usr/share/man/man1/bash.1.gz 说明：以上输出信息从左至右分别为查询的程序名、bash路径、bash的man 手册页路径。 2：显示bash 命令的二进制程序的地址命令： whereis -b bash 输出：12hc@hc-virtual-machine:~$ whereis -b bashbash: /bin/bash /etc/bash.bashrc 3.显示bash命令的帮助文件地址命令： whereis -m bash 输出：12hc@hc-virtual-machine:~$ whereis -m bashbash: /usr/share/man/man1/bash.1.gz]]></content>
+      <categories>
+        <category>linux每日命令</category>
+      </categories>
+      <tags>
+        <tag>linux命令</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[linux每日命令(17)：which命令]]></title>
     <url>%2F2018%2F11%2F09%2Flinux%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4(17)%EF%BC%9Awhich%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[我们经常在linux要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索： which 查看可执行文件的位置。 whereis 查看文件的位置。 locate 配合数据库查看文件位置。 find 实际搜寻硬盘查询文件名称。 which命令的作用是，在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。也就是说，使用which命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。 一．命令格式：which 可执行文件名称 二．命令功能：which指令会在PATH变量指定的路径中，搜索某个系统命令的位置，并且返回第一个搜索结果。 三．命令参数： 参数 描述 -n 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。 -p 与-n参数相同，但此处的包括了文件的路径。 -w 指定输出时栏位的宽度。 -V 显示版本信息 四. 命令实例1. 查找可执行文件的位置、显示命令所在路径命令： which pwd 输出：1234hc@hc-virtual-machine:~/test$ which pwd/bin/pwdhc@hc-virtual-machine:~/test$ which head/usr/bin/head 说明： which 是根据使用者所配置的 PATH 变量内的目录去搜寻可运行档的，所以，不同的 PATH 配置内容所找到的命令是不一样的 2. 用 which 去找出 which命令： which which 输出：Ubuntu18.04下：12hc@hc-virtual-machine:~/test$ which which/usr/bin/which Centos7中：1234[root@localhost ~]# which whichalias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde' /usr/bin/alias /usr/bin/which 说明： alias 这就是所谓的『命令别名』，意思是输入 which 会等於后面接的那串命令！]]></content>
