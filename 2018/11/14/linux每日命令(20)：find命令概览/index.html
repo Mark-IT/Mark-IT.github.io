@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="linux的touch命令一般用来修改文件时间戳，或者新建一个不存在的文件。 一．命令格式：touch [参数]... 文件... 二．命令参数：   参数 描述     -a 或–time=atime或–time=access或–time=use 　只更改存取时间。   -c 或–no-create 　不建立任何文档。   -d 　使用指定的日期时间，而非现在的时间。   -f 　此参数将忽略不">
+<meta name="description" content="Linux下find命令在目录结构中搜索文件，并执行指定的操作。Linux下find命令提供了相当多的查找条件，功能很强大。由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。 在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的">
 <meta name="keywords" content="linux命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux每日命令(10)：touch命令">
-<meta property="og:url" content="http://www.hpython.cn/2018/11/01/linux每日命令(10)：touch命令/index.html">
+<meta property="og:title" content="linux每日命令(20)：find命令概览">
+<meta property="og:url" content="http://www.hpython.cn/2018/11/14/linux每日命令(20)：find命令概览/index.html">
 <meta property="og:site_name" content="Mark&#39;s Home">
-<meta property="og:description" content="linux的touch命令一般用来修改文件时间戳，或者新建一个不存在的文件。 一．命令格式：touch [参数]... 文件... 二．命令参数：   参数 描述     -a 或–time=atime或–time=access或–time=use 　只更改存取时间。   -c 或–no-create 　不建立任何文档。   -d 　使用指定的日期时间，而非现在的时间。   -f 　此参数将忽略不">
+<meta property="og:description" content="Linux下find命令在目录结构中搜索文件，并执行指定的操作。Linux下find命令提供了相当多的查找条件，功能很强大。由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。 在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T02:09:31.389Z">
+<meta property="og:updated_time" content="2018-11-14T02:29:35.030Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux每日命令(10)：touch命令">
-<meta name="twitter:description" content="linux的touch命令一般用来修改文件时间戳，或者新建一个不存在的文件。 一．命令格式：touch [参数]... 文件... 二．命令参数：   参数 描述     -a 或–time=atime或–time=access或–time=use 　只更改存取时间。   -c 或–no-create 　不建立任何文档。   -d 　使用指定的日期时间，而非现在的时间。   -f 　此参数将忽略不">
+<meta name="twitter:title" content="linux每日命令(20)：find命令概览">
+<meta name="twitter:description" content="Linux下find命令在目录结构中搜索文件，并执行指定的操作。Linux下find命令提供了相当多的查找条件，功能很强大。由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。 在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的">
 
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hpython.cn/2018/11/01/linux每日命令(10)：touch命令/"/>
+  <link rel="canonical" href="http://www.hpython.cn/2018/11/14/linux每日命令(20)：find命令概览/"/>
 
 
 
 
 
-  <title>linux每日命令(10)：touch命令 | Mark's Home</title>
+  <title>linux每日命令(20)：find命令概览 | Mark's Home</title>
   
 
 
@@ -321,7 +321,7 @@ var _hmt = _hmt || [];
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/11/01/linux每日命令(10)：touch命令/">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/11/14/linux每日命令(20)：find命令概览/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">linux每日命令(10)：touch命令</h2>
+          <h2 class="post-title" itemprop="name headline">linux每日命令(20)：find命令概览</h2>
         
 
         <div class="post-meta">
@@ -350,8 +350,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T10:09:26+08:00">
-                2018-11-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T10:29:15+08:00">
+                2018-11-14
               </time>
             
 
@@ -366,8 +366,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-01T10:09:31+08:00">
-                2018-11-01
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-14T10:29:35+08:00">
+                2018-11-14
               </time>
             
           </span>
@@ -420,7 +420,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,066
+                  1,771
                 </span>
               
 
@@ -436,7 +436,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  7
                 </span>
               
             </div>
@@ -457,9 +457,16 @@ var _hmt = _hmt || [];
       
 
       
-        <p>linux的touch命令一般用来修改文件时间戳，或者新建一个不存在的文件。</p>
-<h1 id="一．命令格式："><a href="#一．命令格式：" class="headerlink" title="一．命令格式："></a>一．命令格式：</h1><pre><code>touch [参数]... 文件...
-</code></pre><h1 id="二．命令参数："><a href="#二．命令参数：" class="headerlink" title="二．命令参数："></a>二．命令参数：</h1><table>
+        <p>Linux下find命令在目录结构中搜索文件，并执行指定的操作。Linux下find命令提供了相当多的查找条件，功能很强大。由于find具有强大的功能，所以它的选项也很多，其中大部分选项都值得我们花时间来了解一下。即使系统中含有网络文件系统( NFS)，find命令在该文件系统中同样有效，只你具有相应的权限。 在运行一个非常消耗资源的find命令时，很多人都倾向于把它放在后台执行，因为遍历一个大的文件系统可能会花费很长的时间(这里是指30G字节以上的文件系统)。</p>
+<h1 id="一-命令格式"><a href="#一-命令格式" class="headerlink" title="一. 命令格式"></a>一. 命令格式</h1><pre><code>find   path   -option   [   -print ]   [ -exec   -ok   command ]   {} \;
+</code></pre><h1 id="二-命令功能"><a href="#二-命令功能" class="headerlink" title="二. 命令功能"></a>二. 命令功能</h1><p>Linux find命令用来在指定目录下查找文件。任何位于参数之前的字符串都将被视为欲查找的目录名。如果使用该命令时，不设置任何参数，则find命令将在当前目录下查找子目录与文件。并且将查找到的子目录和文件全部进行显示。</p>
+<h1 id="三-参数说明"><a href="#三-参数说明" class="headerlink" title="三. 参数说明"></a>三. 参数说明</h1><p>find 根据下列规则判断 path 和 expression（运算式），在命令列上第一个 - ( ) , ! 之前的部份为 path，之后的是 expression。如果 path 是空字串则使用目前路径，如果 expression 是空字串则使用 -print 为预设 expression。<br>你可以使用 ( ) 将运算式分隔，并使用下列运算。</p>
+<p>exp1 -and exp2</p>
+<p>! expr</p>
+<p>-not expr</p>
+<p>exp1 -or exp2</p>
+<p>exp1, exp2</p>
+<table>
 <thead>
 <tr>
 <th>参数</th>
@@ -468,56 +475,165 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr>
-<td>-a</td>
-<td>或–time=atime或–time=access或–time=use 　只更改存取时间。</td>
+<td>path</td>
+<td>find命令所查找的目录路径。例如用.来表示当前目录，用/来表示系统根目录。</td>
 </tr>
 <tr>
-<td>-c</td>
-<td>或–no-create 　不建立任何文档。</td>
+<td>-print</td>
+<td>find命令将匹配的文件输出到标准输出。</td>
 </tr>
 <tr>
-<td>-d</td>
-<td>　使用指定的日期时间，而非现在的时间。</td>
+<td>-exec</td>
+<td>find命令对匹配的文件执行该参数所给出的shell命令。相应命令的形式为’command’ {  } \;，注意{   }和\；之间的空格。</td>
 </tr>
 <tr>
-<td>-f</td>
-<td>　此参数将忽略不予处理，仅负责解决BSD版本touch指令的兼容性问题。</td>
-</tr>
-<tr>
-<td>-m</td>
-<td>或–time=mtime或–time=modify 　只更改变动时间。</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>把指定文档或目录的日期时间，统统设成和参考文档或目录的日期时间相同。</td>
-</tr>
-<tr>
-<td>-t</td>
-<td>　使用指定的日期时间，而非现在的时间。</td>
+<td>-ok</td>
+<td>和-exec的作用相同，只不过以一种更为安全的模式来执行该参数所给出的shell命令，在执行每一个命令之前，都会给出提示，让用户来确定是否执行。</td>
 </tr>
 </tbody>
 </table>
-<h1 id="三．命令功能："><a href="#三．命令功能：" class="headerlink" title="三．命令功能："></a>三．命令功能：</h1><p>touch命令参数可更改文档或目录的日期时间，包括存取时间和更改时间。 </p>
-<h1 id="四．使用实例："><a href="#四．使用实例：" class="headerlink" title="四．使用实例："></a>四．使用实例：</h1><h2 id="1-创建file1和file2两个空文件"><a href="#1-创建file1和file2两个空文件" class="headerlink" title="1. 创建file1和file2两个空文件"></a>1. 创建file1和file2两个空文件</h2><p>命令：</p>
-<pre><code>touch file1 file2
+<h1 id="四-参数选项"><a href="#四-参数选项" class="headerlink" title="四. 参数选项"></a>四. 参数选项</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-name  name</td>
+<td>按照文件名查找名为name的文件。-iname会忽略大小写</td>
+</tr>
+<tr>
+<td>-path p</td>
+<td>: 路径名称符合 p 的文件，-ipath 会忽略大小写</td>
+</tr>
+<tr>
+<td>-perm</td>
+<td>按照文件权限来查找文件。</td>
+</tr>
+<tr>
+<td>-prune</td>
+<td>使用这一选项可以使find命令不在当前指定的目录中查找，如果同时使用-depth选项，那么-prune将被find命令忽略。</td>
+</tr>
+<tr>
+<td>-user</td>
+<td>按照文件属主来查找文件。</td>
+</tr>
+<tr>
+<td>-group  name</td>
+<td>按照文件所属的组group，查找group为name的文件。</td>
+</tr>
+<tr>
+<td>-gid n</td>
+<td>gid为n的文件</td>
+</tr>
+<tr>
+<td>-mtime -n +n</td>
+<td>按照文件的更改时间来查找文件， - n表示文件更改时间距现在n天以内，+ n表示文件更改时间距现在n天以前。</td>
+</tr>
+<tr>
+<td>-nogroup</td>
+<td>查找无有效所属组的文件，即该文件所属的组在/etc/groups中不存在。</td>
+</tr>
+<tr>
+<td>-nouser</td>
+<td>查找无有效属主的文件，即该文件的属主在/etc/passwd中不存在。</td>
+</tr>
+<tr>
+<td>-newer file1 ! file2</td>
+<td>查找更改时间比文件file1新但比文件file2旧的文件。</td>
+</tr>
+<tr>
+<td>-type</td>
+<td>查找某一类型的文件，诸如：b - 块设备文件。d - 目录。c - 字符设备文件。p - 管道文件。l - 符号链接文件。f - 普通文件。</td>
+</tr>
+<tr>
+<td>-size n  [c]</td>
+<td>查找文件长度为n块的文件，带有c时表示文件长度以字节计。</td>
+</tr>
+<tr>
+<td>-pid n</td>
+<td>process id 是 n 的文件</td>
+</tr>
+<tr>
+<td>-depth</td>
+<td>在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找。</td>
+</tr>
+<tr>
+<td>-fstype</td>
+<td>查找位于某一类型文件系统中的文件，这些文件系统类型通常可以在配置文件/etc/fstab中找到，该配置文件中包含了本系统中有关文件系统的信息。</td>
+</tr>
+<tr>
+<td>-empty</td>
+<td>空的文件</td>
+</tr>
+<tr>
+<td>-mount, -xdev</td>
+<td>只检查和指定目录在同一个文件系统下的文件，避免列出其它文件系统中的文件</td>
+</tr>
+<tr>
+<td>-follow</td>
+<td>如果find命令遇到符号链接文件，就跟踪至链接所指向的文件。</td>
+</tr>
+<tr>
+<td>-cpio</td>
+<td>对匹配的文件使用cpio命令，将这些文件备份到磁带设备中。</td>
+</tr>
+<tr>
+<td>-amin n</td>
+<td>查找系统中最近 n 分钟内被读取过的文件</td>
+</tr>
+<tr>
+<td>-atime n</td>
+<td>查找系统中最近n天内被读取过的文件</td>
+</tr>
+<tr>
+<td>-cmin n</td>
+<td>查找系统中最近 n 分钟内被改变文件状态的文件</td>
+</tr>
+<tr>
+<td>-ctime n</td>
+<td>查找系统中最近n天内被改变文件状态的文件</td>
+</tr>
+<tr>
+<td>-mmin n</td>
+<td>查找系统中最近n分钟内被改变文件数据的文件</td>
+</tr>
+<tr>
+<td>-mtime n</td>
+<td>查找系统中最近n天内被改变文件数据的文件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="五-使用实例"><a href="#五-使用实例" class="headerlink" title="五. 使用实例"></a>五. 使用实例</h1><h2 id="1-查找2天内被读取过的文件"><a href="#1-查找2天内被读取过的文件" class="headerlink" title="1. 查找2天内被读取过的文件"></a>1. 查找2天内被读取过的文件</h2><p>命令：</p>
+<pre><code>find -atime  -2
+</code></pre><p>输出：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># find -atime -2</span></span><br><span class="line">.</span><br><span class="line">./test</span><br><span class="line">./<span class="number">1.</span><span class="built_in">log</span></span><br><span class="line">./<span class="number">2.</span><span class="built_in">log</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-在当前目录下查找-log结尾的文件"><a href="#2-在当前目录下查找-log结尾的文件" class="headerlink" title="2. 在当前目录下查找.log结尾的文件"></a>2. 在当前目录下查找.log结尾的文件</h2><p>命令：</p>
+<pre><code>find . -name  &quot;*.log&quot;
+</code></pre><p>或</p>
+<pre><code>find  -name  &quot;*.log&quot;
 </code></pre><p>输出：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">hc@hc-virtual-machine:~/test$ touch file1 file2</span><br><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:48 file1</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:48 file2</span><br></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># ls</span></span><br><span class="line"><span class="number">1.</span><span class="built_in">log</span>  <span class="number">2.</span><span class="built_in">log</span>  <span class="number">3.</span>c  test</span><br><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># find . -name  <span class="string">"*.log"</span></span></span><br><span class="line">./<span class="number">1.</span><span class="built_in">log</span></span><br><span class="line">./<span class="number">2.</span><span class="built_in">log</span></span><br><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># find  -name  <span class="string">"*.log"</span></span></span><br><span class="line">./<span class="number">1.</span><span class="built_in">log</span></span><br><span class="line">./<span class="number">2.</span><span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 <p>说明：</p>
-<p>如果加入 -c 参数，当目标文件不存在时，不会创建新文件，如果目标文件存在，则会修改文件时间属性为当前系统时间   </p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:48 file1</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:48 file2</span><br><span class="line">hc@hc-virtual-machine:~/test$ touch -c file2</span><br><span class="line">hc@hc-virtual-machine:~/test$ touch -c file3</span><br><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:48 file1</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file2</span><br></pre></td></tr></table></figure>
-<h2 id="2-将file1的时间改为file2的时间"><a href="#2-将file1的时间改为file2的时间" class="headerlink" title="2. 将file1的时间改为file2的时间"></a>2. 将file1的时间改为file2的时间</h2><p>命令：</p>
-<pre><code>touch -r file2 file1
+<p>“.” 代表当前目录<br>find 命令 不指定path时，默认是当前目录</p>
+<h2 id="3-查找home目录下-权限为777的文件"><a href="#3-查找home目录下-权限为777的文件" class="headerlink" title="3. 查找home目录下 ,权限为777的文件"></a>3. 查找home目录下 ,权限为777的文件</h2><p>命令：</p>
+<pre><code>find /home/ -perm 777
 </code></pre><p>输出：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:48 file1</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file2</span><br><span class="line">hc@hc-virtual-machine:~/test$ touch -r file2 file1</span><br><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file1</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file2</span><br></pre></td></tr></table></figure>
-<h2 id="3-指定文件的日期时间"><a href="#3-指定文件的日期时间" class="headerlink" title="3.指定文件的日期时间"></a>3.指定文件的日期时间</h2><p>命令：</p>
-<pre><code>touch -t 201810011003.17 file2
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost home]<span class="comment"># ll</span></span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>17:55 1.log</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>17:55 2.log</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>18:00 3.c</span><br><span class="line">drwxr-xr-x.<span class="number"> 2 </span>root root<span class="number"> 6 </span>Nov<span class="number"> 14 </span>17:55 test</span><br><span class="line">[root@localhost home]<span class="comment">#  find /home/ -perm 777</span></span><br><span class="line">[root@localhost home]<span class="comment">#</span></span><br><span class="line">[root@localhost home]<span class="comment"># chmod 777 3.c </span></span><br><span class="line">[root@localhost home]<span class="comment"># find /home/ -perm 777</span></span><br><span class="line">/home/3.c</span><br><span class="line">[root@localhost home]<span class="comment"># ll</span></span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>17:55 1.log</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>17:55 2.log</span><br><span class="line">-rwxrwxrwx.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>18:00 3.c</span><br><span class="line">drwxr-xr-x.<span class="number"> 2 </span>root root<span class="number"> 6 </span>Nov<span class="number"> 14 </span>17:55 test</span><br></pre></td></tr></table></figure>
+<p>说明：<br> chmod 777 3.c 命令是指给3.c文件赋予777权限</p>
+<h2 id="4-查找home目录下以-log结尾的文件或目录"><a href="#4-查找home目录下以-log结尾的文件或目录" class="headerlink" title="4. 查找home目录下以.log结尾的文件或目录"></a>4. 查找home目录下以.log结尾的文件或目录</h2><p>命令：</p>
+<p>查找以.log结尾的文件</p>
+<pre><code>find /home/ -type f -name &apos;*.log&apos;
+</code></pre><p>查找以.log结尾的目录</p>
+<pre><code>find /home/ -type d  -name &apos;*.log&apos;
 </code></pre><p>输出：</p>
-<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file1</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file2</span><br><span class="line">hc@hc-virtual-machine:~/test$ touch -t 201810011003.17 file2</span><br><span class="line">hc@hc-virtual-machine:~/test$ ll</span><br><span class="line">总用量 8</span><br><span class="line">drwxr-xr-x <span class="number"> 2 </span>hc hc<span class="number"> 4096 </span>11月 <span class="number"> 1 </span>09:48 ./</span><br><span class="line">drwxr-xr-x<span class="number"> 25 </span>hc hc<span class="number"> 4096 </span>10月<span class="number"> 31 </span>19:52 ../</span><br><span class="line">-rw-r--r-- <span class="number"> 1 </span>hc hc   <span class="number"> 0 </span>11月 <span class="number"> 1 </span>09:50 file1</span><br></pre></td></tr></table></figure>
-<p>说明：</p>
-<p>-t  time 使用指定的时间值 time 作为指定文件相应时间戳记的新值。此处的 time规定为如下形式的十进制数:      </p>
-<pre><code>[[CC]YY]MMDDhhmm[.SS]     
-</code></pre><p>  这里，CC为年数中的前两位，即”世纪数”；YY为年数的后两位，即某世纪中的年数。如果不给出CC的值，则touch   将把年数CCYY限定在1969–2068之内。MM为月数，DD为天将把年数CCYY限定在1969–2068之内。MM为月数，DD为天数，hh 为小时数(几点)，mm为分钟数，SS为秒数。此处秒的设定范围是0–61，这样可以处理闰秒。这些数字组成的时间是环境变量TZ指定的时区中的一个时 间。由于系统的限制，早于1970年1月1日的时间是错误的。</p>
-
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># ls</span></span><br><span class="line"><span class="number">1.</span><span class="built_in">log</span>  <span class="number">2.</span><span class="built_in">log</span>  <span class="number">3.</span>c  test</span><br><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># mkdir 4.log</span></span><br><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># ls</span></span><br><span class="line"><span class="number">1.</span><span class="built_in">log</span>  <span class="number">2.</span><span class="built_in">log</span>  <span class="number">3.</span>c  <span class="number">4.</span><span class="built_in">log</span>  test</span><br><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># find /home/ -type f -name <span class="string">'*.log'</span></span></span><br><span class="line">/home/<span class="number">1.</span><span class="built_in">log</span></span><br><span class="line">/home/<span class="number">2.</span><span class="built_in">log</span></span><br><span class="line">[root<span class="symbol">@localhost</span> home]<span class="meta"># find /home/ -type d  -name <span class="string">'*.log'</span></span></span><br><span class="line">/home/<span class="number">4.</span><span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-查找当前目录下文件大小大于5个字节的文件"><a href="#5-查找当前目录下文件大小大于5个字节的文件" class="headerlink" title="5. 查找当前目录下文件大小大于5个字节的文件"></a>5. 查找当前目录下文件大小大于5个字节的文件</h2><p>命令：<br>大于5个字节</p>
+<pre><code>find -size +5c
+</code></pre><p>等于6个字节</p>
+<pre><code>find -size 6c
+</code></pre><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost home]<span class="comment"># ll</span></span><br><span class="line">total 0</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>17:55 1.log</span><br><span class="line">-rw-r--r--.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>17:55 2.log</span><br><span class="line">-rwxrwxrwx.<span class="number"> 1 </span>root root<span class="number"> 0 </span>Nov<span class="number"> 14 </span>18:00 3.c</span><br><span class="line">drwxr-xr-x.<span class="number"> 2 </span>root root<span class="number"> 6 </span>Nov<span class="number"> 14 </span>18:16 4.log</span><br><span class="line">drwxr-xr-x.<span class="number"> 2 </span>root root<span class="number"> 6 </span>Nov<span class="number"> 14 </span>17:55 test</span><br><span class="line">[root@localhost home]<span class="comment"># find -size +5c</span></span><br><span class="line">.</span><br><span class="line">./test</span><br><span class="line">./4.log</span><br><span class="line">[root@localhost home]<span class="comment"># find -size 6c</span></span><br><span class="line">./test</span><br><span class="line">./4.log</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -588,7 +704,7 @@ var _hmt = _hmt || [];
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.hpython.cn/2018/11/01/linux每日命令(10)：touch命令/" title="linux每日命令(10)：touch命令">http://www.hpython.cn/2018/11/01/linux每日命令(10)：touch命令/</a>
+    <a href="http://www.hpython.cn/2018/11/14/linux每日命令(20)：find命令概览/" title="linux每日命令(20)：find命令概览">http://www.hpython.cn/2018/11/14/linux每日命令(20)：find命令概览/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -618,8 +734,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/31/linux每日命令(9)：cp命令/" rel="next" title="linux每日命令(9)：cp命令">
-                <i class="fa fa-chevron-left"></i> linux每日命令(9)：cp命令
+              <a href="/2018/11/13/linux每日命令(19)：locate命令/" rel="next" title="linux每日命令(19)：locate命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(19)：locate命令
               </a>
             
           </div>
@@ -627,10 +743,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/03/linux每日命令(11)：cat命令/" rel="prev" title="linux每日命令(11)：cat命令">
-                linux每日命令(11)：cat命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -782,7 +894,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一．命令格式："><span class="nav-text">一．命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令参数："><span class="nav-text">二．命令参数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三．命令功能："><span class="nav-text">三．命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四．使用实例："><span class="nav-text">四．使用实例：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建file1和file2两个空文件"><span class="nav-text">1. 创建file1和file2两个空文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-将file1的时间改为file2的时间"><span class="nav-text">2. 将file1的时间改为file2的时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-指定文件的日期时间"><span class="nav-text">3.指定文件的日期时间</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-命令格式"><span class="nav-text">一. 命令格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-命令功能"><span class="nav-text">二. 命令功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-参数说明"><span class="nav-text">三. 参数说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-参数选项"><span class="nav-text">四. 参数选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-使用实例"><span class="nav-text">五. 使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-查找2天内被读取过的文件"><span class="nav-text">1. 查找2天内被读取过的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在当前目录下查找-log结尾的文件"><span class="nav-text">2. 在当前目录下查找.log结尾的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-查找home目录下-权限为777的文件"><span class="nav-text">3. 查找home目录下 ,权限为777的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查找home目录下以-log结尾的文件或目录"><span class="nav-text">4. 查找home目录下以.log结尾的文件或目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-查找当前目录下文件大小大于5个字节的文件"><span class="nav-text">5. 查找当前目录下文件大小大于5个字节的文件</span></a></li></ol></li></ol></div>
             
 
           </div>
