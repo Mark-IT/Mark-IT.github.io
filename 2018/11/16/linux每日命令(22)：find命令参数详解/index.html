@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+	
+	
+	<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+	</script>
+  
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux命令," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一. name选项文件名选项是find命令最常用的选项，要么单独使用该选项，要么和其他选项一起使用。  可以使用某种文件名模式来匹配文件，记住要用引号将文件名模式引起来。  不管当前路径是什么，如果想要在自己的根目录$HOME中查找文件名符合*.log的文件，使用~作为 ‘pathname’参数，波浪号~代表了你的$HOME目录。 find ~ -name &amp;quot;*.log&amp;quot;  想">
+<meta name="keywords" content="linux命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux每日命令(22)：find命令参数详解">
+<meta property="og:url" content="http://www.hpython.cn/2018/11/16/linux每日命令(22)：find命令参数详解/index.html">
+<meta property="og:site_name" content="Mark&#39;s Home">
+<meta property="og:description" content="一. name选项文件名选项是find命令最常用的选项，要么单独使用该选项，要么和其他选项一起使用。  可以使用某种文件名模式来匹配文件，记住要用引号将文件名模式引起来。  不管当前路径是什么，如果想要在自己的根目录$HOME中查找文件名符合*.log的文件，使用~作为 ‘pathname’参数，波浪号~代表了你的$HOME目录。 find ~ -name &amp;quot;*.log&amp;quot;  想">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-16T03:08:19.519Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux每日命令(22)：find命令参数详解">
+<meta name="twitter:description" content="一. name选项文件名选项是find命令最常用的选项，要么单独使用该选项，要么和其他选项一起使用。  可以使用某种文件名模式来匹配文件，记住要用引号将文件名模式引起来。  不管当前路径是什么，如果想要在自己的根目录$HOME中查找文件名符合*.log的文件，使用~作为 ‘pathname’参数，波浪号~代表了你的$HOME目录。 find ~ -name &amp;quot;*.log&amp;quot;  想">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hpython.cn/2018/11/16/linux每日命令(22)：find命令参数详解/"/>
+
+
+
+
+
+  <title>linux每日命令(22)：find命令参数详解 | Mark's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+</head>
+
+<!--<script type="text/javascript" src="/js/src/dytitle.js"></script>-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e20e6b1d0fc1866be6555005c1b22bdf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mark's Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">你要做多大的事情，就该承受多大的压力。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/11/16/linux每日命令(22)：find命令参数详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark's Home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux每日命令(22)：find命令参数详解</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T11:07:18+08:00">
+                2018-11-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-16T11:08:19+08:00">
+                2018-11-16
+              </time>
+            
+          </span>
+		  
+		
+			<span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux每日命令/" itemprop="url" rel="index">
+                    <span itemprop="name">linux每日命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,410
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一-name选项"><a href="#一-name选项" class="headerlink" title="一. name选项"></a>一. name选项</h1><p>文件名选项是find命令最常用的选项，要么单独使用该选项，要么和其他选项一起使用。  可以使用某种文件名模式来匹配文件，记住要用引号将文件名模式引起来。  不管当前路径是什么，如果想要在自己的根目录$HOME中查找文件名符合*.log的文件，使用~作为 ‘pathname’参数，波浪号~代表了你的$HOME目录。</p>
+<pre><code>find ~ -name &quot;*.log&quot; 
+</code></pre><p>想要在当前目录及子目录中查找所有的‘ *.log‘文件，可以用： </p>
+<pre><code>find . -name &quot;*.log&quot; 
+</code></pre><p>想要的当前目录及子目录中查找文件名以一个大写字母开头的文件，可以用：  </p>
+<pre><code>find . -name &quot;[A-Z]*&quot; 
+</code></pre><p>想要在/etc目录中查找文件名以host开头的文件，可以用：  </p>
+<pre><code>find /etc -name &quot;host*&quot; 
+</code></pre><p>想要查找$HOME目录中的文件，可以用：  </p>
+<pre><code>find ~ -name &quot;*&quot; 
+</code></pre><p>要想让系统高负荷运行，就从根目录开始查找所有的文件。  </p>
+<pre><code>find / -name &quot;*&quot; 
+</code></pre><p>如果想在当前目录查找文件名以一个个小写字母开头，最后是4到9加上.log结束的文件：  </p>
+<p>命令：</p>
+<pre><code>find . -name &quot;[a-z]*[4-9].log&quot; -print
+</code></pre><h1 id="二-perm选项"><a href="#二-perm选项" class="headerlink" title="二. perm选项"></a>二. perm选项</h1><pre><code>按照文件权限模式用-perm选项,按文件权限模式来查找文件的话。最好使用十进制的权限表示法。
+如在当前目录下查找文件权限位为755的文件，即文件属主可以读、写、执行，其他用户可以读、执行的文件，可以用：
+
+ find . -perm 755 
+</code></pre><p>find -perm，根据文件的权限来查找文件，有三种形式：<br>find -perm mode<br>find -perm -mode<br>find -perm +mode    </p>
+<p>那么这三者之间有什么区别呢？解释之前首先得简单说一下linux中文件权限位的概念。在linux中文件或目录有三者权限r,w,x，代表的含义分别是读、写、可执行。而一个文件或目录的属性中又包括所属用户u、所属组g、其他o三个部分的属性，分别表示所属用户、所属组、其他用户对这个文件所拥有的权限。看起来大概是这个样子：<br> 所属用户   所属组    其他<br>   rwx       rwx      rwx</p>
+<p>用户在其拥有权限的位上设置1，没有权限的位设置0。如果将每个部分的这些权限位看成二进制数，每个部分可以用3位二进制数表示，最大值为7(2^3-1)，表示可读、可写、可执行。严格的来说，文件权限除了r、w、x以外还有setuid,setgid权限，等下再解释。<br>好了，有了权限位的基础，那么再来看find -perm mode。mode是三个数字表示的，每个数字最大值是7（原因前面解释过了）。<br>find -perm mode ， 表示严格匹配，也就是你的文件权限位转换成对应的十进制数字与mode一模一样，那么匹配成功，需要注意的是如果mode给的数字不足3位，那么前面自动添0(严格的说是不足4位，原因就是前面所说的setuid,setgid，稍后解释)</p>
+<p>find -perm -mode ， 表示mode中转换成二进制的1在文件权限位里面必须匹配，比如mode=644那么转换成二进制为110 100 100，而被查找的文件的权限位也可以被转换成一个二进制数，<strong>两者在位上为1的部分必须完全匹配，而0则不管</strong>。例如被查找的文件的权限为转换成二进制数是111 111 111那么这个比如被匹配，而假如是100 100 100那么则不会匹配。所以<strong>这个’-‘的作用归结起来就是匹配比mode权限更充足的文件</strong>(找不到什么词语来形容了)</p>
+<p>find -perm +mode ， <strong>与 -mode的区别是+mode只需其中的任意一个1的部分被匹配，-mode是所有1的部分都必须被匹配，同样+mode也不管0位。</strong> </p>
+<p>现在来解释setuid,setgid，setuid权限是用来使其他用户可以“越权”执行你的命令，而本质上的实现就是在权限检查的时候，在进程的的有效UID里面保存了这个其他用户的UID,所以权限得意验证通过(在这里的 <a href="http://www.2cto.com/os/201205/130111.html" target="_blank" rel="noopener">http://www.2cto.com/os/201205/130111.html</a> 注释1里面很简单的介绍了一下)，这些权限用一个新的3位二进制数表示，有4,2,1三种值，4表示有setuid权限，2表示有setgid权限，1表示有粘着位(t)权限（粘着位权限最典型的例子是/tmp，每个用户可以在里面创建、更新、删除自己创建(文件所属用户是自己)的文件，而不能更改别人的文件）。</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l </span><br><span class="line">total 0</span><br><span class="line">-rwxrwxrwx<span class="number"> 1 </span>  fai     root      <span class="number"> 0 </span>Aug<span class="number"> 28 </span>15:15 a</span><br><span class="line">-rwxr-xr-x   <span class="number"> 1 </span>  fai     root      <span class="number"> 0 </span>Aug<span class="number"> 28 </span>15:15 b</span><br><span class="line">----rw----    <span class="number"> 1 </span>  fai     root      <span class="number"> 0 </span>Aug<span class="number"> 28 </span>15:15 c</span><br><span class="line">-rw-rw-rw- <span class="number"> 1 </span>  fai     root      <span class="number"> 0 </span>Aug<span class="number"> 28 </span>15:15 d</span><br><span class="line">-r-xr--r--     <span class="number"> 1 </span>  fai     root      <span class="number"> 0 </span>Aug<span class="number"> 28 </span>15:15 e</span><br></pre></td></tr></table></figure>
+<p>对于权限进行十进制转2进制<br>a(777)：111 111 111<br>b(755)：111 101 101<br>c(060)： 000 110 000<br>d(666)：110 110 110<br>e(544)：101 100 100</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ find . -perm +006</span><br><span class="line">.</span><br><span class="line"><span class="string">./b</span></span><br><span class="line"><span class="string">./d</span></span><br><span class="line"><span class="string">./a</span></span><br><span class="line"><span class="string">./e</span></span><br></pre></td></tr></table></figure>
+<p>mode中的006转为2进制是：000 000110<br>根据部分匹配的原则，只要在第3组中的第一或者第二位出现1就可以了，所以看到e文件101只是匹配了第一位的1，但是也打印了。而a文件111的情况更是符合这个说法了。注意：c文件虽然出现了110，但是不是对应的组，这个匹配是在相应位的。</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ find . -perm -006</span><br><span class="line"><span class="string">./d</span></span><br><span class="line"><span class="string">./a</span></span><br></pre></td></tr></table></figure>
+<p>对于-perm -006，也同样道理去判断，只是这里需要完全匹配，也就是mode的二进制中出现1的地方，目标中也要出现才行<br>需要在最后一组中的第一和第二位同时出现1才能匹配。<br>a(777)：111 111 111<br>d(666)：110 110 110 </p>
+<h1 id="三-prune选项（此处引用http-blog-sina-com-cn-s-blog-6ad648f30100tqwy-html）"><a href="#三-prune选项（此处引用http-blog-sina-com-cn-s-blog-6ad648f30100tqwy-html）" class="headerlink" title="三. prune选项（此处引用http://blog.sina.com.cn/s/blog_6ad648f30100tqwy.html）"></a>三. prune选项（此处引用<a href="http://blog.sina.com.cn/s/blog_6ad648f30100tqwy.html）" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_6ad648f30100tqwy.html）</a></h1><p>查找时忽略指定目录，是要使用-prune选项，但实际上最重要的还是要和path配合。-prune的意义是，当路径字串匹配了path中指定的目录时 候，find命令不进入这个目录查找，所以这个选项使用的关键，还是在path选项上的使用，也就是path选项和其他选项的配合使用，才能最后确定最终 结果。而path，实际上是对路径字串的一个字符匹配，但也并不仅仅只匹配于目录，文件同样可以被匹配，譬如存在一个目录结构。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./01.txt</span><br><span class="line">./02.txt</span><br><span class="line">./03.txt</span><br><span class="line">./aaa</span><br><span class="line">./aaa/04.txt</span><br><span class="line">./aaa/05.txt</span><br></pre></td></tr></table></figure></p>
+<p>find . -path “./aaa<em>“ -print   匹配中使用</em>通配符，则会输出</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./aaa</span><br><span class="line">./aaa/04.txt</span><br><span class="line">./aaa/05.txt</span><br></pre></td></tr></table></figure>
+<p>而如果是find . -path “./aaa” -print ，严格等于./aaa目录，则只输出</p>
+<p>./aaa</p>
+<p>而且*通配符会将路径中的字符”/“也作为普通字符进行贪婪匹配，所以可以匹配到目录以下的文件，所以在使用这个选项时候不要误以为这个只对目录有效，实际上只是一种路径字符匹配工具。</p>
+<h2 id="1-查找文件时，忽略某个目录"><a href="#1-查找文件时，忽略某个目录" class="headerlink" title="1.查找文件时，忽略某个目录"></a>1.查找文件时，忽略某个目录</h2><p>如果加上-prune，则第一个命令效果是：</p>
+<pre><code>find . -path &quot;./aaa*&quot; -prune -print
+</code></pre><p>./aaa</p>
+<p>因为加入了-prune，在匹配这个目录同时禁止进入到这个目录下搜索，于是也就是我们所需要的不进入某个目录查找。</p>
+<p>但如何配合其他选项来使用-path 以及-prune呢？以-name为例，下面对于配合使用方法进行一下演示。</p>
+<p>我们先来看看纯粹的-name和-path配合使用是什么效果：</p>
+<pre><code>find -name &quot;*.txt&quot; -path &quot;./aaa&quot; -print
+</code></pre><p>这个命令也相当于</p>
+<pre><code>find -name &quot;*.txt&quot; -a -path &quot;./aaa&quot; -print
+</code></pre><p>但一般的-a都被忽略不写。这个命令对于上面的目录结构这个命令执行为空结果。也就是，既要文件名称匹配”<em>.txt”，同时又要其路径字 串匹配”./aaa”，而文件名匹配”</em>.txt”的结果有：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./<span class="number">01</span>.txt</span><br><span class="line">./<span class="number">02</span>.txt</span><br><span class="line">./<span class="number">03</span>.txt</span><br><span class="line">./aaa/<span class="number">04</span>.txt</span><br><span class="line">./aaa/<span class="number">05</span>.txt</span><br></pre></td></tr></table></figure></p>
+<p>路径字串匹配 “./aaa”的只有<br>./aaa<br>二者取and则为空结果，所以上面的命令输出为空。</p>
+<p>如果对-path选项加上-prune</p>
+<pre><code>find -name &quot;*.txt&quot; -path &quot;./aaa&quot; -prune -print
+</code></pre><p>实际上与上面那条命令输出并无区别，只是禁止进入./aaa下匹配而已，但最终的结果仍然是空。</p>
+<p>再来看看很多人会误用的结构：</p>
+<pre><code>find -name &quot;*.txt&quot; -path &quot;./aaa&quot; -prune -o -print
+</code></pre><p>也就是比上一条语句在-print前增加一个-o。但实际上这条命令是将当前目录以及包含./aaa子目录下的所有文件都打印出来。实际上<br>，这个语句先执行-o左侧的语句，find -name “*.txt” -path “./aaa” -prune，因为匹配为空，则执行-o右侧的语句-print，也就是把不匹配左侧的文件名打印出来，既然左侧没有匹配为真的，所以也就是所有的文件都被打印。</p>
+<p>这里要留意的是匹配模式项（比如-name “*.txt”, -path ….），关系符（ -a, -o,  “,”），与操作符（-print, -exec,- ok)之间的位置关系，特别是操作符在关系符的不同位置上，对于结果也具有决定的作用。</p>
+<p>说明：</p>
+<p>find [-path ..] [expression] </p>
+<p>在路径列表的后面的是表达式 </p>
+<p>-path “test” -prune -o -print 是 -path “test” -a -prune -o -print 的简写表达式按顺序求值, -a 和 -o 都是短路求值，与 shell 的 &amp;&amp; 和 || 类似如果 </p>
+<p>-path “test” 为真，则求值 -prune , -prune 返回真，与逻辑表达式为真；否则不求值 -prune，与逻辑表达式为假。如果 -path “test” -a -prune 为假，则求值 -print ，-print返回真，或逻辑表达式为真；否则不求值 -print，或逻辑表达式为真。 </p>
+<p>这个表达式组合特例可以用伪码写为:</p>
+<p>if -path “test” then  </p>
+<p>-prune  </p>
+<p>else  </p>
+<p>-print  </p>
+<p>比如一个语句</p>
+<pre><code>find -name &quot;*.txt&quot; -print -o -path &quot;./aaa&quot; -prune -print             (1)
+</code></pre><p>其实也可以略写为</p>
+<pre><code>find -name &quot;*.txt&quot; -o -path &quot;./aaa&quot; -prune
+</code></pre><p>注意第二个语句-o两侧都没有-print，输出结果为：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./<span class="number">01</span>.txt</span><br><span class="line">./<span class="number">02</span>.txt</span><br><span class="line">./<span class="number">03</span>.txt</span><br><span class="line">./aaa</span><br></pre></td></tr></table></figure></p>
+<p>这是因为find开始执行，遇到第一个-print命令，则会考虑输出，但是输出的时候，则是将剩余所有的匹配项一起进行匹配操作，也就是执行的是</p>
+<pre><code>find -name &quot;*.txt&quot; -print -o -path &quot;./aaa&quot; -prune  （注意-print命令的位置）
+</code></pre><p>这个命令执行中相当于</p>
+<pre><code>find -path &quot;./aaa&quot; -prune -o -name &quot;*.txt&quot; -print
+</code></pre><p>也 就是在匹配过程中，对于包含了-print部分的匹配项是最后匹配的，因此先匹配到了./aaa路径，由于-prune的存在禁止进入这个路径查找，禁止 进入查找，并不会因为-o选项而被逆转，所以左侧匹配了./aaa后，-o右侧则是不匹配./aaa项目剩余的文件继续去匹配-name模式，匹配的结果 最后被-print打印出来，这也就是我们所期待的忽略某个指定目录进行搜索的结果。</p>
+<p>但是我们要分析的是命令（1）中的结果，命令（1）在遇到第一个-print命令后并执行了输出，但是这个find命令中还存在第二个-print命令，所以在输出<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./<span class="number">01</span>.txt</span><br><span class="line">./<span class="number">02</span>.txt</span><br><span class="line">./<span class="number">03</span>.txt</span><br></pre></td></tr></table></figure></p>
+<p>结果后，还是要继续执行，要执行最后一个-print命令，下面的执行则相当于执行一个</p>
+<pre><code>find -name &quot;*.txt&quot; -o -path &quot;./aaa&quot; -prune -print
+</code></pre><p>-o左侧匹配-name “*.txt”，-o到右侧后则是对不能匹配到-name模式的结果，进行-path匹配，输出结果为<br>./aaa</p>
+<p>所以（1）命令最终的输出结果就是<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./01.txt</span><br><span class="line">./02.txt</span><br><span class="line">./03.txt</span><br><span class="line">.<span class="built_in">/aaa </span>。</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-忽略多个文件夹"><a href="#2-忽略多个文件夹" class="headerlink" title="2. 忽略多个文件夹"></a>2. 忽略多个文件夹</h2><p>-a, -o都常见了，但是实际中还可以存在“，“的使用，例如新建一个aaa1目录，其下有08.txt等文件，若执行</p>
+<pre><code>$ find -name &quot;*.txt&quot;
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./<span class="number">01</span>.txt</span><br><span class="line">./<span class="number">02</span>.txt</span><br><span class="line">./<span class="number">03</span>.txt</span><br><span class="line">./aaa/<span class="number">04</span>.txt</span><br><span class="line">./aaa/<span class="number">05</span>.txt</span><br><span class="line">./aaa1/<span class="number">08</span>.txt</span><br><span class="line">./aaa1/<span class="number">09</span>.txt</span><br></pre></td></tr></table></figure>
+<p>若忽略aaa和aaa1目录查找txt文件，则可以写做</p>
+<pre><code>$ find -name &quot;*.txt&quot; -print -o -path &quot;./aaa&quot; -prune , -path &quot;./aaa1&quot;  -prune  （注意&quot;,&quot;两侧的空格不可忽略）
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./<span class="number">01</span>.txt</span><br><span class="line">./<span class="number">02</span>.txt</span><br><span class="line">./<span class="number">03</span>.txt</span><br></pre></td></tr></table></figure>
+<p>这也就是同时忽略几个目录的写法，注意每忽略一个目录，其后都要跟随一个-prune，而不能几个-path公用一个-prune。</p>
+<p>其实若没有-prune的使用，也可以忽略某个目录下文件的匹配，譬如</p>
+<pre><code>$find -path &quot;./aaa*&quot; -o -name &quot;*.txt&quot; -print
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./<span class="number">01</span>.txt</span><br><span class="line">./<span class="number">02</span>.txt</span><br><span class="line">./<span class="number">03</span>.txt</span><br></pre></td></tr></table></figure>
+<p>同样可以不匹配到./aaa目录下的文件，但是这里实际上是搜索过./aaa目录下的文件并且进行匹对的，只是因为-print在-o的右侧输出，而./aaa下的文件被匹配是在-o的左侧，所以最终的结果是达不到被打印输出的条件。但效率应当是明显低于使用-prune选项。</p>
+<h1 id="四-user和nouser-选项"><a href="#四-user和nouser-选项" class="headerlink" title="四. user和nouser 选项"></a>四. user和nouser 选项</h1><h2 id="1-在-HOME目录中查找文件属主为hc的文件"><a href="#1-在-HOME目录中查找文件属主为hc的文件" class="headerlink" title="1. 在$HOME目录中查找文件属主为hc的文件"></a>1. 在$HOME目录中查找文件属主为hc的文件</h2><pre><code>find ~ -user hc -print
+</code></pre><h2 id="2-在-etc目录下查找文件属主为hc的文件"><a href="#2-在-etc目录下查找文件属主为hc的文件" class="headerlink" title="2. 在/etc目录下查找文件属主为hc的文件:"></a>2. 在/etc目录下查找文件属主为hc的文件:</h2><p>命令：</p>
+<pre><code>find /etc -user hc -print  
+</code></pre><h2 id="3-为了查找属主帐户已经被删除的文件，可以使用-nouser选项。在-home目录下查找所有的这类文件"><a href="#3-为了查找属主帐户已经被删除的文件，可以使用-nouser选项。在-home目录下查找所有的这类文件" class="headerlink" title="3. 为了查找属主帐户已经被删除的文件，可以使用-nouser选项。在/home目录下查找所有的这类文件"></a>3. 为了查找属主帐户已经被删除的文件，可以使用-nouser选项。在/home目录下查找所有的这类文件</h2><pre><code>find /home -nouser -print
+</code></pre><p>说明：</p>
+<p>这样就能够找到那些属主在/etc/passwd文件中没有有效帐户的文件。在使用-nouser选项时，不必给出用户名； find命令能够为你完成相应的工作。</p>
+<h1 id="五．使用group和nogroup选项："><a href="#五．使用group和nogroup选项：" class="headerlink" title="五．使用group和nogroup选项："></a>五．使用group和nogroup选项：</h1><p>就像user和nouser选项一样，针对文件所属于的用户组， find命令也具有同样的选项，为了在/apps目录下查找属于gem用户组的文件，可以用：  </p>
+<pre><code>find /apps -group gem -print  
+</code></pre><p>要查找没有有效所属用户组的所有文件，可以使用nogroup选项。下面的find命令从文件系统的根目录处查找这样的文件:</p>
+<pre><code>find / -nogroup -print
+</code></pre><h1 id="六．按照更改时间或访问时间等查找文件："><a href="#六．按照更改时间或访问时间等查找文件：" class="headerlink" title="六．按照更改时间或访问时间等查找文件："></a>六．按照更改时间或访问时间等查找文件：</h1><p>如果希望按照更改时间来查找文件，可以使用mtime,atime或ctime选项。如果系统突然没有可用空间了，很有可能某一个文件的长度在此期间增长迅速，这时就可以用mtime选项来查找这样的文件。  </p>
+<p>用减号-来限定更改时间在距今n日以内的文件，而用加号+来限定更改时间在距今n日以前的文件。  </p>
+<p>希望在系统根目录下查找更改时间在5日以内的文件，可以用：</p>
+<pre><code>find / -mtime -5 -print
+</code></pre><p>为了在/var/adm目录下查找更改时间在3日以前的文件，可以用:</p>
+<pre><code>find /var/adm -mtime +3 -print
+</code></pre><h1 id="七．查找比某个文件新或旧的文件："><a href="#七．查找比某个文件新或旧的文件：" class="headerlink" title="七．查找比某个文件新或旧的文件："></a>七．查找比某个文件新或旧的文件：</h1><p>如果希望查找更改时间比某个文件新但比另一个文件旧的所有文件，可以使用-newer选项。</p>
+<p>它的一般形式为：  </p>
+<pre><code>newest_file_name ! oldest_file_name  
+</code></pre><p>其中，！是逻辑非符号。  </p>
+<h2 id="1-查找更改时间比文件log1新但比文件log3旧的文件"><a href="#1-查找更改时间比文件log1新但比文件log3旧的文件" class="headerlink" title="1.查找更改时间比文件log1新但比文件log3旧的文件"></a>1.查找更改时间比文件log1新但比文件log3旧的文件</h2><p>命令：</p>
+<pre><code>find -newer log1  ! -newer log3
+</code></pre><h2 id="2-查找当前目录下更改时间在比log2文件新的文件"><a href="#2-查找当前目录下更改时间在比log2文件新的文件" class="headerlink" title="2.查找当前目录下更改时间在比log2文件新的文件"></a>2.查找当前目录下更改时间在比log2文件新的文件</h2><p>命令：</p>
+<pre><code>find . -newer log2  -print
+</code></pre><h1 id="八．使用type选项："><a href="#八．使用type选项：" class="headerlink" title="八．使用type选项："></a>八．使用type选项：</h1><h2 id="1：在-etc目录下查找所有的目录"><a href="#1：在-etc目录下查找所有的目录" class="headerlink" title="1：在/etc目录下查找所有的目录"></a>1：在/etc目录下查找所有的目录</h2><p>命令：</p>
+<pre><code>find /etc -type d -print  
+</code></pre><h2 id="2：在当前目录下查找除目录以外的所有类型的文件"><a href="#2：在当前目录下查找除目录以外的所有类型的文件" class="headerlink" title="2：在当前目录下查找除目录以外的所有类型的文件"></a>2：在当前目录下查找除目录以外的所有类型的文件</h2><p>命令：</p>
+<pre><code>find . ! -type d -print  
+</code></pre><h2 id="3：在-etc目录下查找所有的符号链接文件"><a href="#3：在-etc目录下查找所有的符号链接文件" class="headerlink" title="3：在/etc目录下查找所有的符号链接文件"></a>3：在/etc目录下查找所有的符号链接文件</h2><p>命令：</p>
+<pre><code>find /etc -type l -print
+</code></pre><h1 id="九．使用size选项："><a href="#九．使用size选项：" class="headerlink" title="九．使用size选项："></a>九．使用size选项：</h1><p>可以按照文件长度来查找文件，这里所指的文件长度既可以用块（block）来计量，也可以用字节来计量。以字节计量文件长度的表达形式为N c；以块计量文件长度只用数字表示即可。  </p>
+<p>在按照文件长度查找文件时，一般使用这种以字节表示的文件长度，在查看文件系统的大小，因为这时使用块来计量更容易转换。  </p>
+<h2 id="1：在当前目录下查找文件长度大于1-M字节的文件"><a href="#1：在当前目录下查找文件长度大于1-M字节的文件" class="headerlink" title="1：在当前目录下查找文件长度大于1 M字节的文件"></a>1：在当前目录下查找文件长度大于1 M字节的文件</h2><p>命令：</p>
+<pre><code>find . -size +1000000c -print
+</code></pre><h2 id="2：在-home-apache目录下查找文件长度恰好为100字节的文件"><a href="#2：在-home-apache目录下查找文件长度恰好为100字节的文件" class="headerlink" title="2：在/home/apache目录下查找文件长度恰好为100字节的文件:"></a>2：在/home/apache目录下查找文件长度恰好为100字节的文件:</h2><p>命令：</p>
+<p>find /home/apache -size 100c -print  </p>
+<h2 id="3：在当前目录下查找长度超过10块的文件（一块等于512字节）"><a href="#3：在当前目录下查找长度超过10块的文件（一块等于512字节）" class="headerlink" title="3：在当前目录下查找长度超过10块的文件（一块等于512字节）"></a>3：在当前目录下查找长度超过10块的文件（一块等于512字节）</h2><p>命令：</p>
+<pre><code>find . -size +10 -print
+</code></pre><h1 id="十．使用depth选项："><a href="#十．使用depth选项：" class="headerlink" title="十．使用depth选项："></a>十．使用depth选项：</h1><p>在使用find命令时，可能希望先匹配所有的文件，再在子目录中查找。使用depth选项就可以使find命令这样做。这样做的一个原因就是，当在使用find命令向磁带上备份文件系统时，希望首先备份所有的文件，其次再备份子目录中的文件。  </p>
+<h2 id="1：find命令从文件系统的根目录开始，查找一个名为CON-FILE的文件。"><a href="#1：find命令从文件系统的根目录开始，查找一个名为CON-FILE的文件。" class="headerlink" title="1：find命令从文件系统的根目录开始，查找一个名为CON.FILE的文件。"></a>1：find命令从文件系统的根目录开始，查找一个名为CON.FILE的文件。</h2><p>命令：</p>
+<pre><code>find / -name &quot;CON.FILE&quot; -depth -print
+</code></pre><p>说明：</p>
+<p>它将首先匹配所有的文件然后再进入子目录中查找</p>
+<h1 id="十一．使用mount选项："><a href="#十一．使用mount选项：" class="headerlink" title="十一．使用mount选项："></a>十一．使用mount选项：</h1><p> 在当前的文件系统中查找文件（不进入其他文件系统），可以使用find命令的mount选项。</p>
+<h2 id="1：从当前目录开始查找位于本文件系统中文件名以XC结尾的文件"><a href="#1：从当前目录开始查找位于本文件系统中文件名以XC结尾的文件" class="headerlink" title="1：从当前目录开始查找位于本文件系统中文件名以XC结尾的文件"></a>1：从当前目录开始查找位于本文件系统中文件名以XC结尾的文件</h2><p>命令：</p>
+<pre><code>find . -name &quot;*.XC&quot; -mount -print
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	
+	
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+    
+ </div>
+ 
+	
+	
+
+	
+	
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>希望文章对您有所帮助，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mark 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mark 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+	
+	
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mark
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.hpython.cn/2018/11/16/linux每日命令(22)：find命令参数详解/" title="linux每日命令(22)：find命令参数详解">http://www.hpython.cn/2018/11/16/linux每日命令(22)：find命令参数详解/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-creative-commons"></i>CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+	
+	
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag" style="background: #ff945c"><i class="fa fa-tag"></i> linux命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/15/linux每日命令(21)：find命令之exec/" rel="next" title="linux每日命令(21)：find命令之exec">
+                <i class="fa fa-chevron-left"></i> linux每日命令(21)：find命令之exec
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI5MC8xNDgxOA=="></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Mark" />
+            
+              <p class="site-author-name" itemprop="name">Mark</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Mark-IT" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-name选项"><span class="nav-text">一. name选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二-perm选项"><span class="nav-text">二. perm选项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-prune选项（此处引用http-blog-sina-com-cn-s-blog-6ad648f30100tqwy-html）"><span class="nav-text">三. prune选项（此处引用http://blog.sina.com.cn/s/blog_6ad648f30100tqwy.html）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-查找文件时，忽略某个目录"><span class="nav-text">1.查找文件时，忽略某个目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-忽略多个文件夹"><span class="nav-text">2. 忽略多个文件夹</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-user和nouser-选项"><span class="nav-text">四. user和nouser 选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-在-HOME目录中查找文件属主为hc的文件"><span class="nav-text">1. 在$HOME目录中查找文件属主为hc的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在-etc目录下查找文件属主为hc的文件"><span class="nav-text">2. 在/etc目录下查找文件属主为hc的文件:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-为了查找属主帐户已经被删除的文件，可以使用-nouser选项。在-home目录下查找所有的这类文件"><span class="nav-text">3. 为了查找属主帐户已经被删除的文件，可以使用-nouser选项。在/home目录下查找所有的这类文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五．使用group和nogroup选项："><span class="nav-text">五．使用group和nogroup选项：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六．按照更改时间或访问时间等查找文件："><span class="nav-text">六．按照更改时间或访问时间等查找文件：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七．查找比某个文件新或旧的文件："><span class="nav-text">七．查找比某个文件新或旧的文件：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-查找更改时间比文件log1新但比文件log3旧的文件"><span class="nav-text">1.查找更改时间比文件log1新但比文件log3旧的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-查找当前目录下更改时间在比log2文件新的文件"><span class="nav-text">2.查找当前目录下更改时间在比log2文件新的文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八．使用type选项："><span class="nav-text">八．使用type选项：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：在-etc目录下查找所有的目录"><span class="nav-text">1：在/etc目录下查找所有的目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在当前目录下查找除目录以外的所有类型的文件"><span class="nav-text">2：在当前目录下查找除目录以外的所有类型的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：在-etc目录下查找所有的符号链接文件"><span class="nav-text">3：在/etc目录下查找所有的符号链接文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九．使用size选项："><span class="nav-text">九．使用size选项：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：在当前目录下查找文件长度大于1-M字节的文件"><span class="nav-text">1：在当前目录下查找文件长度大于1 M字节的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：在-home-apache目录下查找文件长度恰好为100字节的文件"><span class="nav-text">2：在/home/apache目录下查找文件长度恰好为100字节的文件:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3：在当前目录下查找长度超过10块的文件（一块等于512字节）"><span class="nav-text">3：在当前目录下查找长度超过10块的文件（一块等于512字节）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十．使用depth选项："><span class="nav-text">十．使用depth选项：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：find命令从文件系统的根目录开始，查找一个名为CON-FILE的文件。"><span class="nav-text">1：find命令从文件系统的根目录开始，查找一个名为CON.FILE的文件。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一．使用mount选项："><span class="nav-text">十一．使用mount选项：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1：从当前目录开始查找位于本文件系统中文件名以XC结尾的文件"><span class="nav-text">1：从当前目录开始查找位于本文件系统中文件名以XC结尾的文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+	<!--<a href="https://github.com/Mark-IT"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>-->
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
+  <div style="display:none">
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">35.4k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+   |  本页点击 <span id="busuanzi_value_page_pv"></span> 次
+  |  本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+  |  您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  <!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
