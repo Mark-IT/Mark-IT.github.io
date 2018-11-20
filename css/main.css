@@ -2020,7 +2020,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ed5578;
+  background: #20ebff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3322,10 +3322,6 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
-}
-.post-body h1 {
-  font-size: 22px;
-  border-bottom: 1px solid #eee;
 }
 .post-body p a {
   color: #0593d3;
