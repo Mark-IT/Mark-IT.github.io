@@ -99,18 +99,18 @@
 
 
 
-<meta name="description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的">
+<meta name="description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。 一.">
 <meta name="keywords" content="linux命令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux每日命令(14)：less命令">
-<meta property="og:url" content="http://www.hpython.cn/2018/11/07/linux每日命令(14)：less命令/index.html">
+<meta property="og:title" content="linux每日命令(33)：diff命令">
+<meta property="og:url" content="http://www.hpython.cn/2018/12/03/linux每日命令(33)：diff命令/index.html">
 <meta property="og:site_name" content="Mark&#39;s Home">
-<meta property="og:description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的">
+<meta property="og:description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。 一.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T02:45:35.667Z">
+<meta property="og:updated_time" content="2018-12-03T03:14:35.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux每日命令(14)：less命令">
-<meta name="twitter:description" content="less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的">
+<meta name="twitter:title" content="linux每日命令(33)：diff命令">
+<meta name="twitter:description" content="diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。 一.">
 
 
 
@@ -140,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hpython.cn/2018/11/07/linux每日命令(14)：less命令/"/>
+  <link rel="canonical" href="http://www.hpython.cn/2018/12/03/linux每日命令(33)：diff命令/"/>
 
 
 
 
 
-  <title>linux每日命令(14)：less命令 | Mark's Home</title>
+  <title>linux每日命令(33)：diff命令 | Mark's Home</title>
   
 
 
@@ -321,7 +321,7 @@ var _hmt = _hmt || [];
   
 
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/11/07/linux每日命令(14)：less命令/">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/12/03/linux每日命令(33)：diff命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mark">
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">linux每日命令(14)：less命令</h2>
+          <h2 class="post-title" itemprop="name headline">linux每日命令(33)：diff命令</h2>
         
 
         <div class="post-meta">
@@ -350,8 +350,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T10:41:42+08:00">
-                2018-11-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T11:14:12+08:00">
+                2018-12-03
               </time>
             
 
@@ -366,8 +366,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-07T10:45:35+08:00">
-                2018-11-07
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-03T11:14:35+08:00">
+                2018-12-03
               </time>
             
           </span>
@@ -420,7 +420,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,417
+                  2,244
                 </span>
               
 
@@ -436,7 +436,7 @@ var _hmt = _hmt || [];
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  10
                 </span>
               
             </div>
@@ -457,10 +457,10 @@ var _hmt = _hmt || [];
       
 
       
-        <p>less 工具也是对文件或其它输出进行分页显示的工具，应该说是linux正统查看文件内容的工具，功能极其强大。less 的用法比起 more 更加的有弹性。在 more 的时候，我们并没有办法向前面翻， 只能往后面看，但若使用了 less 时，就可以使用 [pageup] [pagedown] 等按键的功能来往前往后翻看文件，更容易用来查看一个文件的内容！除此之外，在 less 里头可以拥有更多的搜索功能，不止可以向下搜，也可以向上搜。</p>
-<h1 id="一．命令格式："><a href="#一．命令格式：" class="headerlink" title="一．命令格式："></a>一．命令格式：</h1><pre><code>less [参数]  文件 
-</code></pre><h1 id="二．命令功能："><a href="#二．命令功能：" class="headerlink" title="二．命令功能："></a>二．命令功能：</h1><p>less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。</p>
-<h1 id="三．命令参数："><a href="#三．命令参数：" class="headerlink" title="三．命令参数："></a>三．命令参数：</h1><table>
+        <p>diff 命令是 linux上非常重要的工具，用于比较文件的内容，特别是比较两个版本不同的文件以找到改动的地方。diff在命令行中打印每一个行的改动。最新版本的diff还支持二进制文件。diff程序的输出被称为补丁 (patch)，因为Linux系统中还有一个patch程序，可以根据diff的输出将a.c的文件内容更新为b.c。diff是svn、cvs、git等版本控制工具不可或缺的一部分。</p>
+<h1 id="一-命令格式"><a href="#一-命令格式" class="headerlink" title="一. 命令格式"></a>一. 命令格式</h1><pre><code>diff [参数] [文件1或目录1] [文件2或目录2]
+</code></pre><h1 id="二．命令功能"><a href="#二．命令功能" class="headerlink" title="二．命令功能"></a>二．命令功能</h1><p>diff命令能比较单个文件或者目录内容。如果指定比较的是文件，则只有当输入为文本文件时才有效。以逐行的方式，比较文本文件的异同处。如果指定比较的是目录的的时候，diff 命令会比较两个目录下名字相同的文本文件。列出不同的二进制文件、公共子目录和只在一个目录出现的文件。</p>
+<h1 id="三-命令参数"><a href="#三-命令参数" class="headerlink" title="三. 命令参数"></a>三. 命令参数</h1><table>
 <thead>
 <tr>
 <th>参数</th>
@@ -469,150 +469,187 @@ var _hmt = _hmt || [];
 </thead>
 <tbody>
 <tr>
+<td>-行数</td>
+<td>指定要显示多少行的文本。此参数必须与-c或-u参数一并使用。</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>或–text ，diff预设只会逐行比较文本文件。</td>
+</tr>
+<tr>
 <td>-b</td>
-<td>&lt;缓冲区大小&gt; 设置缓冲区的大小</td>
+<td>或–ignore-space-change  ，不检查空格字符的不同。</td>
+</tr>
+<tr>
+<td>-B</td>
+<td>或–ignore-blank-lines  ，不检查空白行。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>显示全部内文，并标出不同之处。</td>
+</tr>
+<tr>
+<td>-C行数</td>
+<td>或–context行数 与执行”-c-行数”指令相同。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>或–minimal ， 使用不同的演算法，以较小的单位来做比较。</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>或ifdef ， 此参数的输出格式可用于前置处理器巨集。</td>
 </tr>
 <tr>
 <td>-e</td>
-<td>当文件显示结束后，自动离开</td>
+<td>或–ed ， 此参数的输出格式可用于ed的script文件。</td>
 </tr>
 <tr>
 <td>-f</td>
-<td>强迫打开特殊文件，例如外围设备代号、目录和二进制文件</td>
+<td>或-forward-ed  ，输出的格式类似ed的script文件，但按照原来文件的顺序来显示不同处。</td>
 </tr>
 <tr>
-<td>-g</td>
-<td>只标志最后搜索的关键词</td>
+<td>-H</td>
+<td>或–speed-large-files ， 比较大文件时，可加快速度。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>或–ignore-matching-lines  ，若两个文件在某几行有所不同，而这几行同时都包含了选项中指定的字符或字符串，则不显示这两个文件的差异。</td>
 </tr>
 <tr>
 <td>-i</td>
-<td>忽略搜索时的大小写</td>
+<td>或–ignore-case  ，不检查大小写的不同。</td>
 </tr>
 <tr>
-<td>-m</td>
-<td>显示类似more命令的百分比</td>
+<td>-l</td>
+<td>或–paginate  ，将结果交由pr程序来分页。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>或–rcs  ，将比较结果以RCS的格式来显示。</td>
 </tr>
 <tr>
 <td>-N</td>
-<td>显示每行的行号</td>
+<td>或–new-file  ，在比较目录时，若文件A仅出现在某个目录中，预设会显示：Only in目录：文件A若使用-N参数，则diff会将文件A与一个空白的文件比较。</td>
 </tr>
 <tr>
-<td>-o &lt;文件名&gt;</td>
-<td>将less 输出的内容在指定文件中保存起来</td>
+<td>-p</td>
+<td>若比较的文件为C语言的程序码文件时，显示差异所在的函数名称。</td>
 </tr>
 <tr>
-<td>-Q</td>
-<td>不使用警告音</td>
+<td>-P</td>
+<td>或–unidirectional-new-file  ，与-N类似，但只有当第二个目录包含了一个第一个目录所没有的文件时，才会将这个文件与空白的文件做比较。</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>或–brief ， 仅显示有无差异，不显示详细的信息。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>或–recursive  ，比较子目录中的文件。</td>
 </tr>
 <tr>
 <td>-s</td>
-<td>显示连续空行为一行</td>
+<td>或–report-identical-files，  若没有发现任何差异，仍然显示信息。</td>
 </tr>
 <tr>
 <td>-S</td>
-<td>行过长时间将超出部分舍弃</td>
+<td>或–starting-file ， 在比较目录时，从指定的文件开始比较。</td>
 </tr>
 <tr>
-<td>-x &lt;数字&gt;</td>
-<td>将“tab”键显示为规定的数字空格</td>
+<td>-t</td>
+<td>或–expand-tabs  ，在输出时，将tab字符展开。</td>
 </tr>
 <tr>
-<td>/字符串：</td>
-<td>向下搜索“字符串”的功能</td>
+<td>-T</td>
+<td>或–initial-tab  ，在每行前面加上tab字符以便对齐。</td>
 </tr>
 <tr>
-<td>?字符串：</td>
-<td>向上搜索“字符串”的功能</td>
+<td>-u</td>
+<td>,-U或–unified= ， 以合并的方式来显示文件内容的不同。</td>
 </tr>
 <tr>
-<td>n：</td>
-<td>重复前一个搜索（与 / 或 ? 有关）</td>
+<td>-v</td>
+<td>或–version ， 显示版本信息。</td>
 </tr>
 <tr>
-<td>N：</td>
-<td>反向重复前一个搜索（与 / 或 ? 有关）</td>
+<td>-w</td>
+<td>或–ignore-all-space ， 忽略全部的空格字符。</td>
 </tr>
 <tr>
-<td>b</td>
-<td>CentOs向后翻一页（Ubuntu向前翻一页）</td>
+<td>-W</td>
+<td>或–width ， 在使用-y参数时，指定栏宽。</td>
 </tr>
 <tr>
-<td>d</td>
-<td>向后翻半页</td>
+<td>-x</td>
+<td>或–exclude ， 不比较选项中所指定的文件或目录。</td>
 </tr>
 <tr>
-<td>h</td>
-<td>显示帮助界面</td>
+<td>-X</td>
+<td>或–exclude-from ， 您可以将文件或目录类型存成文本文件，然后在=中指定此文本文件。</td>
 </tr>
 <tr>
-<td>Q</td>
-<td>退出less 命令</td>
+<td>-y</td>
+<td>或–side-by-side  ，以并列的方式显示文件的异同之处。</td>
 </tr>
 <tr>
-<td>u</td>
-<td>向前滚动半页</td>
+<td>–help</td>
+<td>显示帮助。</td>
 </tr>
 <tr>
-<td>y</td>
-<td>向前滚动一行</td>
+<td>–left-column</td>
+<td>在使用-y参数时，若两个文件某一行内容相同，则仅在左侧的栏位显示该行内容。</td>
 </tr>
 <tr>
-<td>空格键</td>
-<td>滚动一页</td>
-</tr>
-<tr>
-<td>回车键</td>
-<td>滚动一行</td>
-</tr>
-<tr>
-<td>[pagedown]</td>
-<td>向下翻动一页</td>
-</tr>
-<tr>
-<td>[pageup]</td>
-<td>向上翻动一页</td>
+<td>–suppress-common-lines  在使用-y参数时，仅显示不同之处。</td>
 </tr>
 </tbody>
 </table>
-<h1 id="四．使用实例："><a href="#四．使用实例：" class="headerlink" title="四．使用实例："></a>四．使用实例：</h1><h2 id="1-查看文件"><a href="#1-查看文件" class="headerlink" title="1.查看文件"></a>1.查看文件</h2><p>命令：</p>
-<pre><code>less log1
-</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/snap$ less log1 </span><br><span class="line">我是log1的第一行</span><br><span class="line"></span><br><span class="line">我是log1的第三行</span><br><span class="line">我是log1的第四行</span><br><span class="line">我是log1的第五行</span><br><span class="line"></span><br><span class="line">我是log1的第七行</span><br><span class="line">log1 (END)</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-ps查看进程信息并通过less分页显示"><a href="#2-ps查看进程信息并通过less分页显示" class="headerlink" title="2. ps查看进程信息并通过less分页显示"></a>2. ps查看进程信息并通过less分页显示</h2><p>命令：</p>
-<pre><code>ps -ef |less
-</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root          1      0  0 10:10 ?        00:00:03 /sbin/init splash</span><br><span class="line">root          2      0  0 10:10 ?        00:00:00 [kthreadd]</span><br><span class="line">root          4      2  0 10:10 ?        00:00:00 [kworker/0:0H]</span><br><span class="line">root          6      2  0 10:10 ?        00:00:00 [mm_percpu_wq]</span><br><span class="line">root          7      2  0 10:10 ?        00:00:00 [ksoftirqd/0]</span><br><span class="line">root          8      2  0 10:10 ?        00:00:03 [rcu_sched]</span><br><span class="line">root          9      2  0 10:10 ?        00:00:00 [rcu_bh]</span><br><span class="line">root         10      2  0 10:10 ?        00:00:00 [migration/0]</span><br><span class="line">root         11      2  0 10:10 ?        00:00:00 [watchdog/0]</span><br><span class="line">root         12      2  0 10:10 ?        00:00:00 [cpuhp/0]</span><br><span class="line">root         13      2  0 10:10 ?        00:00:00 [cpuhp/1]</span><br><span class="line">root         14      2  0 10:10 ?        00:00:00 [watchdog/1]</span><br><span class="line">root         15      2  0 10:10 ?        00:00:00 [migration/1]</span><br><span class="line">root         16      2  0 10:10 ?        00:00:00 [ksoftirqd/1]</span><br><span class="line">root         18      2  0 10:10 ?        00:00:00 [kworker/1:0H]</span><br><span class="line">root         19      2  0 10:10 ?        00:00:00 [cpuhp/2]</span><br><span class="line">root         20      2  0 10:10 ?        00:00:00 [watchdog/2]</span><br><span class="line">root         21      2  0 10:10 ?        00:00:00 [migration/2]</span><br><span class="line">root         22      2  0 10:10 ?        00:00:00 [ksoftirqd/2]</span><br><span class="line">root         24      2  0 10:10 ?        00:00:00 [kworker/2:0H]</span><br><span class="line">root         25      2  0 10:10 ?        00:00:00 [cpuhp/3]</span><br><span class="line">root         26      2  0 10:10 ?        00:00:00 [watchdog/3]</span><br><span class="line">:</span><br></pre></td></tr></table></figure></p>
+<h1 id="四-使用实例"><a href="#四-使用实例" class="headerlink" title="四. 使用实例"></a>四. 使用实例</h1><h2 id="1-比较两个文件"><a href="#1-比较两个文件" class="headerlink" title="1. 比较两个文件"></a>1. 比较两个文件</h2><p>命令：</p>
+<pre><code>diff 2.log 1.log 
+</code></pre><p>输出：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat <span class="number">1.</span>log </span><br><span class="line">第一行</span><br><span class="line">第二行</span><br><span class="line">我是log1第<span class="number">3</span>行</span><br><span class="line">第四行</span><br><span class="line">第五行</span><br><span class="line">第六行</span><br><span class="line">[root@localhost test]# cat <span class="number">2.</span>log</span><br><span class="line">第一行</span><br><span class="line">第二行</span><br><span class="line">我是log2第<span class="number">3</span>行</span><br><span class="line">第四行</span><br><span class="line">[root@localhost test]# diff <span class="number">2.</span>log <span class="number">1.</span>log </span><br><span class="line"><span class="number">3</span>c3</span><br><span class="line">&lt; 我是log2第<span class="number">3</span>行</span><br><span class="line">---</span><br><span class="line">&gt; 我是log1第<span class="number">3</span>行</span><br><span class="line"><span class="number">4</span>a5,<span class="number">6</span></span><br><span class="line">&gt; 第五行</span><br><span class="line">&gt; 第六行</span><br></pre></td></tr></table></figure></p>
 <p>说明：</p>
-<p>按空格键或者pagedown键，向后翻一页<br>按b（CentOs向后翻一页,Ubuntu向前翻一页）<br>按y向前翻一行，按回车键向后翻一行<br>d  向后翻半页，u前翻半页</p>
-<h2 id="3-查看命令历史使用记录并通过less分页显示"><a href="#3-查看命令历史使用记录并通过less分页显示" class="headerlink" title="3. 查看命令历史使用记录并通过less分页显示"></a>3. 查看命令历史使用记录并通过less分页显示</h2><p>命令：</p>
-<pre><code>history | less
-</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    1  sudo apt install vmware-install.pl</span><br><span class="line">    2  pwd</span><br><span class="line">    3  ls</span><br><span class="line">    4  pwd</span><br><span class="line">    5  ls</span><br><span class="line">    6  vmware-install.pl</span><br><span class="line">    7  pwd</span><br><span class="line">    8  ls</span><br><span class="line">    9  pwd</span><br><span class="line">   10  ls</span><br><span class="line">   11  cd 桌面</span><br><span class="line">   12  ls</span><br><span class="line">   13  cp VMwareTools-10.1.6-5214329.tar.gz  ../</span><br><span class="line">   14  ls</span><br><span class="line">   15  cd ..</span><br><span class="line">   16  ls</span><br><span class="line">   17  tar zxvf VMwareTools-10.1.6-5214329.tar.gz </span><br><span class="line">   18  ls</span><br><span class="line">   19  cd vmware-tools-distrib/</span><br><span class="line">   20  sudo ./vmware-install.pl </span><br><span class="line">   21  sudo -su</span><br><span class="line">   22  sudo su</span><br><span class="line">   23  ls</span><br><span class="line">:</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-浏览多个文件"><a href="#4-浏览多个文件" class="headerlink" title="4. 浏览多个文件"></a>4. 浏览多个文件</h2><p>命令：</p>
-<pre><code>less log1 log2
-</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hc@hc-virtual-machine:~/snap$ less log1 log2</span><br><span class="line"></span><br><span class="line">我是log1的第一行</span><br><span class="line"></span><br><span class="line">我是log1的第三行</span><br><span class="line">我是log1的第四行</span><br><span class="line">我是log1的第五行</span><br><span class="line"></span><br><span class="line">我是log1的第七行</span><br><span class="line">log1 (file 1 of 2) (END) - Next: log2</span><br></pre></td></tr></table></figure></p>
+<p>上面的”3c3”表示1.log和2.log文件在3行内容有所不同；”4a5,6”表示第2个文件比第1个文件多了第5和6行。</p>
+<p><strong>diff 的normal 显示格式有三种提示:</strong></p>
+<p>a - add</p>
+<p>c - change</p>
+<p>d - delete </p>
+<h2 id="2-并排格式输出"><a href="#2-并排格式输出" class="headerlink" title="2. 并排格式输出"></a>2. 并排格式输出</h2><p>命令:</p>
+<pre><code>diff 2.log 1.log  -y -W 50
+</code></pre><p>输出:</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# diff <span class="number">2.</span>log <span class="number">1.</span>log  -y -W <span class="number">50</span></span><br><span class="line">第一行			第一行</span><br><span class="line">第二行			第二行</span><br><span class="line">我是log2第<span class="number">3</span>行	      |	我是log1第<span class="number">3</span>行</span><br><span class="line">第四行			第四行</span><br><span class="line">		      &gt;	第五行</span><br><span class="line">		      &gt;	第六行</span><br><span class="line">[root@localhost test]# diff <span class="number">1.</span>log <span class="number">2.</span>log  -y -W <span class="number">50</span></span><br><span class="line">第一行			第一行</span><br><span class="line">第二行			第二行</span><br><span class="line">我是log1第<span class="number">3</span>行	      |	我是log2第<span class="number">3</span>行</span><br><span class="line">第四行			第四行</span><br><span class="line">第五行		      &lt;</span><br><span class="line">第六行		      &lt;</span><br></pre></td></tr></table></figure>
 <p>说明：</p>
-<p>输入 :n后，切换到 下一个文件，log2</p>
-<p>输入 :p 后，切换到 上一个文件，log1</p>
-<h2 id="5．附加备注"><a href="#5．附加备注" class="headerlink" title="5．附加备注"></a>5．附加备注</h2><h3 id="1-全屏导航"><a href="#1-全屏导航" class="headerlink" title="1.全屏导航"></a>1.全屏导航</h3><p>CentOs下：</p>
-<p>ctrl + F - 向前移动一屏</p>
-<p>ctrl + B - 向后移动一屏</p>
-<p>ctrl + D - 向前移动半屏</p>
-<p>ctrl + U - 向后移动半屏</p>
-<p>Ubuntu下：</p>
-<p>ctrl + F - 向后移动一屏</p>
-<p>ctrl + B - 向前移动一屏</p>
-<p>ctrl + D - 向后移动半屏</p>
-<p>ctrl + U - 向前移动半屏</p>
-<h3 id="2-单行导航"><a href="#2-单行导航" class="headerlink" title="2.单行导航"></a>2.单行导航</h3><p>CentOs下：<br>j - 向前移动一行</p>
-<p>k - 向后移动一行<br>Ubuntu下：<br>j - 向后移动一行</p>
-<p>k - 向前移动一行</p>
-<h3 id="3-其它导航"><a href="#3-其它导航" class="headerlink" title="3.其它导航"></a>3.其它导航</h3><p>G - 移动到最后一行</p>
-<p>g - 移动到第一行</p>
-<p>q / ZZ - 退出 less 命令</p>
-<h3 id="4-其它有用的命令"><a href="#4-其它有用的命令" class="headerlink" title="4.其它有用的命令"></a>4.其它有用的命令</h3><p>v - 使用配置的编辑器编辑当前文件</p>
-<p>h - 显示 less 的帮助文档</p>
-<p>&amp;pattern - 仅显示匹配模式的行，而不是整个文件</p>
-<h3 id="5-标记导航"><a href="#5-标记导航" class="headerlink" title="5.标记导航"></a>5.标记导航</h3><p>当使用 less 查看大文件时，可以在任何一个位置作标记，可以通过命令导航到标有特定标记的文本位置：</p>
-<p>ma - 使用 a 标记文本的当前位置</p>
-<p>‘a - 导航到标记 a 处</p>
+<p>“|”表示前后2个文件内容有不同</p>
+<p>“&lt;”表示后面文件比前面文件少了1行内容</p>
+<p>“&gt;”表示后面文件比前面文件多了1行内容</p>
+<h2 id="3-上下文格式输出"><a href="#3-上下文格式输出" class="headerlink" title="3. 上下文格式输出"></a>3. 上下文格式输出</h2><p>命令:</p>
+<pre><code>diff 2.log 1.log  -c
+</code></pre><p>输出:<br><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# diff 2.log 1.log  -c</span><br><span class="line"><span class="comment">*** 2.log	2018-12-03 10:21:24.914596171 +0800</span></span><br><span class="line"><span class="comment">--- 1.log	2018-12-03 10:22:30.922589959 +0800</span></span><br><span class="line"><span class="comment">***************</span></span><br><span class="line"><span class="meta">*** 1,4 ****</span></span><br><span class="line">  第一行</span><br><span class="line">  第二行</span><br><span class="line"><span class="addition">! 我是log2第3行</span></span><br><span class="line">  第四行</span><br><span class="line"><span class="meta">--- 1,6 ----</span></span><br><span class="line">  第一行</span><br><span class="line">  第二行</span><br><span class="line"><span class="addition">! 我是log1第3行</span></span><br><span class="line">  第四行</span><br><span class="line"><span class="addition">+ 第五行</span></span><br><span class="line"><span class="addition">+ 第六行</span></span><br><span class="line">[root@localhost test]# diff 1.log 2.log  -c</span><br><span class="line"><span class="comment">*** 1.log	2018-12-03 10:22:30.922589959 +0800</span></span><br><span class="line"><span class="comment">--- 2.log	2018-12-03 10:21:24.914596171 +0800</span></span><br><span class="line"><span class="comment">***************</span></span><br><span class="line"><span class="meta">*** 1,6 ****</span></span><br><span class="line">  第一行</span><br><span class="line">  第二行</span><br><span class="line"><span class="addition">! 我是log1第3行</span></span><br><span class="line">  第四行</span><br><span class="line"><span class="deletion">- 第五行</span></span><br><span class="line"><span class="deletion">- 第六行</span></span><br><span class="line"><span class="meta">--- 1,4 ----</span></span><br><span class="line">  第一行</span><br><span class="line">  第二行</span><br><span class="line"><span class="addition">! 我是log2第3行</span></span><br><span class="line">  第四行</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>这种方式在开头两行作了比较文件的说明，这里有三中特殊字符：</p>
+<p>“＋” 比较的文件的后者比前着多一行</p>
+<p>“－” 比较的文件的后者比前着少一行</p>
+<p>“！” 比较的文件两者有差别的行</p>
+<h2 id="4-统一格式输出"><a href="#4-统一格式输出" class="headerlink" title="4. 统一格式输出"></a>4. 统一格式输出</h2><p>命令:</p>
+<pre><code>diff 2.log 1.log  -c
+</code></pre><p>输出:</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# diff 2.log 1.log  -u</span><br><span class="line"><span class="comment">--- 2.log	2018-12-03 10:21:24.914596171 +0800</span></span><br><span class="line"><span class="comment">+++ 1.log	2018-12-03 10:22:30.922589959 +0800</span></span><br><span class="line"><span class="meta">@@ -1,4 +1,6 @@</span></span><br><span class="line"> 第一行</span><br><span class="line"> 第二行</span><br><span class="line"><span class="deletion">-我是log2第3行</span></span><br><span class="line"><span class="addition">+我是log1第3行</span></span><br><span class="line"> 第四行</span><br><span class="line"><span class="addition">+第五行</span></span><br><span class="line"><span class="addition">+第六行</span></span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>它的第一部分，也是文件的基本信息：</p>
+<p>— 2.log    2018-12-03 10:21:24.914596171 +0800<br>+++ 1.log    2018-12-03 10:22:30.922589959 +0800</p>
+<p>“—“表示变动前的文件，”+++”表示变动后的文件。</p>
+<p>第二部分，变动的位置用两个@作为起首和结束。</p>
+<p>@@ -1,4 +1,6 @@</p>
+<p>前面的”-1,4”分成三个部分：减号表示第一个文件（即2.log），”1”表示第1行，”4”表示连续4行。合在一起，就表示下面是第一个文件从第1行开始的连续4行。同样的，”+1,6”表示变动后，成为第二个文件从第1行开始的连续6行。</p>
+<h2 id="5-比较文件夹不同"><a href="#5-比较文件夹不同" class="headerlink" title="5. 比较文件夹不同"></a>5. 比较文件夹不同</h2><p>命令:</p>
+<pre><code>diff test test2
+</code></pre><p>输出:<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost hc]# <span class="keyword">ls</span> <span class="keyword">test</span></span><br><span class="line">1.<span class="keyword">log</span>  2.<span class="keyword">log</span>  2.<span class="keyword">log</span>.back</span><br><span class="line">[root@localhost hc]# <span class="keyword">ls</span> test2</span><br><span class="line">1.<span class="keyword">log</span>  2.<span class="built_in">log</span></span><br><span class="line">[root@localhost hc]# diff <span class="keyword">test</span> test2</span><br><span class="line">diff <span class="keyword">test</span>/1.<span class="keyword">log</span> test2/1.<span class="built_in">log</span></span><br><span class="line">5,6d4</span><br><span class="line">&lt; 第五行</span><br><span class="line">&lt; 第六行</span><br><span class="line">diff <span class="keyword">test</span>/2.<span class="keyword">log</span> test2/2.<span class="built_in">log</span></span><br><span class="line">4c4,5</span><br><span class="line">&lt; 第四行</span><br><span class="line">---</span><br><span class="line">&gt; 第四行1</span><br><span class="line">&gt; 第五行</span><br><span class="line">Only <span class="keyword">in</span> <span class="keyword">test</span>: 2.<span class="keyword">log</span>.back</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-比较两个文件不同，并生产补丁"><a href="#6-比较两个文件不同，并生产补丁" class="headerlink" title="6. 比较两个文件不同，并生产补丁"></a>6. 比较两个文件不同，并生产补丁</h2><p>命令：</p>
+<pre><code>diff -ruN  2.log.back  2.log &gt; patch.log
+</code></pre><p>输出：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">cat</span> 2<span class="selector-class">.log</span></span><br><span class="line">第一行</span><br><span class="line">第二行</span><br><span class="line">我是<span class="selector-tag">log2</span>第3行</span><br><span class="line">第四行</span><br><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">cat</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span> </span><br><span class="line">第一行</span><br><span class="line">第二行</span><br><span class="line">我是<span class="selector-tag">log2</span>第3行</span><br><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">diff</span> <span class="selector-tag">-ruN</span>  2<span class="selector-class">.log</span><span class="selector-class">.back</span>  2<span class="selector-class">.log</span> &gt; <span class="selector-tag">patch</span><span class="selector-class">.log</span></span><br><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">ll</span></span><br><span class="line"><span class="selector-tag">total</span> 16</span><br><span class="line"><span class="selector-tag">-rw-r--r--</span> 1 <span class="selector-tag">root</span> <span class="selector-tag">root</span>  68 12月  3 10<span class="selector-pseudo">:22</span> 1<span class="selector-class">.log</span></span><br><span class="line"><span class="selector-tag">-rw-r--r--</span> 1 <span class="selector-tag">root</span> <span class="selector-tag">root</span>  48 12月  3 10<span class="selector-pseudo">:21</span> 2<span class="selector-class">.log</span></span><br><span class="line"><span class="selector-tag">-rw-r--r--</span> 1 <span class="selector-tag">root</span> <span class="selector-tag">root</span>  38 12月  3 11<span class="selector-pseudo">:06</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span></span><br><span class="line"><span class="selector-tag">-rw-r--r--</span> 1 <span class="selector-tag">root</span> <span class="selector-tag">root</span> 165 12月  3 11<span class="selector-pseudo">:06</span> <span class="selector-tag">patch</span><span class="selector-class">.log</span></span><br><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">cat</span> <span class="selector-tag">patch</span><span class="selector-class">.log</span> </span><br><span class="line"><span class="selector-tag">---</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span>	2018<span class="selector-tag">-12-03</span> 11<span class="selector-pseudo">:06</span><span class="selector-pseudo">:25.587342012</span> +0800</span><br><span class="line">+++ 2<span class="selector-class">.log</span>	2018<span class="selector-tag">-12-03</span> 10<span class="selector-pseudo">:21</span><span class="selector-pseudo">:24.914596171</span> +0800</span><br><span class="line">@@ -<span class="number">1</span>,<span class="number">3</span> +<span class="number">1</span>,<span class="number">4</span> @@</span><br><span class="line"> 第一行</span><br><span class="line"> 第二行</span><br><span class="line"> 我是log2第<span class="number">3</span>行</span><br><span class="line">+第四行</span><br></pre></td></tr></table></figure></p>
+<h2 id="7-打补丁"><a href="#7-打补丁" class="headerlink" title="7. 打补丁"></a>7. 打补丁</h2><p>命令：</p>
+<pre><code>patch 2.log.back patch.log 
+</code></pre><p>输出：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">cat</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span> </span><br><span class="line">第一行</span><br><span class="line">第二行</span><br><span class="line">我是<span class="selector-tag">log2</span>第3行</span><br><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">patch</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span> <span class="selector-tag">patch</span><span class="selector-class">.log</span> </span><br><span class="line"><span class="selector-tag">patching</span> <span class="selector-tag">file</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span></span><br><span class="line"><span class="selector-attr">[root@localhost test]</span># <span class="selector-tag">cat</span> 2<span class="selector-class">.log</span><span class="selector-class">.back</span> </span><br><span class="line">第一行</span><br><span class="line">第二行</span><br><span class="line">我是<span class="selector-tag">log2</span>第3行</span><br><span class="line">第四行</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -684,7 +721,7 @@ var _hmt = _hmt || [];
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.hpython.cn/2018/11/07/linux每日命令(14)：less命令/" title="linux每日命令(14)：less命令">http://www.hpython.cn/2018/11/07/linux每日命令(14)：less命令/</a>
+    <a href="http://www.hpython.cn/2018/12/03/linux每日命令(33)：diff命令/" title="linux每日命令(33)：diff命令">http://www.hpython.cn/2018/12/03/linux每日命令(33)：diff命令/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -714,8 +751,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/06/linux每日命令(13)：more命令/" rel="next" title="linux每日命令(13)：more命令">
-                <i class="fa fa-chevron-left"></i> linux每日命令(13)：more命令
+              <a href="/2018/12/01/linux每日命令(32)：gzip命令/" rel="next" title="linux每日命令(32)：gzip命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(32)：gzip命令
               </a>
             
           </div>
@@ -723,10 +760,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/08/linux每日命令(15)：tail命令/" rel="prev" title="linux每日命令(15)：tail命令">
-                linux每日命令(15)：tail命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -878,7 +911,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一．命令格式："><span class="nav-text">一．命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令功能："><span class="nav-text">二．命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三．命令参数："><span class="nav-text">三．命令参数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四．使用实例："><span class="nav-text">四．使用实例：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-查看文件"><span class="nav-text">1.查看文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ps查看进程信息并通过less分页显示"><span class="nav-text">2. ps查看进程信息并通过less分页显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-查看命令历史使用记录并通过less分页显示"><span class="nav-text">3. 查看命令历史使用记录并通过less分页显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-浏览多个文件"><span class="nav-text">4. 浏览多个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5．附加备注"><span class="nav-text">5．附加备注</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-全屏导航"><span class="nav-text">1.全屏导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-单行导航"><span class="nav-text">2.单行导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-其它导航"><span class="nav-text">3.其它导航</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-其它有用的命令"><span class="nav-text">4.其它有用的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-标记导航"><span class="nav-text">5.标记导航</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-命令格式"><span class="nav-text">一. 命令格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令功能"><span class="nav-text">二．命令功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三-命令参数"><span class="nav-text">三. 命令参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-使用实例"><span class="nav-text">四. 使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-比较两个文件"><span class="nav-text">1. 比较两个文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-并排格式输出"><span class="nav-text">2. 并排格式输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-上下文格式输出"><span class="nav-text">3. 上下文格式输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-统一格式输出"><span class="nav-text">4. 统一格式输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-比较文件夹不同"><span class="nav-text">5. 比较文件夹不同</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-比较两个文件不同，并生产补丁"><span class="nav-text">6. 比较两个文件不同，并生产补丁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-打补丁"><span class="nav-text">7. 打补丁</span></a></li></ol></li></ol></div>
             
 
           </div>
