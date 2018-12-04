@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+	
+	
+	<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+	</script>
+  
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux命令," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux中的ps命令是Process Status的缩写。ps命令用来列出系统中当前运行的那些进程。ps命令列出的是当前那些进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。 要对进程进行监测和控制，首先必须要了解当前进程的情况，也就是需要查看当前进程，而 ps 命令就是最基本同时也是非常强大的进程查看命令。使用该命令可以确定有哪些进程正在运行和">
+<meta name="keywords" content="linux命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux每日命令(34)：ps命令和pstree命令">
+<meta property="og:url" content="http://www.hpython.cn/2018/12/04/linux每日命令(34)：ps命令和pstree命令/index.html">
+<meta property="og:site_name" content="Mark&#39;s Home">
+<meta property="og:description" content="Linux中的ps命令是Process Status的缩写。ps命令用来列出系统中当前运行的那些进程。ps命令列出的是当前那些进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。 要对进程进行监测和控制，首先必须要了解当前进程的情况，也就是需要查看当前进程，而 ps 命令就是最基本同时也是非常强大的进程查看命令。使用该命令可以确定有哪些进程正在运行和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-04T09:12:57.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux每日命令(34)：ps命令和pstree命令">
+<meta name="twitter:description" content="Linux中的ps命令是Process Status的缩写。ps命令用来列出系统中当前运行的那些进程。ps命令列出的是当前那些进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。 要对进程进行监测和控制，首先必须要了解当前进程的情况，也就是需要查看当前进程，而 ps 命令就是最基本同时也是非常强大的进程查看命令。使用该命令可以确定有哪些进程正在运行和">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hpython.cn/2018/12/04/linux每日命令(34)：ps命令和pstree命令/"/>
+
+
+
+
+
+  <title>linux每日命令(34)：ps命令和pstree命令 | Mark's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+</head>
+
+<!--<script type="text/javascript" src="/js/src/dytitle.js"></script>-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e20e6b1d0fc1866be6555005c1b22bdf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mark's Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">你要做多大的事情，就该承受多大的压力。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/12/04/linux每日命令(34)：ps命令和pstree命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark's Home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux每日命令(34)：ps命令和pstree命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T17:10:56+08:00">
+                2018-12-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-04T17:12:57+08:00">
+                2018-12-04
+              </time>
+            
+          </span>
+		  
+		
+			<span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux每日命令/" itemprop="url" rel="index">
+                    <span itemprop="name">linux每日命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,901
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Linux中的ps命令是Process Status的缩写。ps命令用来列出系统中当前运行的那些进程。ps命令列出的是当前那些进程的快照，就是执行ps命令的那个时刻的那些进程，如果想要动态的显示进程信息，就可以使用top命令。</p>
+<p>要对进程进行监测和控制，首先必须要了解当前进程的情况，也就是需要查看当前进程，而 ps 命令就是最基本同时也是非常强大的进程查看命令。使用该命令可以确定有哪些进程正在运行和运行的状态、进程是否结束、进程有没有僵死、哪些进程占用了过多的资源等等。总之大部分信息都是可以通过执行该命令得到的。</p>
+<p>ps 为我们提供了进程的一次性的查看，它所提供的查看结果并不动态连续的；如果想对进程时间监控，应该用 top 工具。</p>
+<p>kill 命令用于杀死进程。</p>
+<h1 id="linux上进程有5种状态"><a href="#linux上进程有5种状态" class="headerlink" title="linux上进程有5种状态"></a>linux上进程有5种状态</h1><ol>
+<li><p>运行(正在运行或在运行队列中等待) </p>
+</li>
+<li><p>中断(休眠中, 受阻, 在等待某个条件的形成或接受到信号) </p>
+</li>
+<li><p>不可中断(收到信号不唤醒和不可运行, 进程必须等待直到有中断发生) </p>
+</li>
+<li><p>僵死(进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放) </p>
+</li>
+<li><p>停止(进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行运行) </p>
+</li>
+</ol>
+<h1 id="一．命令格式："><a href="#一．命令格式：" class="headerlink" title="一．命令格式："></a>一．命令格式：</h1><pre><code>ps [参数]
+</code></pre><h1 id="二．命令功能："><a href="#二．命令功能：" class="headerlink" title="二．命令功能："></a>二．命令功能：</h1><p>用于显示当前进程 (process) 的状态。</p>
+<h1 id="三．命令参数："><a href="#三．命令参数：" class="headerlink" title="三．命令参数："></a>三．命令参数：</h1><p>ps 的参数非常多, 在此仅列出几个常用的参数并大略介绍含义</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-A</td>
+<td>列出所有的行程</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>等于“-A”</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>显示现行终端机下的所有进程，包括其他用户的进程；</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>以用户为主的进程状态 ；</td>
+</tr>
+<tr>
+<td>x</td>
+<td>通常与 a 这个参数一起使用，可列出较完整信息。</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>显示加宽可以显示较多的资讯</td>
+</tr>
+<tr>
+<td>-au</td>
+<td>显示较详细的资讯</td>
+</tr>
+<tr>
+<td>-aux</td>
+<td>显示所有包含其他使用者的行程</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>做一个更为完整的输出。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四-使用实例"><a href="#四-使用实例" class="headerlink" title="四. 使用实例"></a>四. 使用实例</h1><h2 id="1-显示所有进程信息"><a href="#1-显示所有进程信息" class="headerlink" title="1. 显示所有进程信息"></a>1. 显示所有进程信息</h2><p>命令：</p>
+<pre><code>ps -A
+</code></pre><p>输出：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@localhost autoAweme]</span># <span class="selector-tag">ps</span> <span class="selector-tag">-A</span></span><br><span class="line">   <span class="selector-tag">PID</span> <span class="selector-tag">TTY</span>          <span class="selector-tag">TIME</span> <span class="selector-tag">CMD</span></span><br><span class="line">     <span class="selector-tag">1</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:15</span> <span class="selector-tag">systemd</span></span><br><span class="line">     <span class="selector-tag">2</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kthreadd</span></span><br><span class="line">     <span class="selector-tag">3</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:56</span> <span class="selector-tag">ksoftirqd</span>/<span class="selector-tag">0</span></span><br><span class="line">     <span class="selector-tag">5</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kworker</span>/<span class="selector-tag">0</span><span class="selector-pseudo">:0H</span></span><br><span class="line">     <span class="selector-tag">7</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:01</span><span class="selector-pseudo">:01</span> <span class="selector-tag">migration</span>/<span class="selector-tag">0</span></span><br><span class="line">     <span class="selector-tag">8</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">rcu_bh</span></span><br><span class="line">     <span class="selector-tag">9</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:18</span><span class="selector-pseudo">:57</span> <span class="selector-tag">rcu_sched</span></span><br><span class="line">    <span class="selector-tag">10</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">lru-add-drain</span></span><br><span class="line">    <span class="selector-tag">11</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:03</span> <span class="selector-tag">watchdog</span>/<span class="selector-tag">0</span></span><br><span class="line">    <span class="selector-tag">12</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:02</span> <span class="selector-tag">watchdog</span>/<span class="selector-tag">1</span></span><br><span class="line">    <span class="selector-tag">13</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:01</span><span class="selector-pseudo">:01</span> <span class="selector-tag">migration</span>/<span class="selector-tag">1</span></span><br><span class="line">    <span class="selector-tag">14</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:56</span> <span class="selector-tag">ksoftirqd</span>/<span class="selector-tag">1</span></span><br><span class="line">    <span class="selector-tag">16</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kworker</span>/<span class="selector-tag">1</span><span class="selector-pseudo">:0H</span></span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-显示指定用户信息"><a href="#2-显示指定用户信息" class="headerlink" title="2. 显示指定用户信息"></a>2. 显示指定用户信息</h2><p>命令：</p>
+<pre><code>ps -u root
+</code></pre><p>输出：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@localhost autoAweme]</span># <span class="selector-tag">ps</span> <span class="selector-tag">-u</span> <span class="selector-tag">root</span></span><br><span class="line">   <span class="selector-tag">PID</span> <span class="selector-tag">TTY</span>          <span class="selector-tag">TIME</span> <span class="selector-tag">CMD</span></span><br><span class="line">     <span class="selector-tag">1</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:15</span> <span class="selector-tag">systemd</span></span><br><span class="line">     <span class="selector-tag">2</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kthreadd</span></span><br><span class="line">     <span class="selector-tag">3</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:56</span> <span class="selector-tag">ksoftirqd</span>/<span class="selector-tag">0</span></span><br><span class="line">     <span class="selector-tag">5</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kworker</span>/<span class="selector-tag">0</span><span class="selector-pseudo">:0H</span></span><br><span class="line">     <span class="selector-tag">7</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:01</span><span class="selector-pseudo">:01</span> <span class="selector-tag">migration</span>/<span class="selector-tag">0</span></span><br><span class="line">     <span class="selector-tag">8</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">rcu_bh</span></span><br><span class="line">     <span class="selector-tag">9</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:18</span><span class="selector-pseudo">:57</span> <span class="selector-tag">rcu_sched</span></span><br><span class="line">    <span class="selector-tag">10</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">lru-add-drain</span></span><br><span class="line">    <span class="selector-tag">11</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:03</span> <span class="selector-tag">watchdog</span>/<span class="selector-tag">0</span></span><br><span class="line">    <span class="selector-tag">12</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:02</span> <span class="selector-tag">watchdog</span>/<span class="selector-tag">1</span></span><br><span class="line">    <span class="selector-tag">13</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:01</span><span class="selector-pseudo">:01</span> <span class="selector-tag">migration</span>/<span class="selector-tag">1</span></span><br><span class="line">    <span class="selector-tag">14</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:56</span> <span class="selector-tag">ksoftirqd</span>/<span class="selector-tag">1</span></span><br><span class="line">    <span class="selector-tag">16</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kworker</span>/<span class="selector-tag">1</span><span class="selector-pseudo">:0H</span></span><br><span class="line">    <span class="selector-tag">18</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">kdevtmpfs</span></span><br><span class="line">    <span class="selector-tag">19</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">netns</span></span><br><span class="line">    <span class="selector-tag">20</span> ?        <span class="selector-tag">00</span><span class="selector-pseudo">:00</span><span class="selector-pseudo">:00</span> <span class="selector-tag">khungtaskd</span></span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure>
+<p>说明：<br>显示root进程用户信息</p>
+<h2 id="3-显示所有进程信息，连带命令行"><a href="#3-显示所有进程信息，连带命令行" class="headerlink" title="3. 显示所有进程信息，连带命令行"></a>3. 显示所有进程信息，连带命令行</h2><p>命令：</p>
+<pre><code>ps -ef
+</code></pre><p>输出：<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]<span class="comment"># ps -ef</span></span><br><span class="line">UID         PID   PPID  C STIME TTY          TIME CMD</span><br><span class="line">root         <span class="number"> 1 </span>    <span class="number"> 0 </span><span class="number"> 0 </span>11月30 ?      00:00:15 /usr/lib/systemd/systemd --swi</span><br><span class="line">root         <span class="number"> 2 </span>    <span class="number"> 0 </span><span class="number"> 0 </span>11月30 ?      00:00:00 [kthreadd]</span><br><span class="line">root         <span class="number"> 3 </span>    <span class="number"> 2 </span><span class="number"> 0 </span>11月30 ?      00:00:56 [ksoftirqd/0]</span><br><span class="line">root         <span class="number"> 5 </span>    <span class="number"> 2 </span><span class="number"> 0 </span>11月30 ?      00:00:00 [kworker/0:0H]</span><br><span class="line">root         <span class="number"> 7 </span>    <span class="number"> 2 </span><span class="number"> 0 </span>11月30 ?      00:01:01 [migration/0]</span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-ps-与grep-常用组合用法，查找特定进程"><a href="#4-ps-与grep-常用组合用法，查找特定进程" class="headerlink" title="4. ps 与grep 常用组合用法，查找特定进程"></a>4. ps 与grep 常用组合用法，查找特定进程</h2><p>命令：</p>
+<pre><code>ps -ef|grep uwsgi
+</code></pre><p>输出：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]<span class="meta"># ps -ef|grep uwsgi</span></span><br><span class="line">root      <span class="number">30568</span>    <span class="number">795</span>  <span class="number">0</span> <span class="number">12</span>月<span class="number">01</span> ?      <span class="number">00</span>:<span class="number">00</span>:<span class="number">19</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs<span class="meta-keyword">/pgc/</span>bin/uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>pgc.ini</span><br><span class="line">root      <span class="number">30578</span>  <span class="number">30568</span>  <span class="number">0</span> <span class="number">12</span>月<span class="number">01</span> ?      <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs<span class="meta-keyword">/pgc/</span>bin/uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>pgc.ini</span><br><span class="line">root      <span class="number">66069</span>    <span class="number">795</span>  <span class="number">1</span> <span class="number">12</span>:<span class="number">07</span> ?        <span class="number">00</span>:<span class="number">04</span>:<span class="number">29</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs/autoAweme<span class="meta-keyword">/bin/</span>uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>autoAweme.ini</span><br><span class="line">root      <span class="number">66096</span>  <span class="number">66069</span>  <span class="number">0</span> <span class="number">12</span>:<span class="number">07</span> ?        <span class="number">00</span>:<span class="number">00</span>:<span class="number">01</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs/autoAweme<span class="meta-keyword">/bin/</span>uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>autoAweme.ini</span><br><span class="line">root      <span class="number">80022</span>  <span class="number">86053</span>  <span class="number">0</span> <span class="number">16</span>:<span class="number">06</span> pts/<span class="number">1</span>    <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> grep --color=auto uwsgi</span><br></pre></td></tr></table></figure></p>
+<h2 id="5：将目前属于您自己这次登入的-PID-与相关信息列示出来"><a href="#5：将目前属于您自己这次登入的-PID-与相关信息列示出来" class="headerlink" title="5：将目前属于您自己这次登入的 PID 与相关信息列示出来"></a>5：将目前属于您自己这次登入的 PID 与相关信息列示出来</h2><p>命令：</p>
+<pre><code>ps -l
+</code></pre><p>输出：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]<span class="comment"># ps -l</span></span><br><span class="line">F S   UID    PID   PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD</span><br><span class="line">4 S    <span class="number"> 0 </span><span class="number"> 85984 </span><span class="number"> 80319 </span><span class="number"> 0 </span><span class="number"> 80 </span> <span class="number"> 0 </span>-<span class="number"> 58596 </span>do_wai pts/1    00:00:00 su</span><br><span class="line">4 S    <span class="number"> 0 </span><span class="number"> 86053 </span><span class="number"> 85984 </span><span class="number"> 0 </span><span class="number"> 80 </span> <span class="number"> 0 </span>-<span class="number"> 29208 </span>do_wai pts/1    00:00:01 bash</span><br><span class="line">0 R    <span class="number"> 0 </span>107795 <span class="number"> 86053 </span><span class="number"> 0 </span><span class="number"> 80 </span> <span class="number"> 0 </span>-<span class="number"> 38300 </span>-      pts/1    00:00:00 ps</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>各相关信息的意义：</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+<td>代表这个程序的旗标 (flag)， 4 代表使用者为 super user</td>
+</tr>
+<tr>
+<td>S</td>
+<td>代表这个程序的状态 (STAT)，关于各 STAT 的意义将在内文介绍</td>
+</tr>
+<tr>
+<td>UID</td>
+<td>程序被该 UID 所拥有</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>就是这个程序的 ID ！</td>
+</tr>
+<tr>
+<td>PPID</td>
+<td>则是其上级父程序的ID</td>
+</tr>
+<tr>
+<td>C</td>
+<td>CPU 使用的资源百分比</td>
+</tr>
+<tr>
+<td>PRI</td>
+<td>指进程的执行优先权(Priority的简写)，其值越小越早被执行；</td>
+</tr>
+<tr>
+<td>NI</td>
+<td>这个进程的nice值，其表示进程可被执行的优先级的修正数值。</td>
+</tr>
+<tr>
+<td>ADDR</td>
+<td>这个是内核函数，指出该程序在内存的那个部分。如果是个 running的程序，一般就是 “-“</td>
+</tr>
+<tr>
+<td>SZ</td>
+<td>使用掉的内存大小</td>
+</tr>
+<tr>
+<td>WCHAN</td>
+<td>目前这个程序是否正在运作当中，若为 - 表示正在运作</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>登入者的终端机位置</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>使用掉的 CPU 时间。</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>所下达的指令为何</td>
+</tr>
+</tbody>
+</table>
+<p>在预设的情况下， ps 仅会列出与目前所在的 bash shell 有关的 PID 而已，所以， 当我使用 ps -l 的时候，只有三个 PID。</p>
+<h2 id="6-列出目前所有的正在内存当中的程序"><a href="#6-列出目前所有的正在内存当中的程序" class="headerlink" title="6.列出目前所有的正在内存当中的程序"></a>6.列出目前所有的正在内存当中的程序</h2><p>命令：</p>
+<pre><code>ps aux
+</code></pre><p>输出：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]<span class="comment"># ps aux</span></span><br><span class="line">USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         <span class="number"> 1 </span> 0.0  0.1<span class="number"> 125804 </span><span class="number"> 4260 </span>?        Ss   11月30   0:15 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</span><br><span class="line">root         <span class="number"> 2 </span> 0.0  0.0     <span class="number"> 0 </span>   <span class="number"> 0 </span>?        S    11月30   0:00 [kthreadd]</span><br><span class="line">root         <span class="number"> 3 </span> 0.0  0.0     <span class="number"> 0 </span>   <span class="number"> 0 </span>?        S    11月30   0:56 [ksoftirqd/0]</span><br><span class="line">root         <span class="number"> 5 </span> 0.0  0.0     <span class="number"> 0 </span>   <span class="number"> 0 </span>?        S&lt;   11月30   0:00 [kworker/0:0H]</span><br><span class="line">root         <span class="number"> 7 </span> 0.0  0.0     <span class="number"> 0 </span>   <span class="number"> 0 </span>?        S    11月30   1:01 [migration/0]</span><br><span class="line">root         <span class="number"> 8 </span> 0.0  0.0     <span class="number"> 0 </span>   <span class="number"> 0 </span>?        S    11月30   0:00 [rcu_bh]</span><br><span class="line">root         <span class="number"> 9 </span> 0.3  0.0     <span class="number"> 0 </span>   <span class="number"> 0 </span>?        S    11月30  19:02 [rcu_sched]</span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USER</td>
+<td>该 process 属于那个使用者账号的</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>该 process 的号码</td>
+</tr>
+<tr>
+<td>%CPU</td>
+<td>该 process 使用掉的 CPU 资源百分比</td>
+</tr>
+<tr>
+<td>%MEM</td>
+<td>该 process 所占用的物理内存百分比</td>
+</tr>
+<tr>
+<td>VSZ</td>
+<td>该 process 使用掉的虚拟内存量 (Kbytes)</td>
+</tr>
+<tr>
+<td>RSS</td>
+<td>该 process 占用的固定的内存量 (Kbytes)</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>该 process 是在那个终端机上面运作，若与终端机无关，则显示 ?，另外， tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。</td>
+</tr>
+<tr>
+<td>STAT</td>
+<td>该程序目前的状态</td>
+</tr>
+<tr>
+<td>START</td>
+<td>该 process 被触发启动的时间</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>该 process 实际使用 CPU 运作的时间</td>
+</tr>
+<tr>
+<td>COMMAND</td>
+<td>该程序的实际指令</td>
+</tr>
+</tbody>
+</table>
+<p>STAT：该程序目前的状态，主要的状态有</p>
+<h3 id="ps工具标识进程的5种状态码"><a href="#ps工具标识进程的5种状态码" class="headerlink" title="ps工具标识进程的5种状态码"></a>ps工具标识进程的5种状态码</h3><ul>
+<li>D ：不可中断 uninterruptible sleep (usually IO) </li>
+<li>R ：该程序目前正在运作，或者是可被运作</li>
+<li>S ：该程序目前正在睡眠当中 (可说是 idle 状态)，但可被某些讯号 (signal) 唤醒。</li>
+<li>T ：该程序目前正在侦测或者是停止了</li>
+<li>Z ：该程序应该已经终止，但是其父程序却无法正常的终止他，造成 zombie (疆尸) 程序的状态</li>
+</ul>
+<h2 id="7-以类似进程树的结构显示"><a href="#7-以类似进程树的结构显示" class="headerlink" title="7.以类似进程树的结构显示"></a>7.以类似进程树的结构显示</h2><p>命令：</p>
+<pre><code>ps -axjf
+</code></pre><p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]# ps -axjf</span><br><span class="line">  PPID    PID   PGID    SID TTY       TPGID STAT   UID   TIME COMMAND</span><br><span class="line">     0      2      0      0 ?            -1 S        0   0:00 [kthreadd]</span><br><span class="line">     2      3      0      0 ?            -1 S        0   0:57  \_ [ksoftirqd/0]</span><br><span class="line">     2      5      0      0 ?            -1 S&lt;       0   0:00  \_ [kworker/0:0H]</span><br><span class="line">     2      7      0      0 ?            -1 S        0   1:02  \_ [migration/0]</span><br><span class="line">……省略部分结果</span><br><span class="line">     1  80310   2416   2416 ?            -1 Sl    1000   0:25 /usr/libexec/gnome-terminal-server</span><br><span class="line"> 80310  80318   2416   2416 ?            -1 S     1000   0:00  \_ gnome-pty-helper</span><br><span class="line"> 80310  80319  80319  80319 pts/1     28727 Ss    1000   0:00  \_ bash</span><br><span class="line"> 80319  85984  85984  80319 pts/1     28727 S        0   0:00      \_ su</span><br><span class="line"> 85984  86053  86053  80319 pts/1     28727 S        0   0:01          \_ bash</span><br><span class="line"> 86053  28727  28727  80319 pts/1     28727 R+       0   0:00              \_ ps -axjf</span><br></pre></td></tr></table></figure>
+<h2 id="8-pstree命令更优雅的树状显示"><a href="#8-pstree命令更优雅的树状显示" class="headerlink" title="8. pstree命令更优雅的树状显示"></a>8. pstree命令更优雅的树状显示</h2><p>pstree命令以树状图显示进程间的关系（display a tree of processes）。ps命令可以显示当前正在运行的那些进程的信息，但是对于它们之间的关系却显示得不够清晰。在Linux系统中，系统调用fork可以创建子进程，通过子shell也可以创建子进程，Linux系统中进程之间的关系天生就是一棵树，树的根就是进程PID为1的init进程。</p>
+<h3 id="以树状图只显示进程的名字，且相同进程合并显示："><a href="#以树状图只显示进程的名字，且相同进程合并显示：" class="headerlink" title="以树状图只显示进程的名字，且相同进程合并显示："></a>以树状图只显示进程的名字，且相同进程合并显示：</h3><p>命令：</p>
+<pre><code>pstree
+</code></pre><p>输出：<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">[root@localhost autoAweme]</span># pstree</span><br><span class="line">systemd─┬─ModemManager───<span class="number">2</span>*<span class="string">[&#123;ModemManager&#125;]</span></span><br><span class="line">        ├─NetworkManager───<span class="number">2</span>*<span class="string">[&#123;NetworkManager&#125;]</span></span><br><span class="line">        ├─VGAuthService</span><br><span class="line">        ├─<span class="number">2</span>*<span class="string">[abrt-watch-log]</span></span><br><span class="line">        ├─abrtd</span><br><span class="line">        ├─accounts-daemon───<span class="number">2</span>*<span class="string">[&#123;accounts-daemon&#125;]</span></span><br><span class="line">        ├─alsactl</span><br><span class="line">        ├─at-spi-bus-laun─┬─dbus-daemon</span><br><span class="line">        │                 └─<span class="number">3</span>*<span class="string">[&#123;at-spi-bus-laun&#125;]</span></span><br><span class="line">        ├─at-spi2-registr───<span class="number">2</span>*<span class="string">[&#123;at-spi2-registr&#125;]</span></span><br><span class="line">        ├─atd</span><br><span class="line">        ├─auditd─┬─audispd─┬─sedispatch</span><br><span class="line">        │        │         └─&#123;audispd&#125;</span><br><span class="line">        │        └─&#123;auditd&#125;</span><br><span class="line">        ├─avahi-daemon───avahi-daemon</span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure></p>
+<h3 id="以树状图显示进程同时还显示PID："><a href="#以树状图显示进程同时还显示PID：" class="headerlink" title="以树状图显示进程同时还显示PID："></a>以树状图显示进程同时还显示PID：</h3><p>命令：</p>
+<pre><code>pstree -p
+</code></pre><p>输出：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@localhost autoAweme]</span># <span class="selector-tag">pstree</span> <span class="selector-tag">-p</span></span><br><span class="line"><span class="selector-tag">systemd</span>(<span class="number">1</span>)─┬─<span class="selector-tag">ModemManager</span>(<span class="number">686</span>)─┬─&#123;<span class="selector-tag">ModemManager</span>&#125;(<span class="number">722</span>)</span><br><span class="line">           │                   └─&#123;<span class="selector-tag">ModemManager</span>&#125;(<span class="number">744</span>)</span><br><span class="line">           ├─<span class="selector-tag">NetworkManager</span>(<span class="number">796</span>)─┬─&#123;<span class="selector-tag">NetworkManager</span>&#125;(<span class="number">807</span>)</span><br><span class="line">           │                     └─&#123;<span class="selector-tag">NetworkManager</span>&#125;(<span class="number">811</span>)</span><br><span class="line">           ├─<span class="selector-tag">VGAuthService</span>(<span class="number">677</span>)</span><br><span class="line">           ├─<span class="selector-tag">abrt-watch-log</span>(<span class="number">698</span>)</span><br><span class="line">           ├─<span class="selector-tag">abrt-watch-log</span>(<span class="number">703</span>)</span><br><span class="line">           ├─<span class="selector-tag">abrtd</span>(<span class="number">684</span>)</span><br><span class="line">           ├─<span class="selector-tag">accounts-daemon</span>(<span class="number">680</span>)─┬─&#123;<span class="selector-tag">accounts-daemon</span>&#125;(<span class="number">699</span>)</span><br><span class="line">           │                      └─&#123;<span class="selector-tag">accounts-daemon</span>&#125;(<span class="number">742</span>)</span><br><span class="line">           ├─<span class="selector-tag">alsactl</span>(<span class="number">679</span>)</span><br><span class="line">           ├─<span class="selector-tag">at-spi-bus-laun</span>(<span class="number">2636</span>)─┬─<span class="selector-tag">dbus-daemon</span>(<span class="number">2641</span>)</span><br><span class="line">           │                       ├─&#123;<span class="selector-tag">at-spi-bus-laun</span>&#125;(<span class="number">2637</span>)</span><br><span class="line">           │                       ├─&#123;<span class="selector-tag">at-spi-bus-laun</span>&#125;(<span class="number">2638</span>)</span><br><span class="line">           │                       └─&#123;<span class="selector-tag">at-spi-bus-laun</span>&#125;(<span class="number">2640</span>)</span><br><span class="line">           ├─<span class="selector-tag">at-spi2-registr</span>(<span class="number">2643</span>)─┬─&#123;<span class="selector-tag">at-spi2-registr</span>&#125;(<span class="number">2648</span>)</span><br><span class="line">           │                       └─&#123;<span class="selector-tag">at-spi2-registr</span>&#125;(<span class="number">2649</span>)</span><br><span class="line">           ├─<span class="selector-tag">atd</span>(<span class="number">1171</span>)</span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure></p>
+<h3 id="以树状图显示进程PID为的进程以及子孙进程，如果有-p参数则同时显示每个进程的PID："><a href="#以树状图显示进程PID为的进程以及子孙进程，如果有-p参数则同时显示每个进程的PID：" class="headerlink" title="以树状图显示进程PID为的进程以及子孙进程，如果有-p参数则同时显示每个进程的PID："></a>以树状图显示进程PID为<pid>的进程以及子孙进程，如果有-p参数则同时显示每个进程的PID：</pid></h3><p>命令：</p>
+<pre><code>pstree [-p] &lt;pid&gt;
+</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]# pstree 1244</span><br><span class="line">mysqld_safe───mysqld───19*[&#123;mysqld&#125;]</span><br><span class="line">[root@localhost autoAweme]# pstree -p 1244</span><br><span class="line">mysqld_safe(1244)───mysqld(1869)─┬─&#123;mysqld&#125;(1906)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1911)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1912)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1913)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1914)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1915)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1916)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1917)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1918)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1919)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1920)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1926)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1927)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1928)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1929)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1930)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(1931)</span><br><span class="line">                                 ├─&#123;mysqld&#125;(2081)</span><br><span class="line">                                 └─&#123;mysqld&#125;(77714)</span><br></pre></td></tr></table></figure></p>
+<p>以树状图显示进程，相同名称的进程不合并显示，并且会显示命令行参数，如果有-p参数则同时显示每个进程的PID。</p>
+<p>命令：</p>
+<pre><code>pstree -a
+</code></pre><p>输出：</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]<span class="meta"># pstree -a</span></span><br><span class="line">systemd --switched-root --system --deserialize <span class="number">22</span></span><br><span class="line">  ├─ModemManager</span><br><span class="line">  │   └─<span class="number">2</span>*[&#123;ModemManager&#125;]</span><br><span class="line">  ├─NetworkManager --no-daemon</span><br><span class="line">  │   └─<span class="number">2</span>*[&#123;NetworkManager&#125;]</span><br><span class="line">  ├─VGAuthService -s</span><br><span class="line">  ├─supervisord <span class="meta-keyword">/usr/</span>bin/supervisord -c <span class="meta-keyword">/etc/</span>supervisord.conf</span><br><span class="line">  │   ├─celery <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span><span class="meta-keyword">/envs/</span>autoAweme<span class="meta-keyword">/bin/</span>celery worker -A celery_worker.celery -l info</span><br><span class="line">  │   │   ├─celery <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span><span class="meta-keyword">/envs/</span>autoAweme<span class="meta-keyword">/bin/</span>celery worker -A celery_worker.celery -l info</span><br><span class="line">  │   │   │   └─&#123;celery&#125;</span><br><span class="line">  │   │   ├─celery <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span><span class="meta-keyword">/envs/</span>autoAweme<span class="meta-keyword">/bin/</span>celery worker -A celery_worker.celery -l info</span><br><span class="line">  │   │   │   └─&#123;celery&#125;</span><br><span class="line">  │   │   └─<span class="number">2</span>*[&#123;celery&#125;]</span><br><span class="line">  │   ├─uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>pgc.ini</span><br><span class="line">  │   │   └─uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>pgc.ini</span><br><span class="line">  │   └─uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>autoAweme.ini</span><br><span class="line">  │       ├─uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>autoAweme.ini</span><br><span class="line">  │       └─<span class="number">2</span>*[&#123;uwsgi&#125;]</span><br><span class="line">……省略部分结果</span><br></pre></td></tr></table></figure>
+<p>注：因为pstree输出的信息可能比较多，所以最好与more/less配合使用,使用上下箭头查看，按q退出。</p>
+<pre><code>pstree -p | less
+</code></pre><h2 id="9-其他实例"><a href="#9-其他实例" class="headerlink" title="9. 其他实例"></a>9. 其他实例</h2><ol>
+<li>可以用 | 管道和 more 连接起来分页查看</li>
+</ol>
+<p>命令：</p>
+<pre><code>ps -aux |more
+</code></pre><ol start="2">
+<li>把所有进程显示出来，并输出到ps001.txt文件</li>
+</ol>
+<p>命令：</p>
+<pre><code>ps -aux &gt; ps001.txt
+</code></pre><ol start="3">
+<li>输出指定的字段</li>
+</ol>
+<p>命令：</p>
+<pre><code>ps -o pid,ppid,pgrp,session,tpgid,comm
+</code></pre>
+      
+    </div>
+    
+    
+    
+	
+	
+	
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+    
+ </div>
+ 
+	
+	
+
+	
+	
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>希望文章对您有所帮助，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mark 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mark 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+	
+	
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mark
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.hpython.cn/2018/12/04/linux每日命令(34)：ps命令和pstree命令/" title="linux每日命令(34)：ps命令和pstree命令">http://www.hpython.cn/2018/12/04/linux每日命令(34)：ps命令和pstree命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-creative-commons"></i>CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+	
+	
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag" style="background: #ff945c"><i class="fa fa-tag"></i> linux命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/03/linux每日命令(33)：diff命令/" rel="next" title="linux每日命令(33)：diff命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(33)：diff命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI5MC8xNDgxOA=="></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Mark" />
+            
+              <p class="site-author-name" itemprop="name">Mark</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Mark-IT" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux上进程有5种状态"><span class="nav-text">linux上进程有5种状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一．命令格式："><span class="nav-text">一．命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令功能："><span class="nav-text">二．命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三．命令参数："><span class="nav-text">三．命令参数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-使用实例"><span class="nav-text">四. 使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-显示所有进程信息"><span class="nav-text">1. 显示所有进程信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-显示指定用户信息"><span class="nav-text">2. 显示指定用户信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-显示所有进程信息，连带命令行"><span class="nav-text">3. 显示所有进程信息，连带命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-ps-与grep-常用组合用法，查找特定进程"><span class="nav-text">4. ps 与grep 常用组合用法，查找特定进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5：将目前属于您自己这次登入的-PID-与相关信息列示出来"><span class="nav-text">5：将目前属于您自己这次登入的 PID 与相关信息列示出来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-列出目前所有的正在内存当中的程序"><span class="nav-text">6.列出目前所有的正在内存当中的程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ps工具标识进程的5种状态码"><span class="nav-text">ps工具标识进程的5种状态码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-以类似进程树的结构显示"><span class="nav-text">7.以类似进程树的结构显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-pstree命令更优雅的树状显示"><span class="nav-text">8. pstree命令更优雅的树状显示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以树状图只显示进程的名字，且相同进程合并显示："><span class="nav-text">以树状图只显示进程的名字，且相同进程合并显示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以树状图显示进程同时还显示PID："><span class="nav-text">以树状图显示进程同时还显示PID：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以树状图显示进程PID为的进程以及子孙进程，如果有-p参数则同时显示每个进程的PID："><span class="nav-text">以树状图显示进程PID为的进程以及子孙进程，如果有-p参数则同时显示每个进程的PID：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-其他实例"><span class="nav-text">9. 其他实例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+	<!--<a href="https://github.com/Mark-IT"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>-->
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
+  <div style="display:none">
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">63.9k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+   |  本页点击 <span id="busuanzi_value_page_pv"></span> 次
+  |  本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+  |  您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  <!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
