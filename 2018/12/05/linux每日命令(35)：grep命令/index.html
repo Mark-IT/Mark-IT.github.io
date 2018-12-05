@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+	
+	
+	<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+	</script>
+  
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux命令," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。 grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+<meta name="keywords" content="linux命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux每日命令(35)：grep命令">
+<meta property="og:url" content="http://www.hpython.cn/2018/12/05/linux每日命令(35)：grep命令/index.html">
+<meta property="og:site_name" content="Mark&#39;s Home">
+<meta property="og:description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。 grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-05T02:38:08.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux每日命令(35)：grep命令">
+<meta name="twitter:description" content="Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。 grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hpython.cn/2018/12/05/linux每日命令(35)：grep命令/"/>
+
+
+
+
+
+  <title>linux每日命令(35)：grep命令 | Mark's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+</head>
+
+<!--<script type="text/javascript" src="/js/src/dytitle.js"></script>-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e20e6b1d0fc1866be6555005c1b22bdf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mark's Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">你要做多大的事情，就该承受多大的压力。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/12/05/linux每日命令(35)：grep命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark's Home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux每日命令(35)：grep命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T10:37:47+08:00">
+                2018-12-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-05T10:38:08+08:00">
+                2018-12-05
+              </time>
+            
+          </span>
+		  
+		
+			<span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux每日命令/" itemprop="url" rel="index">
+                    <span itemprop="name">linux每日命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,414
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。</p>
+<p>grep的工作方式是这样的，它在一个或多个文件中搜索字符串模板。如果模板包括空格，则必须被引用，模板后的所有字符串被看作文件名。搜索的结果被送到标准输出，不影响原文件内容。</p>
+<p>grep可用于shell脚本，因为grep通过返回一个状态值来说明搜索的状态，如果模板搜索成功，则返回0，如果搜索不成功，则返回1，如果搜索的文件不存在，则返回2。我们利用这些返回值就可进行一些自动化的文本处理工作。</p>
+<h1 id="一．命令格式："><a href="#一．命令格式：" class="headerlink" title="一．命令格式："></a>一．命令格式：</h1><pre><code>grep [-abcEFGhHilLnqrsvVwxy][-A&lt;显示列数&gt;][-B&lt;显示列数&gt;][-C&lt;显示列数&gt;][-d&lt;进行动作&gt;][-e&lt;范本样式&gt;][-f&lt;范本文件&gt;][--help][范本样式][文件或目录...]
+</code></pre><h1 id="二．命令功能："><a href="#二．命令功能：" class="headerlink" title="二．命令功能："></a>二．命令功能：</h1><p>用于过滤/搜索的特定字符。可使用正则表达式能多种命令配合使用，使用上十分灵活。</p>
+<h1 id="三．命令参数："><a href="#三．命令参数：" class="headerlink" title="三．命令参数："></a>三．命令参数：</h1><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>或 –text : 不要忽略二进制的数据。</td>
+</tr>
+<tr>
+<td>-A&lt;显示行数&gt;</td>
+<td>或 –after-context=&lt;显示行数&gt; : 除了显示符合范本样式的那一列之外，并显示该行之后的内容。</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>或 –byte-offset : 在显示符合样式的那一行之前，标示出该行第一个字符的编号。</td>
+</tr>
+<tr>
+<td>-B&lt;显示行数&gt;</td>
+<td>或 –before-context=&lt;显示行数&gt; : 除了显示符合样式的那一行之外，并显示该行之前的内容。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>或 –count : 计算符合样式的列数。</td>
+</tr>
+<tr>
+<td>-C&lt;显示行数&gt;</td>
+<td>或 –context=&lt;显示行数&gt;或-&lt;显示行数&gt; : 除了显示符合样式的那一行之外，并显示该行之前后的内容。</td>
+</tr>
+<tr>
+<td>-d &lt;动作&gt;</td>
+<td>或 –directories=&lt;动作&gt; : 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。</td>
+</tr>
+<tr>
+<td>-e&lt;范本样式&gt;</td>
+<td>或 –regexp=&lt;范本样式&gt; : 指定字符串做为查找文件内容的样式。</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>或 –extended-regexp : 将样式为延伸的普通表示法来使用。</td>
+</tr>
+<tr>
+<td>-f&lt;规则文件&gt; 或 –file=&lt;规则文件&gt; : 指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>或 –fixed-regexp : 将样式视为固定字符串的列表。</td>
+</tr>
+<tr>
+<td>-G</td>
+<td>或 –basic-regexp : 将样式视为普通的表示法来使用。</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>或 –no-filename : 在显示符合样式的那一行之前，不标示该行所属的文件名称。</td>
+</tr>
+<tr>
+<td>-H</td>
+<td>或 –with-filename : 在显示符合样式的那一行之前，表示该行所属的文件名称。</td>
+<td></td>
+</tr>
+<tr>
+<td>-i</td>
+<td>或 –ignore-case : 忽略字符大小写的差别。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>或 –file-with-matches : 列出文件内容符合指定的样式的文件名称。</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>或 –files-without-match : 列出文件内容不符合指定的样式的文件名称。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>或 –line-number : 在显示符合样式的那一行之前，标示出该行的列数编号。</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>或 –quiet或–silent : 不显示任何信息。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>或 –recursive : 此参数的效果和指定”-d recurse”参数相同。</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>或 –no-messages : 不显示错误信息。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>或 –revert-match : 显示不包含匹配文本的所有行。</td>
+</tr>
+<tr>
+<td>-V</td>
+<td>或 –version : 显示版本信息。</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>或 –word-regexp : 只显示全字符合的列。</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>–line-regexp : 只显示全列符合的列。</td>
+</tr>
+<tr>
+<td>-y</td>
+<td>此参数的效果和指定”-i”参数相同。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四-规则表达式"><a href="#四-规则表达式" class="headerlink" title="四. 规则表达式"></a>四. 规则表达式</h1><h2 id="grep-的规则表达式"><a href="#grep-的规则表达式" class="headerlink" title="grep 的规则表达式"></a>grep 的规则表达式</h2><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>锚定行的开始 如：’^grep’匹配所有以grep开头的行。</td>
+</tr>
+<tr>
+<td>$</td>
+<td>锚定行的结束 如：’grep$’匹配所有以grep结尾的行。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>匹配一个非换行符的字符 如：’gr.p’匹配gr后接一个任意字符，然后是p。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配零个或多个先前字符 如：’*grep’匹配所有一个或多个空格后紧跟grep的行。</td>
+</tr>
+<tr>
+<td>.*</td>
+<td>一起用代表任意字符。</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配一个指定范围内的字符，如’[Gg]rep’匹配Grep和grep。</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>匹配一个不在指定范围内的字符，如：’[^A-FH-Z]rep’匹配不包含A-F和H-Z的一个字母开头，紧跟rep的行。</td>
+</tr>
+<tr>
+<td>\(..)  #标记匹配字符，如’(love)‘，love被标记为1。</td>
+</tr>
+<tr>
+<td>\&lt;</td>
+<td>锚定单词的开始，如:’\&lt;grep’匹配包含以grep开头的单词的行。</td>
+</tr>
+<tr>
+<td>></td>
+<td>锚定单词的结束，如’grep>‘匹配包含以grep结尾的单词的行。</td>
+</tr>
+<tr>
+<td>x{m}</td>
+<td>重复字符x，m次，如：’0{5}‘匹配包含5个o的行。</td>
+</tr>
+<tr>
+<td>x{m,}</td>
+<td>重复字符x,至少m次，如：’o{5,}‘匹配至少有5个o的行。</td>
+</tr>
+<tr>
+<td>x{m,n}</td>
+<td>重复字符x，至少m次，不多于n次，如：’o{5,10}‘匹配5–10个o的行。</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配文字和数字字符，也就是[A-Za-z0-9]，如：’G\w*p’匹配以G后跟零个或多个文字或数字字符，然后是p。</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>\w的反置形式，匹配一个或多个非单词字符，如点号句号等。</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>单词锁定符，如: ‘\bgrep\b’只匹配grep。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="POSIX字符"><a href="#POSIX字符" class="headerlink" title="POSIX字符:"></a>POSIX字符:</h2><p>为了在不同国家的字符编码中保持一至，POSIX(The Portable Operating System Interface)增加了特殊的字符类，如[:alnum:]是[A-Za-z0-9]的另一个写法。要把它们放到[]号内才能成为正则表达式，如[A- Za-z0-9]或[[:alnum:]]。在linux下的grep除fgrep外，都支持POSIX的字符类。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:alnum:]</td>
+<td>文字数字字符</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>文字字符</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>数字字符</td>
+</tr>
+<tr>
+<td>[:graph:]</td>
+<td>非空字符（非空格、控制字符）</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>小写字符</td>
+</tr>
+<tr>
+<td>[:cntrl:]</td>
+<td>控制字符</td>
+</tr>
+<tr>
+<td>[:print:]</td>
+<td>非空字符（包括空格）</td>
+</tr>
+<tr>
+<td>[:punct:]</td>
+<td>标点符号</td>
+</tr>
+<tr>
+<td>[:space:]</td>
+<td>所有空白字符（新行，空格，制表符）</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td>大写字符</td>
+</tr>
+<tr>
+<td>[:xdigit:]</td>
+<td>十六进制数字（0-9，a-f，A-F）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="五-使用实例"><a href="#五-使用实例" class="headerlink" title="五. 使用实例"></a>五. 使用实例</h1><h2 id="1-查找指定进程"><a href="#1-查找指定进程" class="headerlink" title="1. 查找指定进程"></a>1. 查找指定进程</h2><p>命令：</p>
+<pre><code>ps -ef|grep uwsgi
+</code></pre><p>输出：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost autoAweme]<span class="meta"># ps -ef|grep uwsgi</span></span><br><span class="line">root      <span class="number">30568</span>    <span class="number">795</span>  <span class="number">0</span> <span class="number">12</span>月<span class="number">01</span> ?      <span class="number">00</span>:<span class="number">00</span>:<span class="number">23</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs<span class="meta-keyword">/pgc/</span>bin/uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>pgc.ini</span><br><span class="line">root      <span class="number">30578</span>  <span class="number">30568</span>  <span class="number">0</span> <span class="number">12</span>月<span class="number">01</span> ?      <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs<span class="meta-keyword">/pgc/</span>bin/uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>pgc.ini</span><br><span class="line">root      <span class="number">59379</span>    <span class="number">795</span>  <span class="number">1</span> <span class="number">12</span>月<span class="number">04</span> ?      <span class="number">00</span>:<span class="number">13</span>:<span class="number">13</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs/autoAweme<span class="meta-keyword">/bin/</span>uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>autoAweme.ini</span><br><span class="line">root      <span class="number">59406</span>  <span class="number">59379</span>  <span class="number">0</span> <span class="number">12</span>月<span class="number">04</span> ?      <span class="number">00</span>:<span class="number">00</span>:<span class="number">03</span> <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>envs/autoAweme<span class="meta-keyword">/bin/</span>uwsgi --ini <span class="meta-keyword">/home/</span>hc<span class="meta-keyword">/project/</span>autoAweme.ini</span><br><span class="line">root     <span class="number">112483</span>  <span class="number">86053</span>  <span class="number">0</span> <span class="number">09</span>:<span class="number">29</span> pts/<span class="number">1</span>    <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> grep --color=auto uwsgi</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>除最后一条记录外，其他的都是查找出的进程；最后一条记录结果是grep进程本身，并非真正要找的进程。</p>
+<h2 id="2-查找指定进程时，不显示grep-本身进程"><a href="#2-查找指定进程时，不显示grep-本身进程" class="headerlink" title="2.  查找指定进程时，不显示grep 本身进程"></a>2.  查找指定进程时，不显示grep 本身进程</h2><p>命令：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> aux | <span class="keyword">grep</span> uwsgi | <span class="keyword">grep</span> -v <span class="string">"grep"</span></span><br><span class="line"><span class="keyword">ps</span> aux|<span class="keyword">grep</span> [<span class="keyword">u</span>]wsgi </span><br><span class="line"><span class="keyword">ps</span> aux|<span class="keyword">grep</span> /[<span class="keyword">u</span>]wsgi</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# ps -aux | grep uwsgi </span><br><span class="line">root      30568  0.0  1.3 310244 53696 ?        S    12月01   0:23 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      30578  0.0  1.2 310244 49556 ?        S    12月01   0:00 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      59379  1.5  1.3 457952 50236 ?        Sl   12月04  13:50 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line">root      59406  0.0  1.3 467760 53104 ?        S    12月04   0:03 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line">root      87765  0.0  0.0 112704  1016 pts/1    R+   10:14   0:00 grep --color=auto uwsgi</span><br><span class="line">[root@localhost test]# ps -aux | grep uwsgi | grep -v &quot;grep&quot;</span><br><span class="line">root      30568  0.0  1.3 310244 53696 ?        S    12月01   0:23 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      30578  0.0  1.2 310244 49556 ?        S    12月01   0:00 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      59379  1.5  1.3 457952 50236 ?        Sl   12月04  13:50 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line">root      59406  0.0  1.3 467760 53104 ?        S    12月04   0:03 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line"></span><br><span class="line">[root@localhost test]# ps -aux | grep [u]wsgi</span><br><span class="line">root      30568  0.0  1.3 310244 53696 ?        S    12月01   0:23 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      30578  0.0  1.2 310244 49556 ?        S    12月01   0:00 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      59379  1.5  1.3 457952 50236 ?        Sl   12月04  13:45 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line">root      59406  0.0  1.3 467760 53104 ?        S    12月04   0:03 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line">[root@localhost test]# ps -aux | grep \[u]wsgi</span><br><span class="line">root      30568  0.0  1.3 310244 53696 ?        S    12月01   0:23 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      30578  0.0  1.2 310244 49556 ?        S    12月01   0:00 /home/hc/project/envs/pgc/bin/uwsgi --ini /home/hc/project/pgc.ini</span><br><span class="line">root      59379  1.5  1.3 457952 50236 ?        Sl   12月04  13:45 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br><span class="line">root      59406  0.0  1.3 467760 53104 ?        S    12月04   0:03 /home/hc/project/envs/autoAweme/bin/uwsgi --ini /home/hc/project/autoAweme.ini</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-查找指定进程个数"><a href="#3-查找指定进程个数" class="headerlink" title="3. 查找指定进程个数"></a>3. 查找指定进程个数</h2><p>命令：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> -ef|<span class="keyword">grep</span> uwsgi -<span class="keyword">c</span></span><br><span class="line"><span class="keyword">ps</span> -ef|<span class="keyword">grep</span> -<span class="keyword">c</span> uwsgi</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> autoAweme]<span class="meta"># ps -ef|grep uwsgi -c</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line">[root<span class="symbol">@localhost</span> autoAweme]<span class="meta"># ps -ef|grep -c uwsgi </span></span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="4-从文件中读取关键词进行搜索"><a href="#4-从文件中读取关键词进行搜索" class="headerlink" title="4. 从文件中读取关键词进行搜索"></a>4. 从文件中读取关键词进行搜索</h2><p>命令：</p>
+<pre><code>cat 3.log | grep -f 4.log 
+</code></pre><p>输出：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat <span class="number">3.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">[root@localhost test]# cat <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">43</span></span><br><span class="line">[root@localhost test]# cat <span class="number">3.</span>log | grep -f <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line">[root@localhost test]# cat <span class="number">4.</span>log | grep -f <span class="number">3.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">43</span></span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>cat 3.log | grep -f 4.log   从3.log文件中匹配出含有4.log中关键字的行并输出<br>cat 4.log | grep -f 3.log   从4.log文件中匹配出含有3.log中关键字的行并输出<br>如：4.log中的关键字有1,12,5,43四个，在3.log中无论是完全匹配还是部分匹配只能匹配到1，并输出<br>在 3.log中关键字为1,2,3, 所以在4.log中匹配3时，能完全匹配到含有1,2,3的行，并把匹配部分着色表示输出</p>
+<h2 id="5-从文件中读取关键词进行搜索-且显示行号"><a href="#5-从文件中读取关键词进行搜索-且显示行号" class="headerlink" title="5. 从文件中读取关键词进行搜索 且显示行号"></a>5. 从文件中读取关键词进行搜索 且显示行号</h2><p>命令：</p>
+<pre><code>cat 4.log | grep -nf 3.log
+</code></pre><p>输出：<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="keyword">test</span>]# <span class="keyword">cat</span> 4.<span class="keyword">log</span> | grep -nf 3.<span class="keyword">log</span> </span><br><span class="line">1:1</span><br><span class="line">2:12</span><br><span class="line">4:43</span><br><span class="line">[root@localhost <span class="keyword">test</span>]# <span class="keyword">cat</span> 3.<span class="keyword">log</span> | grep -nf 4.<span class="keyword">log</span> </span><br><span class="line">1:1</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>输出4.log文件中含有从3.log 文件中读取出的关键词的内容行，并显示每一行的行号,冒号（:）左边是行号，右边是匹配的内容</p>
+<h2 id="6-从文件中查找关键词"><a href="#6-从文件中查找关键词" class="headerlink" title="6. 从文件中查找关键词"></a>6. 从文件中查找关键词</h2><p>命令：</p>
+<pre><code>grep &quot;1&quot; 4.log 
+</code></pre><p>输出：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="string">"1"</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">43</span></span><br><span class="line">[root@localhost test]# grep  <span class="number">1</span>  <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="string">"1"</span></span><br><span class="line">[root@localhost test]# grep  '<span class="number">1</span>'  <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="string">"1"</span></span><br><span class="line">[root@localhost test]# grep  <span class="string">"1"</span>  <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="string">"1"</span></span><br><span class="line">[root@localhost test]# grep  \<span class="string">"1<span class="subst">\"</span> 4.log </span></span><br><span class="line"><span class="string">"</span><span class="number">1</span><span class="string">"</span></span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>有无引号，或者单双引号 效果是一样的，但是加上引号可读性好一点。另外如果要查询带引号的内容，需要用\进行转义</p>
+<h2 id="7-从多个文件中查找关键词"><a href="#7-从多个文件中查找关键词" class="headerlink" title="7. 从多个文件中查找关键词"></a>7. 从多个文件中查找关键词</h2><p>命令：</p>
+<pre><code>grep &apos;1&apos; 3.log 4.log 
+</code></pre><p>输出：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# <span class="keyword">grep</span> <span class="string">'1'</span> <span class="number">3</span>.<span class="built_in">log</span> <span class="number">4</span>.<span class="built_in">log</span> </span><br><span class="line"><span class="number">3</span>.<span class="keyword">lo</span><span class="variable">g:1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:12</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:</span><span class="string">"1"</span></span><br><span class="line">[root@localhost test]# <span class="keyword">grep</span> -n <span class="number">1</span> <span class="number">3</span>.<span class="built_in">log</span> <span class="number">4</span>.<span class="built_in">log</span> </span><br><span class="line"><span class="number">3</span>.<span class="keyword">lo</span><span class="variable">g:1</span>:<span class="number">1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:1</span>:<span class="number">1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:2</span>:<span class="number">12</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:3</span>:<span class="string">"1"</span></span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>多文件时，输出查询到的信息内容行时，会把文件的命名放在在行的最左边输出并且加上”:”作为标示符分隔，如果用了-n展示行号，则第二个：的左边是行号，最右边的是匹配内容</p>
+<h2 id="8-找出以1开头的行内容"><a href="#8-找出以1开头的行内容" class="headerlink" title="8.找出以1开头的行内容"></a>8.找出以1开头的行内容</h2><p>命令：</p>
+<pre><code>cat 4.log |grep ^1
+</code></pre><p>输出：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat <span class="number">4.</span>log </span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="string">"1"</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">43</span></span><br><span class="line">[root@localhost test]# cat <span class="number">4.</span>log |grep ^<span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">12</span></span><br></pre></td></tr></table></figure>
+<h2 id="9-找出非1开头的行内容"><a href="#9-找出非1开头的行内容" class="headerlink" title="9.找出非1开头的行内容"></a>9.找出非1开头的行内容</h2><p>命令：</p>
+<pre><code>cat 4.log |grep ^[^1]
+</code></pre><p>输出：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat <span class="number">4.</span>log |grep ^[^<span class="number">1</span>]</span><br><span class="line"><span class="string">"1"</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">43</span></span><br></pre></td></tr></table></figure>
+<h2 id="10-找出以3结尾的行内容"><a href="#10-找出以3结尾的行内容" class="headerlink" title="10.找出以3结尾的行内容"></a>10.找出以3结尾的行内容</h2><p>命令：</p>
+<pre><code>cat 4.log |grep 3$
+</code></pre><p>输出：</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# cat <span class="number">4.</span>log |grep <span class="number">3</span>$</span><br><span class="line"><span class="number">43</span></span><br></pre></td></tr></table></figure>
+<h2 id="11-在当前目录中，查找后缀有-log-字样的文件中包含-1-字符串的文件，并打印出该字符串的行"><a href="#11-在当前目录中，查找后缀有-log-字样的文件中包含-1-字符串的文件，并打印出该字符串的行" class="headerlink" title="11.在当前目录中，查找后缀有 log 字样的文件中包含 1 字符串的文件，并打印出该字符串的行"></a>11.在当前目录中，查找后缀有 log 字样的文件中包含 1 字符串的文件，并打印出该字符串的行</h2><p>命令：</p>
+<pre><code>grep 1 *log
+</code></pre><p>输出：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# <span class="keyword">ls</span></span><br><span class="line"><span class="number">1</span>.<span class="built_in">log</span>  <span class="number">2</span>.<span class="built_in">log</span>  <span class="number">2</span>.<span class="built_in">log</span>.back  <span class="number">3</span>.<span class="built_in">log</span>  <span class="number">4</span>.<span class="built_in">log</span></span><br><span class="line">[root@localhost test]# <span class="keyword">grep</span> <span class="number">1</span> *<span class="built_in">log</span></span><br><span class="line"><span class="number">3</span>.<span class="keyword">lo</span><span class="variable">g:1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:12</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:</span><span class="string">"1"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="12-以递归的方式查找符合条件的文件"><a href="#12-以递归的方式查找符合条件的文件" class="headerlink" title="12 . 以递归的方式查找符合条件的文件"></a>12 . 以递归的方式查找符合条件的文件</h2><p>命令：</p>
+<pre><code>grep -r 仅此一条 /home/hc
+</code></pre><p>输出：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="symbol">@localhost</span> hc]<span class="meta"># grep -r 仅此一条 /home/hc</span></span><br><span class="line">/home/hc/test/<span class="number">2.</span><span class="built_in">log</span>.back:仅此一条,我是第五行</span><br><span class="line">[root<span class="symbol">@localhost</span> hc]<span class="meta">#</span></span><br></pre></td></tr></table></figure></p>
+<p>说明：<br>查找指定目录/home/hc 及其子目录（如果存在子目录的话）下所有文件中包含字符串”仅此一条”的文件，并打印出该字符串所在行的内容</p>
+<h2 id="13-反向查找"><a href="#13-反向查找" class="headerlink" title="13.反向查找"></a>13.反向查找</h2><p>命令：</p>
+<pre><code>grep -v 仅此一条 *
+</code></pre><p>输出：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test]# <span class="keyword">ls</span></span><br><span class="line"><span class="number">1</span>.<span class="built_in">log</span>  <span class="number">2</span>.<span class="built_in">log</span>  <span class="number">2</span>.<span class="built_in">log</span>.back  <span class="number">3</span>.<span class="built_in">log</span>  <span class="number">4</span>.<span class="built_in">log</span></span><br><span class="line">[root@localhost test]# <span class="keyword">grep</span> 仅此一条 *</span><br><span class="line"><span class="number">2</span>.<span class="built_in">log</span>.back:仅此一条,我是第五行</span><br><span class="line">[root@localhost test]# <span class="keyword">grep</span> -v 仅此一条 *</span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:hnlinux</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:hpython</span>.<span class="keyword">cn</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:ubuntu</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:ubuntu</span> linux</span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:redhat</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:Redhat</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">1</span>.<span class="keyword">lo</span><span class="variable">g:linuxmint</span></span><br><span class="line"><span class="number">2</span>.<span class="keyword">lo</span><span class="variable">g:linux</span></span><br><span class="line"><span class="number">2</span>.<span class="keyword">lo</span><span class="variable">g:</span></span><br><span class="line"><span class="number">2</span>.<span class="keyword">lo</span><span class="variable">g:Redhat</span></span><br><span class="line"><span class="number">2</span>.<span class="built_in">log</span>.back:第一行</span><br><span class="line"><span class="number">2</span>.<span class="built_in">log</span>.back:第二行</span><br><span class="line"><span class="number">2</span>.<span class="built_in">log</span>.back:我是log2第<span class="number">3</span>行</span><br><span class="line"><span class="number">2</span>.<span class="built_in">log</span>.back:第四行</span><br><span class="line"><span class="number">3</span>.<span class="keyword">lo</span><span class="variable">g:1</span></span><br><span class="line"><span class="number">3</span>.<span class="keyword">lo</span><span class="variable">g:2</span></span><br><span class="line"><span class="number">3</span>.<span class="keyword">lo</span><span class="variable">g:3</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:1</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:12</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:</span><span class="string">"1"</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:5</span></span><br><span class="line"><span class="number">4</span>.<span class="keyword">lo</span><span class="variable">g:43</span></span><br></pre></td></tr></table></figure></p>
+<p>说明：<br>查找当前目录下所有文件，找出其中不包含”仅此一条”的行</p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+    
+ </div>
+ 
+	
+	
+
+	
+	
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>希望文章对您有所帮助，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mark 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mark 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+	
+	
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mark
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.hpython.cn/2018/12/05/linux每日命令(35)：grep命令/" title="linux每日命令(35)：grep命令">http://www.hpython.cn/2018/12/05/linux每日命令(35)：grep命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-creative-commons"></i>CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+	
+	
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag" style="background: #ff945c"><i class="fa fa-tag"></i> linux命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/04/linux每日命令(34)：ps命令和pstree命令/" rel="next" title="linux每日命令(34)：ps命令和pstree命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(34)：ps命令和pstree命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI5MC8xNDgxOA=="></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Mark" />
+            
+              <p class="site-author-name" itemprop="name">Mark</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Mark-IT" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一．命令格式："><span class="nav-text">一．命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令功能："><span class="nav-text">二．命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三．命令参数："><span class="nav-text">三．命令参数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-规则表达式"><span class="nav-text">四. 规则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#grep-的规则表达式"><span class="nav-text">grep 的规则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POSIX字符"><span class="nav-text">POSIX字符:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五-使用实例"><span class="nav-text">五. 使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-查找指定进程"><span class="nav-text">1. 查找指定进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-查找指定进程时，不显示grep-本身进程"><span class="nav-text">2.  查找指定进程时，不显示grep 本身进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-查找指定进程个数"><span class="nav-text">3. 查找指定进程个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-从文件中读取关键词进行搜索"><span class="nav-text">4. 从文件中读取关键词进行搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-从文件中读取关键词进行搜索-且显示行号"><span class="nav-text">5. 从文件中读取关键词进行搜索 且显示行号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-从文件中查找关键词"><span class="nav-text">6. 从文件中查找关键词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-从多个文件中查找关键词"><span class="nav-text">7. 从多个文件中查找关键词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-找出以1开头的行内容"><span class="nav-text">8.找出以1开头的行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-找出非1开头的行内容"><span class="nav-text">9.找出非1开头的行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-找出以3结尾的行内容"><span class="nav-text">10.找出以3结尾的行内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-在当前目录中，查找后缀有-log-字样的文件中包含-1-字符串的文件，并打印出该字符串的行"><span class="nav-text">11.在当前目录中，查找后缀有 log 字样的文件中包含 1 字符串的文件，并打印出该字符串的行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-以递归的方式查找符合条件的文件"><span class="nav-text">12 . 以递归的方式查找符合条件的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-反向查找"><span class="nav-text">13.反向查找</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+	<!--<a href="https://github.com/Mark-IT"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>-->
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
+  <div style="display:none">
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">69.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+   |  本页点击 <span id="busuanzi_value_page_pv"></span> 次
+  |  本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+  |  您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  <!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
