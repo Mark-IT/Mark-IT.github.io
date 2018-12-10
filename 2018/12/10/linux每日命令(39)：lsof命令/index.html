@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+	
+	
+	<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+	</script>
+  
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux命令," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打">
+<meta name="keywords" content="linux命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux每日命令(39)：lsof命令">
+<meta property="og:url" content="http://www.hpython.cn/2018/12/10/linux每日命令(39)：lsof命令/index.html">
+<meta property="og:site_name" content="Mark&#39;s Home">
+<meta property="og:description" content="lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-10T02:44:03.871Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux每日命令(39)：lsof命令">
+<meta name="twitter:description" content="lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hpython.cn/2018/12/10/linux每日命令(39)：lsof命令/"/>
+
+
+
+
+
+  <title>linux每日命令(39)：lsof命令 | Mark's Home</title>
+  
+
+
+
+
+
+
+
+
+  
+</head>
+
+<!--<script type="text/javascript" src="/js/src/dytitle.js"></script>-->
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e20e6b1d0fc1866be6555005c1b22bdf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mark's Home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">你要做多大的事情，就该承受多大的压力。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  
+
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hpython.cn/2018/12/10/linux每日命令(39)：lsof命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mark">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mark's Home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux每日命令(39)：lsof命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T10:43:15+08:00">
+                2018-12-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-12-10T10:44:03+08:00">
+                2018-12-10
+              </time>
+            
+          </span>
+		  
+		
+			<span id="busuanzi_container_page_pv">  |  阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux每日命令/" itemprop="url" rel="index">
+                    <span itemprop="name">linux每日命令</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,328
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>lsof（list open files）是一个列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口。因为应用程序打开文件的描述符列表提供了大量关于这个应用程序本身的信息，因此通过lsof工具能够查看这个列表对系统监测以及排错将是很有帮助的。</p>
+<h1 id="一．命令格式："><a href="#一．命令格式：" class="headerlink" title="一．命令格式："></a>一．命令格式：</h1><pre><code>lsof [参数] [文件]
+</code></pre><h1 id="二．命令功能："><a href="#二．命令功能：" class="headerlink" title="二．命令功能："></a>二．命令功能：</h1><p>用于查看你进程开打的文件，打开文件的进程，进程打开的端口(TCP、UDP)。找回/恢复删除的文件。是十分方便的系统监视工具，因为 lsof 需要访问核心内存和各种文件，所以需要root用户执行。</p>
+<p>lsof打开的文件可以是：</p>
+<p>1.普通文件</p>
+<p>2.目录</p>
+<p>3.网络文件系统的文件</p>
+<p>4.字符或设备文件</p>
+<p>5.(函数)共享库</p>
+<p>6.管道，命名管道</p>
+<p>7.符号链接</p>
+<p>8.网络文件（例如：NFS file、网络socket，unix域名socket）</p>
+<p>9.还有其它类型的文件，等等</p>
+<h1 id="三．命令参数："><a href="#三．命令参数：" class="headerlink" title="三．命令参数："></a>三．命令参数：</h1><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a</td>
+<td>列出打开文件存在的进程</td>
+</tr>
+<tr>
+<td>-c&lt;进程名&gt;</td>
+<td>列出指定进程所打开的文件</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>列出GID号进程详情</td>
+</tr>
+<tr>
+<td>-d&lt;文件号&gt;</td>
+<td>列出占用该文件号的进程</td>
+</tr>
+<tr>
+<td>+d&lt;目录&gt;</td>
+<td>列出目录下被打开的文件</td>
+</tr>
+<tr>
+<td>+D&lt;目录&gt;</td>
+<td>递归列出目录下被打开的文件</td>
+</tr>
+<tr>
+<td>-n&lt;目录&gt;</td>
+<td>列出使用NFS的文件</td>
+</tr>
+<tr>
+<td>-i&lt;条件&gt;</td>
+<td>列出符合条件的进程。（4、6、协议、:端口、 @ip ）</td>
+</tr>
+<tr>
+<td>-p&lt;进程号&gt;</td>
+<td>列出指定进程号所打开的文件</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>列出UID号进程详情</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示版本信息</td>
+</tr>
+</tbody>
+</table>
+<h1 id="四-使用实例"><a href="#四-使用实例" class="headerlink" title="四. 使用实例"></a>四. 使用实例</h1><h2 id="1-无任何参数"><a href="#1-无任何参数" class="headerlink" title="1. 无任何参数"></a>1. 无任何参数</h2><p>命令：</p>
+<pre><code>lsof
+</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">COMMAND      PID    TID           USER   FD      TYPE             DEVICE  SIZE/OFF       NODE NAME</span><br><span class="line">systemd        1                  root  cwd       DIR              253,0       237         64 /</span><br><span class="line">systemd        1                  root  rtd       DIR              253,0       237         64 /</span><br><span class="line">systemd        1                  root  txt       REG              253,0   1612152     911487 /usr/lib/systemd/systemd</span><br><span class="line">systemd        1                  root  mem       REG              253,0     20112      34396 /usr/lib64/libuuid.so.1.3.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0    261456      34565 /usr/lib64/libblkid.so.1.1.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0     90664      34146 /usr/lib64/libz.so.1.2.7</span><br><span class="line">systemd        1                  root  mem       REG              253,0    157424      34404 /usr/lib64/liblzma.so.5.2.2</span><br><span class="line">systemd        1                  root  mem       REG              253,0     23968      34497 /usr/lib64/libcap-ng.so.0.0.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0     19896      34234 /usr/lib64/libattr.so.1.1.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0     19776      34059 /usr/lib64/libdl-2.17.so</span><br><span class="line">systemd        1                  root  mem       REG              253,0    402384      34196 /usr/lib64/libpcre.so.1.2.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0   2173512      34053 /usr/lib64/libc-2.17.so</span><br><span class="line">systemd        1                  root  mem       REG              253,0    144792      34079 /usr/lib64/libpthread-2.17.so</span><br><span class="line">systemd        1                  root  mem       REG              253,0     88776    4394296 /usr/lib64/libgcc_s-4.8.5-20150702.so.1</span><br><span class="line">systemd        1                  root  mem       REG              253,0     44448      34083 /usr/lib64/librt-2.17.so</span><br><span class="line">systemd        1                  root  mem       REG              253,0    273616      38958 /usr/lib64/libmount.so.1.1.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0     91800      39542 /usr/lib64/libkmod.so.2.2.10</span><br><span class="line">systemd        1                  root  mem       REG              253,0    127096      34501 /usr/lib64/libaudit.so.1.0.0</span><br><span class="line">systemd        1                  root  mem       REG              253,0     61672      68528 /usr/lib64/libpam.so.0.83.1</span><br><span class="line">systemd        1                  root  mem       REG              253,0     20032      34236 /usr/lib64/libcap.so.2.22</span><br><span class="line">systemd        1                  root  mem       REG              253,0    155784      34260 /usr/lib64/libselinux.so.1</span><br><span class="line">systemd        1                  root  mem       REG              253,0    164240      34046 /usr/lib64/ld-2.17.so</span><br><span class="line">systemd        1                  root    0u      CHR                1,3       0t0       7241 /dev/null</span><br><span class="line">systemd        1                  root    1u      CHR                1,3       0t0       7241 /dev/null</span><br><span class="line">systemd        1                  root    2u      CHR                1,3       0t0       7241 /dev/null</span><br><span class="line">systemd        1                  root    3u  a_inode               0,10         0       7237 [timerfd]</span><br><span class="line">systemd        1                  root    4u  a_inode               0,10         0       7237 [eventpoll]</span><br><span class="line">systemd        1                  root    5u  a_inode               0,10         0       7237 [signalfd]</span><br><span class="line">systemd        1                  root    6r      DIR               0,22         0       9299 /sys/fs/cgroup/systemd</span><br><span class="line">systemd        1                  root    7u  a_inode               0,10         0       7237 [timerfd]</span><br><span class="line">systemd        1                  root    8u  netlink                          0t0      14145 KOBJECT_UEVENT</span><br><span class="line">systemd        1                  root    9r      REG                0,3         0       7544 /proc/1/mountinfo</span><br><span class="line">systemd        1                  root   10r  a_inode               0,10         0       7237 inotify</span><br><span class="line">systemd        1                  root   11r      REG                0,3         0 4026532019 /proc/swaps</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<table>
+<thead>
+<tr>
+<th>列名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COMMAND</td>
+<td>进程的名称</td>
+</tr>
+<tr>
+<td>PID</td>
+<td>进程标识符</td>
+</tr>
+<tr>
+<td>TID</td>
+<td>线程标识符</td>
+</tr>
+<tr>
+<td>USER</td>
+<td>进程所有者</td>
+</tr>
+<tr>
+<td>FD</td>
+<td>文件描述符，应用程序通过文件描述符识别该文件。如cwd、txt等</td>
+</tr>
+<tr>
+<td>TYPE</td>
+<td>文件类型，如DIR、REG等</td>
+</tr>
+<tr>
+<td>DEVICE</td>
+<td>指定磁盘的名称</td>
+</tr>
+<tr>
+<td>SIZE</td>
+<td>文件的大小</td>
+</tr>
+<tr>
+<td>NODE</td>
+<td>索引节点（文件在磁盘上的标识）</td>
+</tr>
+<tr>
+<td>NAME</td>
+<td>打开文件的确切名称</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h3><p>（1）cwd：表示current work dirctory，即：应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改</p>
+<p>（2）txt ：该类型的文件是程序代码，如应用程序二进制文件本身或共享库，如上列表中显示的 /sbin/init 程序</p>
+<p>（3）lnn：library references (AIX);</p>
+<p>（4）er：FD information error (see NAME column);</p>
+<p>（5）jld：jail directory (FreeBSD);</p>
+<p>（6）ltx：shared library text (code and data);</p>
+<p>（7）mxx ：hex memory-mapped type number xx.</p>
+<p>（8）m86：DOS Merge mapped file;</p>
+<p>（9）mem：memory-mapped file;</p>
+<p>（10）mmap：memory-mapped device;</p>
+<p>（11）pd：parent directory;</p>
+<p>（12）rtd：root directory;</p>
+<p>（13）tr：kernel trace file (OpenBSD);</p>
+<p>（14）v86  VP/ix mapped file;</p>
+<p>（15）0：表示标准输出</p>
+<p>（16）1：表示标准输入</p>
+<p>（17）2：表示标准错误</p>
+<p>一般在标准输出、标准错误、标准输入后还跟着文件状态模式：r、w、u等</p>
+<p>（1）u：表示该文件被打开并处于读取/写入模式</p>
+<p>（2）r：表示该文件被打开并处于只读模式</p>
+<p>（3）w：表示该文件被打开并处于只写模式</p>
+<p>（4）空格：表示该文件的状态模式为unknow，且没有锁定</p>
+<p>（5）-：表示该文件的状态模式为unknow，且被锁定</p>
+<p>同时在文件状态模式后面，还跟着相关的锁</p>
+<p>（1）N：for a Solaris NFS lock of unknown type;</p>
+<p>（2）r：for read lock on part of the file;</p>
+<p>（3）R：for a read lock on the entire file;</p>
+<p>（4）w：for a write lock on part of the file;（文件的部分写锁）</p>
+<p>（5）W：for a write lock on the entire file;（整个文件的写锁）</p>
+<p>（6）u：for a read and write lock of any length;</p>
+<p>（7）U：for a lock of unknown type;</p>
+<p>（8）x：for an SCO OpenServer Xenix lock on part      of the file;</p>
+<p>（9）X：for an SCO OpenServer Xenix lock on the      entire file;</p>
+<p>（10）space：if there is no lock.</p>
+<h3 id="常见的文件类型"><a href="#常见的文件类型" class="headerlink" title="常见的文件类型"></a>常见的文件类型</h3><p>（1）DIR：表示目录</p>
+<p>（2）CHR：表示字符类型</p>
+<p>（3）BLK：块设备类型</p>
+<p>（4）UNIX： UNIX 域套接字</p>
+<p>（5）FIFO：先进先出 (FIFO) 队列</p>
+<p>（6）IPv4：网际协议 (IP) 套接字</p>
+<h2 id="2-查看谁正在使用某个文件，也就是说查找某个文件相关的进程"><a href="#2-查看谁正在使用某个文件，也就是说查找某个文件相关的进程" class="headerlink" title="2. 查看谁正在使用某个文件，也就是说查找某个文件相关的进程"></a>2. 查看谁正在使用某个文件，也就是说查找某个文件相关的进程</h2><p>命令：</p>
+<pre><code>lsof /bin/bash
+</code></pre><p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost tmp]# lsof /bin/bash</span><br><span class="line">lsof: WARNING: can&apos;t stat() fuse.gvfsd-fuse file system /run/user/1000/gvfs</span><br><span class="line">      Output information may be incomplete.</span><br><span class="line">COMMAND     PID  USER  FD   TYPE DEVICE SIZE/OFF     NODE NAME</span><br><span class="line">ksmtuned    760  root txt    REG  253,0   964544 50334971 /usr/bin/bash</span><br><span class="line">mysqld_sa  1244 mysql txt    REG  253,0   964544 50334971 /usr/bin/bash</span><br><span class="line">bash      31477  root txt    REG  253,0   964544 50334971 /usr/bin/bash</span><br><span class="line">bash      62533    hc txt    REG  253,0   964544 50334971 /usr/bin/bash</span><br></pre></td></tr></table></figure>
+<p>实例3：递归查看某个目录的文件信息</p>
+<p>命令：</p>
+<pre><code>lsof /home/hc
+</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost hc]# lsof /home/hc</span><br><span class="line">lsof: WARNING: can&apos;t stat() fuse.gvfsd-fuse file system /run/user/1000/gvfs</span><br><span class="line">      Output information may be incomplete.</span><br><span class="line">COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF    NODE NAME</span><br><span class="line">gnome-ses 2431   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gnome-she 2700   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">ibus-daem 2731   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">ibus-dcon 2736   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">ibus-x11  2740   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-mouse 2864   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-power 2866   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-print 2871   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-rfkil 2874   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-scree 2875   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-smart 2880   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-wacom 2881   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-xsett 2888   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-sound 2894   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-shari 2896   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-a11y- 2912   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-a11y- 2913   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-clipb 2914   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-color 2916   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-datet 2921   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-house 2922   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-keybo 2924   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-media 2927   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-accou 2936   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gsd-print 2963   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">nautilus- 2974   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gnome-sof 3005   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">tracker-m 3008   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">abrt-appl 3015   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">evolution 3018   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">vmtoolsd  3030   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">tracker-e 3038   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">tracker-m 3041   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">tracker-m 3049   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">ibus-engi 3089   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">gnome-ter 3778   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">bash      3785   hc  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">bash      3964 root  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">lsof      4208 root  cwd    DIR  253,0     4096 3463271 /home/hc</span><br><span class="line">lsof      4209 root  cwd    DIR  253,0     4096 3463271 /home/hc</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<p>如果使用了+D参数，则对应目录下的所有子目录和文件都会被列出</p>
+<h2 id="4-不使用-D选项，遍历查看某个目录的所有文件信息的方法"><a href="#4-不使用-D选项，遍历查看某个目录的所有文件信息的方法" class="headerlink" title="4. 不使用+D选项，遍历查看某个目录的所有文件信息的方法"></a>4. 不使用+D选项，遍历查看某个目录的所有文件信息的方法</h2><p>命令：</p>
+<pre><code>lsof |grep /home/hc
+</code></pre><h2 id="5-列出root用户打开的文件信息"><a href="#5-列出root用户打开的文件信息" class="headerlink" title="5. 列出root用户打开的文件信息"></a>5. 列出root用户打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof -u root
+</code></pre><p>说明: </p>
+<p>-u 选项，u其实是user的缩写</p>
+<h2 id="6-列出某个程序进程所打开的文件信息"><a href="#6-列出某个程序进程所打开的文件信息" class="headerlink" title="6. 列出某个程序进程所打开的文件信息"></a>6. 列出某个程序进程所打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof -c mysql
+</code></pre><p>说明:</p>
+<p> -c 选项将会列出所有以mysql这个进程开头的程序的文件，其实你也可以写成 lsof | grep mysql, 但是第一种方法明显比第二种方法要少打几个字符了</p>
+<h2 id="7-列出多个进程多个打开的文件信息"><a href="#7-列出多个进程多个打开的文件信息" class="headerlink" title="7. 列出多个进程多个打开的文件信息"></a>7. 列出多个进程多个打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof -c mysql -c uwsgi
+</code></pre><h2 id="8-列出某个用户以及某个进程所打开的文件信息"><a href="#8-列出某个用户以及某个进程所打开的文件信息" class="headerlink" title="8. 列出某个用户以及某个进程所打开的文件信息"></a>8. 列出某个用户以及某个进程所打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof  -u hc -c mysql 
+</code></pre><p>说明：</p>
+<p>用户与进程可相关，也可以不相关</p>
+<h2 id="9-列出除了某个用户外的被打开的文件信息"><a href="#9-列出除了某个用户外的被打开的文件信息" class="headerlink" title="9. 列出除了某个用户外的被打开的文件信息"></a>9. 列出除了某个用户外的被打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof -u ^root
+</code></pre><p>说明：</p>
+<p>^这个符号在用户名之前，将会把root用户打开的进程不显示</p>
+<h2 id="10-通过某个进程号显示该进程打开的文件"><a href="#10-通过某个进程号显示该进程打开的文件" class="headerlink" title="10. 通过某个进程号显示该进程打开的文件"></a>10. 通过某个进程号显示该进程打开的文件</h2><p>命令：</p>
+<pre><code>lsof -p 1
+</code></pre><p>说明：</p>
+<p>查看pid为1的进程对应的文件的文件信息</p>
+<h2 id="11-列出多个进程号对应的文件信息"><a href="#11-列出多个进程号对应的文件信息" class="headerlink" title="11. 列出多个进程号对应的文件信息"></a>11. 列出多个进程号对应的文件信息</h2><p>命令：</p>
+<pre><code>lsof -p 1,2,3
+</code></pre><p>说明：</p>
+<p>查看pid为1,2,3的进程对应的文件信息</p>
+<h2 id="12-列出除了某个进程号外的其他进程号所打开的文件信息"><a href="#12-列出除了某个进程号外的其他进程号所打开的文件信息" class="headerlink" title="12. 列出除了某个进程号外的其他进程号所打开的文件信息"></a>12. 列出除了某个进程号外的其他进程号所打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof -p ^1
+</code></pre><h2 id="13-列出所有的网络连接"><a href="#13-列出所有的网络连接" class="headerlink" title="13. 列出所有的网络连接"></a>13. 列出所有的网络连接</h2><p>命令：</p>
+<pre><code>lsof -i
+</code></pre><h2 id="14-列出所有tcp-网络连接信息"><a href="#14-列出所有tcp-网络连接信息" class="headerlink" title="14. 列出所有tcp 网络连接信息"></a>14. 列出所有tcp 网络连接信息</h2><p>命令：</p>
+<pre><code>lsof -i tcp
+</code></pre><h2 id="15-列出所有udp网络连接信息"><a href="#15-列出所有udp网络连接信息" class="headerlink" title="15. 列出所有udp网络连接信息"></a>15. 列出所有udp网络连接信息</h2><p>命令：</p>
+<pre><code>lsof -i udp
+</code></pre><h2 id="16-列出谁在使用某个端口"><a href="#16-列出谁在使用某个端口" class="headerlink" title="16. 列出谁在使用某个端口"></a>16. 列出谁在使用某个端口</h2><p>命令：</p>
+<pre><code>lsof -i :3306
+</code></pre><h2 id="17-列出谁在使用某个特定的udp端口"><a href="#17-列出谁在使用某个特定的udp端口" class="headerlink" title="17. 列出谁在使用某个特定的udp端口"></a>17. 列出谁在使用某个特定的udp端口</h2><p>命令：</p>
+<pre><code>lsof -i udp:55
+</code></pre><h2 id="18-列出谁在使用某个特定的tcp端口"><a href="#18-列出谁在使用某个特定的tcp端口" class="headerlink" title="18. 列出谁在使用某个特定的tcp端口"></a>18. 列出谁在使用某个特定的tcp端口</h2><p>命令：</p>
+<pre><code>lsof -i tcp:80
+</code></pre><h2 id="19-列出某个用户的所有活跃的网络端口"><a href="#19-列出某个用户的所有活跃的网络端口" class="headerlink" title="19. 列出某个用户的所有活跃的网络端口"></a>19. 列出某个用户的所有活跃的网络端口</h2><p>命令：</p>
+<pre><code>lsof -a -u root -i
+</code></pre><h2 id="20-列出所有网络文件系统"><a href="#20-列出所有网络文件系统" class="headerlink" title="20. 列出所有网络文件系统"></a>20. 列出所有网络文件系统</h2><p>命令：</p>
+<pre><code>lsof -N
+</code></pre><h2 id="21-域名socket文件"><a href="#21-域名socket文件" class="headerlink" title="21. 域名socket文件"></a>21. 域名socket文件</h2><p>命令：</p>
+<pre><code>lsof -U
+</code></pre><h2 id="22-某个用户组所打开的文件信息"><a href="#22-某个用户组所打开的文件信息" class="headerlink" title="22. 某个用户组所打开的文件信息"></a>22. 某个用户组所打开的文件信息</h2><p>命令：</p>
+<pre><code>lsof -g 5555
+</code></pre><h2 id="23-根据文件描述列出对应的文件信息"><a href="#23-根据文件描述列出对应的文件信息" class="headerlink" title="23. 根据文件描述列出对应的文件信息"></a>23. 根据文件描述列出对应的文件信息</h2><p>命令：</p>
+<pre><code>lsof -d description(like 2)
+</code></pre><p>例如：lsof  -d  txt</p>
+<p>例如：lsof  -d  1</p>
+<p>例如：lsof  -d  2</p>
+<p>说明：</p>
+<p>0表示标准输入，1表示标准输出，2表示标准错误，从而可知：所以大多数应用程序所打开的文件的 FD 都是从 3 开始</p>
+<h2 id="24-根据文件描述范围列出文件信息"><a href="#24-根据文件描述范围列出文件信息" class="headerlink" title="24. 根据文件描述范围列出文件信息"></a>24. 根据文件描述范围列出文件信息</h2><p>命令：</p>
+<pre><code>lsof -d 2-3
+</code></pre><h2 id="25-列出COMMAND列中包含字符串”-sshd”，且文件描符的类型为txt的文件信息"><a href="#25-列出COMMAND列中包含字符串”-sshd”，且文件描符的类型为txt的文件信息" class="headerlink" title="25. 列出COMMAND列中包含字符串” sshd”，且文件描符的类型为txt的文件信息"></a>25. 列出COMMAND列中包含字符串” sshd”，且文件描符的类型为txt的文件信息</h2><p>命令：</p>
+<pre><code>lsof -c sshd -a -d txt
+</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost hc]# lsof -c sshd -a -d txt</span><br><span class="line">lsof: WARNING: can&apos;t stat() fuse.gvfsd-fuse file system /run/user/1000/gvfs</span><br><span class="line">      Output information may be incomplete.</span><br><span class="line">COMMAND  PID USER  FD   TYPE DEVICE SIZE/OFF    NODE NAME</span><br><span class="line">sshd    1127 root txt    REG  253,0   853040 3283742 /usr/sbin/sshd</span><br></pre></td></tr></table></figure></p>
+<h2 id="26-列出被进程号为1234的进程所打开的所有IPV4-network-files"><a href="#26-列出被进程号为1234的进程所打开的所有IPV4-network-files" class="headerlink" title="26. 列出被进程号为1234的进程所打开的所有IPV4 network files"></a>26. 列出被进程号为1234的进程所打开的所有IPV4 network files</h2><p>命令：</p>
+<pre><code>lsof -i 4 -a -p 1234
+</code></pre><h2 id="27-列出目前连接主机上端口为：2280相关的所有文件信息，且每隔3秒不断的执行lsof指令"><a href="#27-列出目前连接主机上端口为：2280相关的所有文件信息，且每隔3秒不断的执行lsof指令" class="headerlink" title="27. 列出目前连接主机上端口为：2280相关的所有文件信息，且每隔3秒不断的执行lsof指令"></a>27. 列出目前连接主机上端口为：2280相关的所有文件信息，且每隔3秒不断的执行lsof指令</h2><p>命令：</p>
+<pre><code>lsof -i :22,80  -r  3
+</code></pre><p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost hc]# lsof -i :22,80  -r  3</span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line">sshd    1127 root    3u  IPv4  25378      0t0  TCP *:ssh (LISTEN)</span><br><span class="line">sshd    1127 root    4u  IPv6  25387      0t0  TCP *:ssh (LISTEN)</span><br><span class="line">nginx   1189 root    6u  IPv4  27457      0t0  TCP *:http (LISTEN)</span><br><span class="line">nginx   1190 root    6u  IPv4  27457      0t0  TCP *:http (LISTEN)</span><br><span class="line">=======</span><br><span class="line">COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line">sshd    1127 root    3u  IPv4  25378      0t0  TCP *:ssh (LISTEN)</span><br><span class="line">sshd    1127 root    4u  IPv6  25387      0t0  TCP *:ssh (LISTEN)</span><br><span class="line">nginx   1189 root    6u  IPv4  27457      0t0  TCP *:http (LISTEN)</span><br><span class="line">nginx   1190 root    6u  IPv4  27457      0t0  TCP *:http (LISTEN)</span><br><span class="line">=======</span><br><span class="line">^C</span><br><span class="line"></span><br><span class="line">[root@localhost hc]#</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+	
+	
+	
+
+  <div>
+    
+    <div>
+    
+        <div style="text-align:center;color:#ccc;font-size:14px">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+
+    
+ </div>
+ 
+	
+	
+
+	
+	
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>希望文章对您有所帮助，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Mark 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mark 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+	
+	
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Mark
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.hpython.cn/2018/12/10/linux每日命令(39)：lsof命令/" title="linux每日命令(39)：lsof命令">http://www.hpython.cn/2018/12/10/linux每日命令(39)：lsof命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-creative-commons"></i>CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+	
+	
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag" style="background: #ff945c"><i class="fa fa-tag"></i> linux命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/08/linux每日命令(38)：iostat命令/" rel="next" title="linux每日命令(38)：iostat命令">
+                <i class="fa fa-chevron-left"></i> linux每日命令(38)：iostat命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODI5MC8xNDgxOA=="></div>
+    </div>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Mark" />
+            
+              <p class="site-author-name" itemprop="name">Mark</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Mark-IT" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一．命令格式："><span class="nav-text">一．命令格式：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二．命令功能："><span class="nav-text">二．命令功能：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三．命令参数："><span class="nav-text">三．命令参数：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四-使用实例"><span class="nav-text">四. 使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-无任何参数"><span class="nav-text">1. 无任何参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件描述符"><span class="nav-text">文件描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的文件类型"><span class="nav-text">常见的文件类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-查看谁正在使用某个文件，也就是说查找某个文件相关的进程"><span class="nav-text">2. 查看谁正在使用某个文件，也就是说查找某个文件相关的进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-不使用-D选项，遍历查看某个目录的所有文件信息的方法"><span class="nav-text">4. 不使用+D选项，遍历查看某个目录的所有文件信息的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-列出root用户打开的文件信息"><span class="nav-text">5. 列出root用户打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-列出某个程序进程所打开的文件信息"><span class="nav-text">6. 列出某个程序进程所打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-列出多个进程多个打开的文件信息"><span class="nav-text">7. 列出多个进程多个打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-列出某个用户以及某个进程所打开的文件信息"><span class="nav-text">8. 列出某个用户以及某个进程所打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-列出除了某个用户外的被打开的文件信息"><span class="nav-text">9. 列出除了某个用户外的被打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-通过某个进程号显示该进程打开的文件"><span class="nav-text">10. 通过某个进程号显示该进程打开的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-列出多个进程号对应的文件信息"><span class="nav-text">11. 列出多个进程号对应的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-列出除了某个进程号外的其他进程号所打开的文件信息"><span class="nav-text">12. 列出除了某个进程号外的其他进程号所打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-列出所有的网络连接"><span class="nav-text">13. 列出所有的网络连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-列出所有tcp-网络连接信息"><span class="nav-text">14. 列出所有tcp 网络连接信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-列出所有udp网络连接信息"><span class="nav-text">15. 列出所有udp网络连接信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-列出谁在使用某个端口"><span class="nav-text">16. 列出谁在使用某个端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-列出谁在使用某个特定的udp端口"><span class="nav-text">17. 列出谁在使用某个特定的udp端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-列出谁在使用某个特定的tcp端口"><span class="nav-text">18. 列出谁在使用某个特定的tcp端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-列出某个用户的所有活跃的网络端口"><span class="nav-text">19. 列出某个用户的所有活跃的网络端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-列出所有网络文件系统"><span class="nav-text">20. 列出所有网络文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-域名socket文件"><span class="nav-text">21. 域名socket文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-某个用户组所打开的文件信息"><span class="nav-text">22. 某个用户组所打开的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-根据文件描述列出对应的文件信息"><span class="nav-text">23. 根据文件描述列出对应的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-根据文件描述范围列出文件信息"><span class="nav-text">24. 根据文件描述范围列出文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-列出COMMAND列中包含字符串”-sshd”，且文件描符的类型为txt的文件信息"><span class="nav-text">25. 列出COMMAND列中包含字符串” sshd”，且文件描符的类型为txt的文件信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-列出被进程号为1234的进程所打开的所有IPV4-network-files"><span class="nav-text">26. 列出被进程号为1234的进程所打开的所有IPV4 network files</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-列出目前连接主机上端口为：2280相关的所有文件信息，且每隔3秒不断的执行lsof指令"><span class="nav-text">27. 列出目前连接主机上端口为：2280相关的所有文件信息，且每隔3秒不断的执行lsof指令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+	<!--<a href="https://github.com/Mark-IT"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>-->
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-leaf"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mark</span>
+  <div style="display:none">
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  </div>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">78.8k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+   |  本页点击 <span id="busuanzi_value_page_pv"></span> 次
+  |  本站总点击 <span id="busuanzi_value_site_pv"></span> 次
+  |  您是第 <span id="busuanzi_value_site_uv"></span> 位访客
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</script>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+  <!-- 小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</body>
+</html>
